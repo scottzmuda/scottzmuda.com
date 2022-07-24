@@ -1,0 +1,19 @@
+body{
+    font-size: 40pt;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 32px;
+    font-weight: 350;
+    background-color: #f8f1e4;
+}
+a:link {
+  color: #0082b2;
+}
+a:visited {
+  color: #0082b2;
+}
+.btc_info{
+    border: 4px black;
+    padding: 32px;
+    border-style: solid;
+    font-size: 26pt;
+}
