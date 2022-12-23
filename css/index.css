@@ -5,6 +5,14 @@ body{
     /* font-weight: 350; */
 
 }
+a{
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  border: .25em;
+  border-color: #0082b2;
+}
 a:link {
   color: #0082b2;
 }
