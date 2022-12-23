@@ -21,11 +21,11 @@ div{
 }
 
 img{
-  width:  10%;
+  width:  5em;
 }
 
 a{
-  width: calc(90% - 2em);
+  width: calc(90% - 7em);
   padding-left: 1em;
 }
 
