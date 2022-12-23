@@ -4,31 +4,31 @@
     "display": "standalone",
 	"orientation": "portrait", 
 	"start_url": "/index.html",
-	"icons": [ 
+	"icons": [ { 
+	}, 
 	{ 
-		"src": "/images/touch-icon-1024x1024.png", 
+		"src": "/i/touch-icon-1024x1024.png", 
 		"sizes": "1024x1024", 
 		"type": "image/png" 
 	}, 
 	{ 
-		"src": "/images/touch-icon-120x120.png", 
+		"src": "/i/touch-icon-120x120.png", 
 		"sizes": "120x120", 
 		"type": "image/png" 
 	}, 
 	{ 
-		"src": "/images/touch-icon-152x152.png", 
+		"src": "/i/touch-icon-152x152.png", 
 		"sizes": "152x152", 
 		"type": "image/png" 
 	}, 
 	{ 
-		"src": "/images/touch-icon-167x167.png", 
+		"src": "/i/touch-icon-167x167.png", 
 		"sizes": "167x167", 
 		"type": "image/png" 
 	}, 
 	{ 
-		"src": "/images/touch-icon-180x180.png", 
+		"src": "/i/touch-icon-180x180.png", 
 		"sizes": "180x180", 
 		"type": "image/png" 
-	}
-		]
+	}]
 }

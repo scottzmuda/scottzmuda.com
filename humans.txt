@@ -3,11 +3,11 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    scott -- owner -- https://www.twitter.com/scottzmuda
 
 # THANKS
 
-    <name>
+
 
 # TECHNOLOGY COLOPHON
 
