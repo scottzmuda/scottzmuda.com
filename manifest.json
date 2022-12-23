@@ -1,11 +1,12 @@
 { 
+    "short_name": "scott's website",
+  	"name": "scott's website",
     "background_color":  "#f8f1e4",
 	"theme_color": "#f8f1e4",
     "display": "standalone",
 	"orientation": "portrait", 
 	"start_url": "/",
-	"icons": [ { 
-	}, 
+	"icons": [
 	{ 
 		"src": "/i/touch-icon-1024x1024.png", 
 		"sizes": "1024x1024", 
@@ -30,5 +31,6 @@
 		"src": "/i/touch-icon-180x180.png", 
 		"sizes": "180x180", 
 		"type": "image/png" 
-	}]
+	}
+	]
 }
