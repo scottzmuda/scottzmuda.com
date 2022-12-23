@@ -5,16 +5,25 @@ body{
     /* font-weight: 350; */
 
 }
-a{
+
+div{
   white-space: nowrap; 
-  overflow-x: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
 
-  width: 75vw;
-  border-style: solid;
-  border: .25em;
-  border-color: #0082b2;
+  width: 25em;
+  padding: 1em;
+  /*border: 1px solid #0082b2;*/
 }
+
+img{
+  width:  3em;
+}
+
+a{
+  padding-left: 1em;
+}
+
 a:link {
   color: #0082b2;
 }
