@@ -1,8 +1,10 @@
 body{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #f8f1e4;
+    /*
     padding: 1em;
-    /* font-weight: 350; */
+    font-weight: 350;
+    */
 
 }
 
@@ -13,7 +15,9 @@ div{
 
   width: 100%;
   padding: 1em;
-  /*border: 1px solid #0082b2;*/
+  /*
+  border: 1px solid #0082b2;
+  */
 }
 
 img{
