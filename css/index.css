@@ -11,7 +11,7 @@ div{
   overflow: hidden;
   text-overflow: ellipsis;
 
-  width: 25em;
+  width: 100%;
   padding: 1em;
   /*border: 1px solid #0082b2;*/
 }
