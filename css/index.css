@@ -11,6 +11,7 @@ a{
   text-overflow: ellipsis;
 
   width: 75vw;
+  border-style: solid;
   border: .25em;
   border-color: #0082b2;
 }
