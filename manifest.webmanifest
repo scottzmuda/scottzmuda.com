@@ -4,6 +4,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "start_url": "/",
+  "scope": "/",
 
   "short_name": "scott's website",
   "name": "scott's website",
