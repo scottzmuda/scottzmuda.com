@@ -9,11 +9,6 @@ body{
     background-color: #464646; /*#f8f1e4;*/
 }
 
-a{
-  width: calc(90% - 7em);
-  padding-left: 1em;
-}
-
 a:link {
   color: #75d5ff; /*#0082b2;*/
 }

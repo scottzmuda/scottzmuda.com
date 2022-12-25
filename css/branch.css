@@ -11,6 +11,12 @@ div{
   */
 }
 
+a{
+  width: calc(90% - 7em);
+  padding-left: 1em;
+}
+
+
 img{
   width:  5em;
 }
