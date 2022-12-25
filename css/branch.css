@@ -1,0 +1,16 @@
+
+div{
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  width: calc(100% - 3em);
+  padding: 1em;
+  /*
+  border: 1px solid #0082b2;
+  */
+}
+
+img{
+  width:  5em;
+}
