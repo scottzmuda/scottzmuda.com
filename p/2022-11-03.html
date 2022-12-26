@@ -2,7 +2,7 @@
 <html class="no-js" lang="en-US">
     <head>
         <meta charset="utf-8">
-        <title>a breaking wave</title>
+        <title class="usesTitle">title</title>
         <meta name="description" content="a post titled: a breaking wave">
         <meta name="viewport" content="width=device-width, initial-scale=1">        
         <meta property="og:title" content="a breaking wave">
@@ -21,7 +21,13 @@
         <div class="content_container">
 		<a href="/index.html">home</a><br>
         <img class="feature" src="/i/2022-11-03.jpeg">
-        <h1>a breaking wave</h1>
+        <h1 class="usesTitle">title</h1>
+          <script>
+            var pageTitle = "a breaking wave";
+            document.title = pageTitle;
+            var pageTitleElements = document.querySelectorAll('.usesTitle');
+            pageTitleElements.innerText = pageTitle;
+          </script>
         <h2>scott zmuda</h2>
         <h3>2022-11-03</h3>
         <p>
