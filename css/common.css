@@ -15,3 +15,13 @@ a:link {
 a:visited {
   color: #75d5ff; /*#0082b2;*/
 }
+
+div.banner{
+  color: #000000;
+  background-color: #fbc30a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+}

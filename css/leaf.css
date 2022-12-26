@@ -3,6 +3,7 @@ body{
 }
 img.feature{
 	width:50%;
+	padding: 1em 0 0 0;
 }
 div{
 	display: block;
