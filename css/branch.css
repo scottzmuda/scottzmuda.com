@@ -4,15 +4,16 @@ div.post{
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
+  height: 5em;
   padding: 0 0 1em 0;
 
 }
 a{
-  width: calc(90% - 7em);/* calc(90% - 7em); */
+  width: calc(90% - 7em)
   padding-left: 2em;
 }
 
 
 img{
-  width:  5em;
+  height:  100%;
 }

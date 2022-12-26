@@ -1,22 +1,36 @@
-<!DOCTYPE html>
-    <html lang="en-US">
+<!doctype html>
+<html class="no-js" lang="en-US">
     <head>
-		<link rel="stylesheet" href="/css/style.css">
-		<meta name="theme-color" content="#f8f1e4">
-        <link rel="icon" href="/favicon.ico" sizes="16x16" type="image/png">
-        
-		<meta name="twitter:card" content="summary" />
-    	<meta name="twitter:title" content="toes in the water [progress], ass in the sand [tradition]" />
-    	<meta name="twitter:image" content="https://scottzmuda.com/i/2022-08-20.jpeg" />
+        <meta charset="utf-8">
+        <title class="usesTitle">title</title>
+        <meta name="description" content="description-placeholder">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>
-            toes in the water [progress], ass in the sand [tradition]
-        </title>
+        <meta property="og:title" content="title-placeholder">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="url-palceholder">
+        <meta property="og:image" content="image-placeholder">
+
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/leaf.css">
+
+        <meta name="theme-color" content="color-placeholder"> <!--#464646-->
     </head>
     <body>
-		<a href="/index.html">home</a><br>
-        <h3>toes in the water [progress], ass in the sand [tradition]</h3>
-        <article>
+        <div class="content_container">
+        <a href="/index.html">home</a><br>
+        <img class="feature usesImageRel" src="image-placeholder">
+        <h1 class="usesTitle">title-placeholder</h1>
+        <h2 class="usesDate">date-placeholder</h2>
+
+        <script>
+            var title           = "toes in the water [progress], ass in the sand [tradition]";
+            var imageRel        = "/i/2022-08-20.jpeg";
+            var date            = "2022-08-20";
+            var description     = 'a post proposing that tradition solves the issue of attempting to exhaustively search for a best way of life';
+        </script>
 <p>
     i have a restlessness that worries me sometimes. like i'm holding my breath until i figure things out, but at the same time knowing that i'll never be able to "figure things out" in the way that i would want. i think this is me trying to hold on to some sort of control as the ground i stand on... but at the same time knowing that this isn't the firm ground that i pretend that it is. in some important ways i have access to knowledge and understanding that was unimaginable 200 years ago, 1,000 years ago, 5,000 years ago... i don't think it makes sense to hold something as essential to life that hasn't historically even been an option for so many. life has to require something different. another way to think about this: i'm trying to do an exhaustive search of the space of possibilities when i instead need to understand how to navigate that space more ~intelligently~. its funny... seeking understanding (as an absolute good) turns out to be an unintelligent strategy it seems.
 </p>
@@ -33,7 +47,36 @@
 best
 -s
 </p>
-        </article>
-        
+        </div>
+        <script>
+            var origin = location.origin;
+            var pathname = location.pathname;    
+            var imageAbs = origin + imageRel;
+            var urlAbs = origin + pathname;
+
+            var backgroundColor = document.body.style.backgroundColor;
+
+            var elementTitles = document.querySelectorAll('.usesTitle');
+            elementTitles.forEach(function(element) {element.innerText = title});
+
+            var metaDescription = document.querySelector('[name="description"]');
+            metaDescription.setAttribute('content', description);
+
+            var elementImageRel = document.querySelector('.usesImageRel');
+            elementImageRel.src = imageRel;
+
+            var elementDate = document.querySelector('.usesDate');
+            elementDate.innerText = date;
+
+            var openGraphTitle = document.querySelector('[property="og:title"]');
+            openGraphTitle.setAttribute('content', title);
+            var openGraphImage = document.querySelector('[property="og:image"]');
+            openGraphImage.setAttribute('content', imageAbs);
+            var openGraphUrl = document.querySelector('[property="og:url"]');
+            openGraphUrl.setAttribute('content', urlAbs);
+
+            var metaThemeColor = document.getElementsByName('theme-color')[0];
+            metaThemeColor.setAttribute('content', backgroundColor);
+        </script>    
     </body>
-    </html>
+</html>
