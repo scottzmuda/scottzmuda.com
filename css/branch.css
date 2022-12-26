@@ -3,14 +3,13 @@ div.post{
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 100%;
+  padding: 0 0 1em 0;
 
-  width: 100% /* calc(100% - 3em); */
-  /* border: 1px solid #0082b2; */
 }
-
 a{
-  width: calc(90% - 6em)/* calc(90% - 7em); */
-  padding-left: 1em;
+  width: calc(90% - 7em);/* calc(90% - 7em); */
+  padding-left: 2em;
 }
 
 
