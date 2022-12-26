@@ -1,18 +1,15 @@
 
-div{
+div.post{
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
 
-  width: calc(100% - 3em);
-  padding: 1em;
-  /*
-  border: 1px solid #0082b2;
-  */
+  width: 100% /* calc(100% - 3em); */
+  /* border: 1px solid #0082b2; */
 }
 
 a{
-  width: calc(90% - 7em);
+  width: calc(90% - 6em)/* calc(90% - 7em); */
   padding-left: 1em;
 }
 

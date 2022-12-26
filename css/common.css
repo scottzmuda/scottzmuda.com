@@ -7,6 +7,7 @@ html {
 body{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #464646; /*#f8f1e4;*/
+    margin: 1em;
 }
 
 a:link {
@@ -14,6 +15,13 @@ a:link {
 }
 a:visited {
   color: #75d5ff; /*#0082b2;*/
+}
+
+div.content_container{
+  display: block;
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 div.banner{
