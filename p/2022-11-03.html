@@ -19,18 +19,18 @@
         <meta name="theme-color" content="color-placeholder"> <!--#464646-->
     </head>
     <body>
-        <script>
-            var title = "a breaking wave";
-            var description = 'a post describing an experience of a feeling and speculating its purpose'
-            var imageRel = "/i/2022-11-03.jpeg";
-
-        </script>
-        
         <div class="content_container">
-		<a href="/index.html">home</a><br>
-        <img class="feature" src="/i/2022-11-03.jpeg">
+        <a href="/index.html">home</a><br>
+        <img class="feature usesImageRel" src="image-placeholder">
         <h1 class="usesTitle">title-placeholder</h1>
-        <h2>2022-11-03</h2>
+        <h2 class="usesDate">date-placeholder</h2>
+
+        <script>
+            var title           = "a breaking wave";
+            var imageRel        = "/i/2022-11-03.jpeg";
+            var date            = "2022-11-03";
+            var description     = 'a post describing an experience of a feeling and speculating its purpose';
+        </script>
         <p>
             about to leave my place, but hoping to rip out a quick post before doing so. i've been reflecting lately on a feeling that i've been having during some conversations.
         </p>
@@ -54,7 +54,6 @@
             var urlAbs = origin + pathname;
 
             var backgroundColor = document.body.style.backgroundColor;
-            console.log(backgroundColor);
 
             var elementTitles = document.querySelectorAll('.usesTitle');
             elementTitles.forEach(function(element) {element.innerText = title});
@@ -62,6 +61,11 @@
             var metaDescription = document.querySelector('[name="description"]');
             metaDescription.setAttribute('content', description);
 
+            var elementImageRel = document.querySelector('.usesImageRel');
+            elementImageRel.src = imageRel;
+
+            var elementDate = document.querySelector('.usesDate');
+            elementDate.innerText = date;
 
             var openGraphTitle = document.querySelector('[property="og:title"]');
             openGraphTitle.setAttribute('content', title);
