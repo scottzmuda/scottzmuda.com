@@ -7,7 +7,7 @@ html {
 body{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #464646; /*#f8f1e4;*/
-    margin: 1em;
+    margin: 0 1em;
 }
 
 a:link {
@@ -32,5 +32,6 @@ div.banner{
   left: 0;
   right: 0;
   margin: 1em auto;
+  padding: 1em 0 1em 0;
 
 }
