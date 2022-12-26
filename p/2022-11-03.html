@@ -3,32 +3,34 @@
     <head>
         <meta charset="utf-8">
         <title class="usesTitle">title</title>
-        <meta name="description" content="a post titled: a breaking wave">
+        <meta name="description" content="description-placeholder">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <meta property="og:title" content="a breaking wave">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://scottzmuda.com/p/2022-11-03.html">
-        <meta property="og:image" content="https://scottzmuda.com/i/2022-11-03.jpeg">
+        <meta property="og:title" content="title-placeholder">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="url-palceholder">
+        <meta property="og:image" content="image-placeholder">
 
         <link rel="stylesheet" href="/css/normalize.css">
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/common.css">
         <link rel="stylesheet" href="/css/leaf.css">
 
-        <meta name="theme-color" content="#464646">
+        <meta name="theme-color" content="color-placeholder"> <!--#464646-->
     </head>
     <body>
         <script>
             var title = "a breaking wave";
+            var description = 'a post describing an experience of a feeling and speculating its purpose'
+            var imageRel = "/i/2022-11-03.jpeg";
+
         </script>
         
         <div class="content_container">
 		<a href="/index.html">home</a><br>
         <img class="feature" src="/i/2022-11-03.jpeg">
-        <h1 class="usesTitle">title</h1>
-        <h2>scott zmuda</h2>
-        <h3>2022-11-03</h3>
+        <h1 class="usesTitle">title-placeholder</h1>
+        <h2>2022-11-03</h2>
         <p>
             about to leave my place, but hoping to rip out a quick post before doing so. i've been reflecting lately on a feeling that i've been having during some conversations.
         </p>
@@ -46,8 +48,30 @@
         </p>
         </div>
         <script>
-            var titleElements = document.querySelectorAll('.usesTitle');
-            titleElements.forEach(function(element) {element.innerText = title});
+            var origin = location.origin;
+            var pathname = location.pathname;    
+            var imageAbs = origin + imageRel;
+            var urlAbs = origin + pathname;
+
+            var backgroundColor = document.body.style.backgroundColor;
+            console.log(backgroundColor);
+
+            var elementTitles = document.querySelectorAll('.usesTitle');
+            elementTitles.forEach(function(element) {element.innerText = title});
+
+            var metaDescription = document.querySelector('[name="description"]');
+            metaDescription.setAttribute('content', description);
+
+
+            var openGraphTitle = document.querySelector('[property="og:title"]');
+            openGraphTitle.setAttribute('content', title);
+            var openGraphImage = document.querySelector('[property="og:image"]');
+            openGraphImage.setAttribute('content', imageAbs);
+            var openGraphUrl = document.querySelector('[property="og:url"]');
+            openGraphUrl.setAttribute('content', urlAbs);
+
+            var metaThemeColor = document.getElementsByName('theme-color')[0];
+            metaThemeColor.setAttribute('content', backgroundColor);
         </script>    
     </body>
 </html>
