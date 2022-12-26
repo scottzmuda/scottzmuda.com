@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <title class="usesTitle">title</title>
         <meta name="description" content="a post titled: a breaking wave">
-        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <meta property="og:title" content="a breaking wave">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://scottzmuda.com/p/2022-11-03.html">
@@ -18,16 +19,14 @@
         <meta name="theme-color" content="#464646">
     </head>
     <body>
+        <script>
+            var title = "a breaking wave";
+        </script>
+        
         <div class="content_container">
 		<a href="/index.html">home</a><br>
         <img class="feature" src="/i/2022-11-03.jpeg">
         <h1 class="usesTitle">title</h1>
-          <script>
-            var pageTitle = "a breaking wave";
-            document.title = pageTitle;
-            var pageTitleElements = document.querySelectorAll('.usesTitle');
-            pageTitleElements.innerText = pageTitle;
-          </script>
         <h2>scott zmuda</h2>
         <h3>2022-11-03</h3>
         <p>
@@ -45,6 +44,10 @@
         <p>
             -s
         </p>
-        </div>    
+        </div>
+        <script>
+            var titleElements = document.querySelectorAll('.usesTitle');
+            titleElements.forEach(function(element) {element.innerText = title});
+        </script>    
     </body>
 </html>
