@@ -13,7 +13,7 @@ div.postImage{
   width: 5ems;
 }
 a{
-  width: calc(90% - 7em)
+  width: calc(90% - 7em);
   padding-left: 2em;
 }
 
