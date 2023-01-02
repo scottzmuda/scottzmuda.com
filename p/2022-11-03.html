@@ -53,7 +53,8 @@
             var imageAbs = origin + imageRel;
             var urlAbs = origin + pathname;
 
-            var backgroundColor = document.body.style.backgroundColor;
+            var bodyStyles = getComputedStyle(document.body);
+            var backgroundColor = bodyStyles.getPropertyValue('background-color');
 
             var elementTitles = document.querySelectorAll('.usesTitle');
             elementTitles.forEach(function(element) {element.innerText = title});
@@ -74,7 +75,7 @@
             var openGraphUrl = document.querySelector('[property="og:url"]');
             openGraphUrl.setAttribute('content', urlAbs);
 
-            var metaThemeColor = document.querySelector('[name="theme-color"]');
+            var metaThemeColor = document.querySelector('meta[name="theme-color"]');
             metaThemeColor.setAttribute('content', backgroundColor);
         </script>    
     </body>
