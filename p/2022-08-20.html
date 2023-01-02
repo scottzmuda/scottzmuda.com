@@ -48,35 +48,6 @@ best
 -s
 </p>
         </div>
-        <script>
-            var origin = location.origin;
-            var pathname = location.pathname;    
-            var imageAbs = origin + imageRel;
-            var urlAbs = origin + pathname;
-
-            var backgroundColor = document.body.style.backgroundColor;
-
-            var elementTitles = document.querySelectorAll('.usesTitle');
-            elementTitles.forEach(function(element) {element.innerText = title});
-
-            var metaDescription = document.querySelector('[name="description"]');
-            metaDescription.setAttribute('content', description);
-
-            var elementImageRel = document.querySelector('.usesImageRel');
-            elementImageRel.src = imageRel;
-
-            var elementDate = document.querySelector('.usesDate');
-            elementDate.innerText = date;
-
-            var openGraphTitle = document.querySelector('[property="og:title"]');
-            openGraphTitle.setAttribute('content', title);
-            var openGraphImage = document.querySelector('[property="og:image"]');
-            openGraphImage.setAttribute('content', imageAbs);
-            var openGraphUrl = document.querySelector('[property="og:url"]');
-            openGraphUrl.setAttribute('content', urlAbs);
-
-            var metaThemeColor = document.getElementsByName('theme-color')[0];
-            metaThemeColor.setAttribute('content', backgroundColor);
-        </script>    
+        <script src="/js/postheader.js"></script> 
     </body>
 </html>
