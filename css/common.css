@@ -5,11 +5,14 @@ html {
 }
 
 body{
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Times New Roman", Times, serif; /*-apple-system, BlinkMacSystemFont, sans-serif;*/
+
     background-color: #464646;
     margin: 1em;
 }
-
+h1{
+  line-height: 2.8em;
+}
 a:link {
   color: #75d5ff;
 }
@@ -26,7 +29,7 @@ div.content_container{
 
 div.banner{
   color: #000000;
-  background-color: #fbc30a;
+  background-color: #45895f;
   position: fixed;
   top: 0;
   left: 0;
