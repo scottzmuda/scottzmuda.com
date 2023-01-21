@@ -10,9 +10,10 @@ $servername = "db-mysql-scott-do-user-12091905-0.b.db.ondigitalocean.com";
 $username = "scottzmuda";
 $password = "AVNS_wNEmYo_o8obEIcD69Km";
 $dbname = "website";
+$port = "25060"
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Check connection
 if ($conn->connect_error) {
