@@ -17,47 +17,19 @@
     <div class="content_container">
         <a href="/index.html">home</a><br>
         <h1 class="usesTitle">.creation.</h1>
+
         <form method="post" action="submit.php">
           <label for="title">title</label>
           <input type="text" id="title" name="title"><br><br>
-          
+
           <label for="description">description</label>
           <input type="description" id="description" name="description"><br><br>
-          
+
           <label for="writing">writing</label>
           <input type="writing" id="writing" name="writing"><br><br>
-          
+
           <input type="submit" value="Submit">
       </form>
-      <script>
-        <?php
-        $servername = "db-mysql-scott-do-user-12091905-0.b.db.ondigitalocean.com";
-        $username = "scottzmuda";
-        $password = "AVNS_wNEmYo_o8obEIcD69Km";
-        $dbname = "website";
-
-// Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $writing = $_POST['writing'];
-
-        $sql = "INSERT INTO creations (title, description, writing)
-        VALUES ('$title', '$description', '$writing')";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
-        $conn->close();
-    </script>
 
 </div>
 </body>
