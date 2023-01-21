@@ -26,7 +26,7 @@ $description = $_POST['description'];
 $writing = $_POST['writing'];
 
 //Insert data into the table
-$sql = "INSERT INTO creations (title, description, writing) VALUES ($title, $description, $writing)";
+$sql = "INSERT INTO creations (title, description, writing) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $title, $description, $writing);
 $stmt->execute();
