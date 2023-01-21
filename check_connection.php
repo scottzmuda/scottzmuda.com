@@ -1,4 +1,7 @@
 <?php
+    $client_ip = $_SERVER['REMOTE_ADDR'];
+    echo "The client's IP address is: " . $client_ip;
+    
 $servername = "db-mysql-scott-do-user-12091905-0.b.db.ondigitalocean.com";
 $username = "scottzmuda";
 $password = "AVNS_wNEmYo_o8obEIcD69Km";
