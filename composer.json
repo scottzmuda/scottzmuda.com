@@ -1,5 +1,13 @@
 {
-    "require": {
-        "monolog/monolog": "2.0.*"
-    }
+    "name": "me/scottzmuda",
+    "description": "my personal website",
+    "type": "web-app",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "scottzmuda"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
 }
