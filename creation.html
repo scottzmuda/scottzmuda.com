@@ -18,15 +18,8 @@
         <a href="/index.html">home</a><br>
         <h1 class="usesTitle">.creation.</h1>
 
-<?php
-    include_once 'connect.php';
 
-    $sql = "INSERT INTO creations (title, description, writing) VALUES ('test title', 'test description','test writing');";
-    mysqli_query($conn, $sql);
-?>
-
-<!--
-        <form method="post" action="https://scottzmuda.com/submit.php">
+        <form method="post" action="submit.php">
           <label for="title">title</label>
           <input type="text" id="title" name="title"><br><br>
 
@@ -38,7 +31,6 @@
 
           <input type="submit" value="Submit">
         </form>
--->
 
 
 
