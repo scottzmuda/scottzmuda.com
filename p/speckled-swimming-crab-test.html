@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <link rel="stylesheet" href="/css/style.css">
-  <meta name="theme-color" content="#f8f1e4">
-  <link rel="icon" href="/favicon.ico" sizes="16x16" type="image/png">
+    <meta charset="utf-8">
+    <title class="usesTitle">speckled swimming crab</title>
+    <meta name="description" content="a light brown swimming crab with even lighter irregular spots.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="speckled swimming crab" />
-  <meta name="twitter:image" content="https://scottzmuda.com/i/speckled-swimming-crab-01.jpeg" />
+    <meta property="og:title" content="speckled swimming crab">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="url-palceholder">
+    <meta property="og:image" content="https://scottzmuda.com/i/speckled-swimming-crab-01.jpeg">
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="">
-  </script>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/leaf.css">
 
-  <title>
-    speckled swimming crab
-</title>
+    <meta name="theme-color" content="color-placeholder"> <!--#464646-->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="">
+    </script>
 </head>
 <body>
-
-
-
-
-    <a href="/index.html">home</a><br>
-    <h3>speckled swimming crab</h3>
-    <article>
+    <script type="text/javascript">
+        var lat_deg = 30.37528;
+        var long_deg = -86.89056;
+        var elev_m = 0;
+    </script>
+    <div class="content_container">
+        <a href="/index.html">home</a><br>
+        <img class="feature usesImageRel" src="../i/speckled-swimming-crab-01.jpeg" alt="a speckled swimming crab">
+        <h1 class="usesTitle">speckled swimming crab</h1>
         <p>
          <em>arenaeus cribrarius</em><br>
          <em>2022, november 26th, 2:12 pm [utc]</em><br>
-         <em>30.37528°, -86.89056°, 0m [wgs84]</em>
-     </p>
-     <p>
-        <img src="/i/speckled-swimming-crab-01.jpeg" alt="a speckled swimming crab" style="max-width:640px;width:90%">
-    </p>
-    <p>
+         <em>30.37528, -86.89056, 0m [wgs84]</em>
+        </p>
+        <p>
         a light brown swimming crab with even lighter irregular spots.
-    </p>
-    <div id="map">test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br></div>
+        </p>
+    </div>
+    <div id="map" class="content_container">test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br></div>
         <script>
-            var map = L.map('map').setView([30.37528, -86.89056], 7);
+            var map = L.map('map').setView([lat_deg, long_deg], 7);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
-            var marker = L.marker([30.37528, -86.89056]).addTo(map)
+            var marker = L.marker([lat_deg, long_deg]).addTo(map)
         </script>
     </article>
 </body>
