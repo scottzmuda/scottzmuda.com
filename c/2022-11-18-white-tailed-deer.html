@@ -1,33 +1,55 @@
 <!DOCTYPE html>
-    <html lang="en-US">
-    <head>
-		<link rel="stylesheet" href="/css/style.css">
-		<meta name="theme-color" content="#f8f1e4">
-        <link rel="icon" href="/favicon.ico" sizes="16x16" type="image/png">
-        
-		<meta name="twitter:card" content="summary" />
-    	<meta name="twitter:title" content="white-tailed deer" />
-    	<meta name="twitter:image" content="https://scottzmuda.com/i/2022-11-18-white-tailed-deer.jpeg" />
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title class="usesTitle">white-tailed deer</title>
+    <meta name="description" content="a deer with a highly visible tail.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>
-            white-tailed deer
-        </title>
-    </head>
-    <body>
-		<a href="/index.html">home</a><br>
-        <h3>white-tailed deer</h3>
-        <article>
-<p>
-   <em>odocoileus virginianus</em><br>
+    <meta property="og:title" content="white-tailed deer">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="url-palceholder">
+    <meta property="og:image" content="https://scottzmuda.com/i/2022-11-18-white-tailed-deer.jpeg">
+
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/leaf.css">
+
+    <meta name="theme-color" content="color-placeholder"> <!--#464646-->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="">
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        var lat_deg = 41.40389;
+        var long_deg = -90.48611;
+        var elev_m = 220;
+    </script>
+    <div class="content_container">
+        <a href="/c.html">creatures</a><br>
+        <img class="feature usesImageRel" src="../i/2022-11-18-white-tailed-deer.jpeg" alt="white-tailed deer">
+        <h1 class="usesTitle">white-tailed deer</h1>
+        <p>
+         <em>odocoileus virginianus</em><br>
    <em>2022, november 18th, 12:54 pm [utc]</em><br>
    <em>41.40389°, -90.48611°, 220m [wgs84]</em>
-</p>
-<p>
-    <img src="/i/2022-11-18-white-tailed-deer.jpeg" alt="a white-tailed deer" style="max-width:640px;width:90%">
-</p>
-<p>
-    a deer with a highly visible tail.
-</p>
-        </article>
-    </body>
-    </html>
+        </p>
+        <p>
+        a deer with a highly visible tail.
+        </p>
+    </div>
+    <div id="map" class="content_container">test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br></div>
+        <script>
+            var map = L.map('map').setView([lat_deg, long_deg], 5);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            var marker = L.marker([lat_deg, long_deg]).addTo(map)
+        </script>
+    </article>
+</body>
+</html>
+
