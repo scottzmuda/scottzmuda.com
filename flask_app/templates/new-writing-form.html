@@ -1,0 +1,38 @@
+<!doctype html>
+<html class="no-js" lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title class="usesTitle">title</title>
+    <meta name="description" content="description-placeholder">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaf.css') }}">
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+
+    <meta name="theme-color" content="#464646">
+</head>
+<body>
+    <div class="content_container">
+        <!-- <a href="/index.html">home</a><br> -->
+        <h1 class="usesTitle">.creation.</h1>
+
+        <form method="post" action="/writings/save-new-writing">
+            <label for="title">title</label>
+            <input type="text" id="title" name="title"><br><br>
+
+            <label for="description">description</label>
+            <input type="description" id="description" name="description"><br><br>
+
+            <label for="content">content</label>
+            <input type="content" id="content" name="content"><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+</body>
+</html>

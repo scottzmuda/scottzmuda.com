@@ -1,0 +1,23 @@
+
+div.post{
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 5em;
+  margin: 0 0 1em 0;
+
+}
+div.postImage{
+  height: 100%;
+  width: 5ems;
+}
+a{
+  width: calc(90% - 7em);
+  padding-left: 2em;
+}
+
+
+img{
+  height:  100%;
+}

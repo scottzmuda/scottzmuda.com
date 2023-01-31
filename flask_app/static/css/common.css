@@ -1,0 +1,40 @@
+html {
+  color: #ffffff;
+  font-size: 1em;
+  line-height: 1.4em;
+}
+
+body{
+    font-family: -apple-system-ui-serif, ui-serif, 'Georgia', serif; /*-apple-system, BlinkMacSystemFont, sans-serif;*/
+    background-color: #464646;
+    margin: 1em;
+}
+h1{
+  line-height: 1.4em;
+}
+a:link {
+  color: #75d5ff;
+}
+a:visited {
+  color: #75d5ff;
+}
+
+div.content_container{
+  display: block;
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+div.banner{
+  color: #000000;
+  background-color: #45895f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
