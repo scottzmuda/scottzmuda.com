@@ -2,6 +2,10 @@ from flask_app import app
 from flask import render_template, request, redirect
 from flask_app.models import writing
 
+@app.route('/w')
+def index():
+    return render_template("w.html")
+
 @app.route('/w/add-writing')
 def draft_new_writing():
     return render_template("add-writing.html")

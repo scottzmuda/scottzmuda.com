@@ -9,16 +9,15 @@
 
   <meta property="og:title" content="creatures">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scottzmuda.com/c/">
+  <meta property="og:url" content="https://scottzmuda.com/c">
   <meta property="og:image" content="https://scottzmuda.com/i/twitter-default-summary-card-image-1024x1024.png">
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/branch.css">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
 
   <meta name="theme-color" content="#464646">
   <!--(for pwa true fullscreen effect)
@@ -27,7 +26,7 @@
 </head>
 <body>
   <div class="content_container">
-    <a class="nav" href="/index.html">home</a>
+    <a class="nav" href="/index">home</a>
     <h1 class="usesTitle">creatures</h1>
     <div class="post">
       <img class="postImage" src="../i/2022-11-26-bay-scallop.jpeg">
