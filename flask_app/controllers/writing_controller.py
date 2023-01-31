@@ -3,7 +3,7 @@ from flask import render_template, request, redirect
 from flask_app.models import writing
 
 @app.route('/w')
-def index():
+def writings():
     return render_template("w.html")
 
 @app.route('/w/add-writing')
