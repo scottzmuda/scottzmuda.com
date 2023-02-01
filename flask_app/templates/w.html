@@ -12,8 +12,8 @@
   <meta property="og:url" content="https://scottzmuda.com/w">
   <meta property="og:image" content="https://scottzmuda.com/i/twitter-default-summary-card-image-1024x1024.png">
 
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/images/icon.png') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">

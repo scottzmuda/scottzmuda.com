@@ -11,8 +11,8 @@
     <meta property="og:url" content="https://scottzmuda.com">
     <meta property="og:image" content="https://scottzmuda.com/i/twitter-default-summary-card-image-1024x1024.png">
 
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/images/icon.png') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -29,11 +29,11 @@
   <div class="content_container">
     <h1 class="usesTitle">home</h1>
     <div class="post">
-      <img class="postImage" src="../i/fire.png">
+      <img class="postImage" src="{{ url_for('static', filename='assets/images/fire.png') }}">
       <a href='/w'>writings</a>
     </div>
     <div class="post">
-      <img class="postImage" src="../i/leaf.png">
+      <img class="postImage" src="{{ url_for('static', filename='assets/images/leaf.png') }}">
       <a href='/c'>creatures</a>
     </div>
   </div>
