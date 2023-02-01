@@ -12,5 +12,4 @@ def index():
 @app.route('/robots.txt')
 @app.route('/site.webmanifest')
 def static_from_root():
-    print(request.path)
     return app.send_static_file(request.path[1:])
