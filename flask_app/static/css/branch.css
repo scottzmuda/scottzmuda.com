@@ -17,6 +17,10 @@ a{
   padding-left: 2em;
 }
 
+a.nav{
+  padding-left: 0em;
+}
+
 
 img{
   height:  100%;

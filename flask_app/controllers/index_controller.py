@@ -5,3 +5,11 @@ from flask import render_template, request, redirect
 @app.route('/index')
 def index():
     return render_template("index.html")
+
+@app.route('/browserconfig.xml')
+@app.route('/favicon.ico')
+@app.route('/humans.txt')
+@app.route('/robots.txt')
+@app.route('/site.webmanifest')
+def static_from_root():
+    return app.send_static_file(request.path[1:])
