@@ -2,7 +2,7 @@
 <html class="no-js" lang="en-US">
 <head>
     <meta charset="utf-8">
-    <title class="usesTitle">title</title>
+    <title class="usesTitle">create writing</title>
     <meta name="description" content="description-placeholder">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/leaf.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
 
     <meta name="theme-color" content="#464646">
 </head>
@@ -20,16 +21,17 @@
 
         <form method="post" action="/w/save-writing">
             <label for="name">name:</label>
-            <input type="name" id="name" name="name"><br><br>
+            <input type="text" id="name" name="name"><br><br>
 
             <label for="image">image:</label>
-            <input type="image" id="image" name="image"><br><br>
+            <input type="text" id="image" name="image"><br><br>
 
             <label for="writing">writing:</label>
-            <input type="writing" id="writing" name="writing"><br><br>
+            <textarea rows="10"></textarea>
+            <input type="text" id="writing" name="writing"><br><br>
 
             <label for="description">description:</label>
-            <input type="description" id="description" name="description"><br><br>
+            <input type="text" id="description" name="description"><br><br>
 
             <input type="submit" value="submit">
         </form>
