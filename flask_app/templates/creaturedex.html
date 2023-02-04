@@ -29,7 +29,16 @@
   <div class="content_container">
     <a class="nav" href="/">home</a>
     <h1 class="usesTitle">creatures</h1>
+
+    {% for creature in creatures %}
     <div class="post">
+      <img class="postImage" src="../i/2022-11-26-bay-scallop.jpeg">
+      <a href='../c/{{creature.id}}'>{{creature.name}}</a>
+    </div>
+    {% endfor %}
+
+    <!-- COMMENT OUT UNTIL WE DECIDE HOW TO STORE IMAGES -->
+    <!-- <div class="post">
       <img class="postImage" src="../i/2022-11-26-bay-scallop.jpeg">
       <a href='../c/2022-11-26-bay-scallop'>bay scallop</a>
     </div>
@@ -60,7 +69,7 @@
     <div class="post">
       <img class="postImage" src="../i/2022-09-04-partridge-pea.jpeg">
       <a href='../c/2022-09-04-partridge-pea'>partridge pea</a>
-    </div>
+    </div> -->
   </div>
 </body>
 
