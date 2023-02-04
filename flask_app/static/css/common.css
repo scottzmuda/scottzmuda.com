@@ -39,3 +39,19 @@ div.banner{
   justify-content: center;
   align-items: center;
 }
+
+a.nav-back{
+  padding-left: 0em;
+  font-size: 2em;
+  font-weight: 100;
+  text-align: left;
+  text-decoration: none;
+}
+
+a.nav-create{
+    font-size: 1.5em;
+    font-weight: 100;
+    text-align: right;
+    text-decoration: none;
+    float: right;
+}
