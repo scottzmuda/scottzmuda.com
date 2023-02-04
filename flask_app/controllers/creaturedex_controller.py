@@ -8,6 +8,9 @@ def creatures():
     creatures = creature.Creature.get_all()
     return render_template("creaturedex.html", creatures=creatures)
 
+@app.route('/w/create-creature')
+def create_creature():
+    return render_template("create-creature.html")
 
 @app.route('/c/save-creature', methods=["POST"])
 def save_creature():
