@@ -7,17 +7,18 @@ from flask_app.models import writing
 def writings():
     return render_template("writingdex.html")
 
-@app.route('/w/add-writing')
-def draft_new_writing():
-    return render_template("add-writing.html")
+@app.route('/w/create-writing')
+def create_writing():
+    return render_template("create-writing.html")
 
 @app.route('/w/save-writing', methods=["POST"])
-def save_new_writing():
+def save_writing():
     data = {
-        "title": request.form["title"],
+        "name": request.form["name"],
+        "image": request.form["image"],
+        "writing": request.form["writing"],
         "description": request.form["description"],
-        "content": request.form["content"],
     }
 
-    writing.Writing.save( data )
-    return redirect('/w/add-writing')
+    writing.writing.save( data )
+    return redirect('/w/create-writing')
