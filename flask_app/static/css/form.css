@@ -5,9 +5,3 @@ textarea {
 input.create-field{
   width: 100%;
 }
-
-a.create-button{
-    font-size: 1.5em;
-    font-weight: 100;
-    text-align: right;
-}
