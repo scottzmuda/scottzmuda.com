@@ -3,38 +3,33 @@
 <head>
     <meta charset="utf-8">
     <title class="usesTitle">{{creature.name}}</title>
-    <meta name="description" content="a light brown swimming crab with even lighter irregular spots.">
+    <meta name="description" content="{{creature.description}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta property="og:title" content={{creature.name}}>
     <meta property="og:type" content="article">
-    <meta property="og:url" content="url-placeholder">
-    <meta property="og:image" content="https://scottzmuda.com/i/2022-11-26-speckled-swimming-crab.jpeg">
+    <meta property="og:url" content="{{ url_for('view_creature') }}">
+    <meta property="og:image" content="{{ url_for('static', filename='assets/images/leaf.png') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/branch.css') }}">
 
-    <meta name="theme-color" content="color-placeholder"> <!--#464646-->
+    <meta name="theme-color" content="color-placeholder"> <!---->
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="">
     </script>
 </head>
 <body>
-    <script type="text/javascript">
-        var lat_deg = {{creature.lat_deg}};
-        var long_deg = {{creature.long_deg}};
-        var elev_m = {{creature.elev_m}};
-    </script>
     <div class="content_container">
         <a href="/c">creatures</a><br>
         <img class="feature usesImageRel" src="../i/2022-11-26-speckled-swimming-crab.jpeg" alt="a {{creature.name}}">
         <h1 class="usesTitle">{{creature.name}}</h1>
         <p>
             <em>{{creature.name_scientific}}</em><br>
-            <em>2022, november 26th, 2:12 pm [utc]</em><br>
+            <em>{{creature.time_s}} seconds since epoch</em><br>
             <em>{{creature.lat_deg}}, {{creature.long_deg}}, {{creature.elev_m}}m [wgs84]</em>
         </p>
         <p>
@@ -43,11 +38,11 @@
     </div>
     <div id="map" class="content_container">test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br></div>
         <script>
-            var map = L.map('map').setView([lat_deg, long_deg], 5);
+            var map = L.map('map').setView([{{creature.lat_deg}}, {{creature.long_deg}}], 5);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
-            var marker = L.marker([lat_deg, long_deg]).addTo(map)
+            var marker = L.marker([{{creature.lat_deg}}, {{creature.long_deg}}]).addTo(map)
         </script>
     </article>
 </body>
