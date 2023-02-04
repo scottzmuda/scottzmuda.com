@@ -7,3 +7,15 @@ from flask_app.models import creature
 def creatures():
     creatures = creature.Creature.get_all()
     return render_template("creaturedex.html", creatures=creatures)
+
+
+@app.route('/c/save-creature', methods=["POST"])
+def save_creature():
+    data = {
+        "name": request.form["name"],
+        "image": request.form["image"],
+        "description": request.form["description"],
+    }
+
+    writing.writing.save( data )
+    return redirect('/c/create-creature')

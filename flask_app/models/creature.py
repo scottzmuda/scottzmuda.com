@@ -31,3 +31,9 @@ class Creature:
         else:
             creature = None
         return creature
+
+    @classmethod
+    def save( cls, data ):
+        query_string = "INSERT INTO creatures ( name, image, description ) \
+            VALUES (%(name)s, %(image)s, %(description)s);"
+        return connectToMySQL().query_db(query_string, data)
