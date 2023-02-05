@@ -1,43 +1,51 @@
 <!doctype html>
 <html class="no-js" lang="en-US">
 <head>
-    <meta charset="utf-8">
-    <title>scott's website</title>
-    <meta name="description" content="scott's website">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>scott's website</title>
+  <meta name="description" content="scott's website">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:title" content="scott's website">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://scottzmuda.com">
-    <meta property="og:image" content="https://scottzmuda.com/i/twitter-default-summary-card-image-1024x1024.png">
+  <meta property="og:title" content="scott's website">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scottzmuda.com">
+  <meta property="og:image" content="https://scottzmuda.com/i/twitter-default-summary-card-image-1024x1024.png">
 
-    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
-    <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/images/icon.png') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/images/icon.png') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/branch.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/branch.css') }}">
 
-    <meta name="theme-color" content="#464646">
+  <meta name="theme-color" content="#464646">
     <!--(for pwa true fullscreen effect)
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     -->
-</head>
-<body>
-  <div class="banner">jan-31: .html extensions gone 👻</div>
-  <div style="height: 3.375em;"></div>
-  <div class="content_container">
-    <h1>home</h1>
-    <div class="post">
-      <img class="postImage" src="{{ url_for('static', filename='assets/images/fire.png') }}">
-      <a href='/w'>writings</a>
+  </head>
+  <body>
+    <div class="banner">jan-31: .html extensions gone 👻</div>
+    <!--<div style="height: 3.375em;"></div>-->
+    <div class="content-container">
+      <h1>home</h1>
+      <div class="item">
+        <div class="item-image">
+          <img class="item-image" src="{{ url_for('static', filename='assets/images/fire.png') }}">
+        </div>
+        <div class="item-name">
+          <a href='/w'>writings</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-image">
+          <img class="item-image" src="{{ url_for('static', filename='assets/images/leaf.png') }}">
+        </div>
+        <div class="item-name">
+          <a href='/c'>creatures</a>
+        </div>
+      </div>
     </div>
-    <div class="post">
-      <img class="postImage" src="{{ url_for('static', filename='assets/images/leaf.png') }}">
-      <a href='/c'>creatures</a>
-    </div>
-  </div>
-</body>
+  </body>
 
-</html>
+  </html>

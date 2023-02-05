@@ -1,22 +1,24 @@
 
-div.post{
+div.item{
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
   height: 5em;
-  margin: 0 0 1em 0;
+  margin: .5em 0;
 
 }
-div.postImage{
-  height: 100%;
-  width: 5ems;
-}
-a.entry{
-  margin-left: 2em;
+div.item-image{
+  height: 5em;
+  width: 5em;
 }
 
-img{
+div.item-name{
+  width:100%;
+  margin: 2em 0;
+}
+
+img.item-image{
   height:  100%;
 }
 

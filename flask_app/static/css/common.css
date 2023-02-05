@@ -10,21 +10,12 @@ html {
   background-color: #464646; /*global background color*/
 }
 
-body{
-    margin: 1em; /*creates space between content container and edge of viewport when width=100%*/
-}
-h1{
-  line-height: 1.4em; /*might be unnecessary*/
-}
 a:link, a:visited {
   color: #75d5ff; /*global link color*/
 }
 
-div.content_container{
-  display: block;
-  width: 100%; /*default behavior is for element to take 100% of width*/
-  max-width: 650px; /*if available space is >650px width no longer is 100%*/
-  margin: 0 auto; /*auto margin for left and right allows element to be centered when width=650px*/
+body{
+    margin: 1em; /*creates space between content container and edge of viewport when width=100%*/
 }
 
 div.banner{
@@ -49,3 +40,16 @@ a.nav-back, a.nav-create{
 a.nav-create{
     float: right;
 }
+
+h1{
+  line-height: 1.4em; /*might be unnecessary*/
+}
+
+div.content-container{
+  display: block;
+  width: 100%; /*default behavior is for element to take 100% of width*/
+  max-width: 650px; /*if available space is >650px width no longer is 100%*/
+  margin: 0 auto; /*auto margin for left and right allows element to be centered when width=650px*/
+}
+
+
