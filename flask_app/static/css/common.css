@@ -14,6 +14,18 @@ a:link, a:visited {
   color: #75d5ff; /*global link color*/
 }
 
+h1{
+  line-height: 1.4em; /*might be unnecessary*/
+  margin-top: 0;
+  user-select: contain;
+  -webkit-user-select: contain;
+}
+
+a{
+  user-select: contain;
+  -webkit-user-select: contain;
+}
+
 body{
     margin: 1em; /*creates space between content container and edge of viewport when width=100%*/
 }
@@ -35,15 +47,12 @@ a.nav-back, a.nav-create{
   font-size: 2em;
   font-weight: 100;
   text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 a.nav-create{
     float: right;
-}
-
-h1{
-  line-height: 1.4em; /*might be unnecessary*/
-  margin-top: 0;
 }
 
 div.content-container{
