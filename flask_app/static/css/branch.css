@@ -9,15 +9,17 @@ div.item{
 
 }
 div.item-image{
-  display: inline-block;
+  display: inline;
+  float: left;
   height: 5em;
   width: 5em;
 }
 
 div.item-name{
-  display: inline-block;
+  display: inline;
+  float: left;
   max-width: calc(100% - 5em);
-  margin: 2em 0;
+  margin: 0 2em;
 }
 
 img.item-image{
