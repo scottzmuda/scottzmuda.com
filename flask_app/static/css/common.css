@@ -18,12 +18,12 @@ h1{
   line-height: 1.4em; /*might be unnecessary*/
   margin-top: 0;
   user-select: contain;
-  -webkit-user-select: contain;
+  -webkit-user-select: text;
 }
 
 a{
   user-select: contain;
-  -webkit-user-select: contain;
+  -webkit-user-select: text;
 }
 
 body{
