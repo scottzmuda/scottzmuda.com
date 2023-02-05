@@ -1,23 +1,22 @@
 html {
-  color: #ffffff;
-  font-size: 1em;
-  line-height: 1.4em;
-  user-select: none;
-  -webkit-user-select: none;
+  font-family: -apple-system-ui-serif, ui-serif, 'Georgia', serif; /*global font*/
+  color: #ffffff; /*-global font color */
+  font-size: 1em; /*-global font size, good practice to use 'em units' */
+  line-height: 1.4em; /*-global line height, (not sure reason for 1.4) */
+
+  user-select: none; /*-as default make nothing selectable */
+  -webkit-user-select: none; /*-as default make nothing selectable (apple specific attribute) */
+
+  background-color: #464646; /*global background color*/
 }
 
 body{
-    font-family: -apple-system-ui-serif, ui-serif, 'Georgia', serif; /*-apple-system, BlinkMacSystemFont, sans-serif;*/
-    background-color: #464646;
     margin: 1em;
 }
 h1{
   line-height: 1.4em;
 }
-a:link {
-  color: #75d5ff;
-}
-a:visited {
+a:link, a:visited {
   color: #75d5ff;
 }
 
