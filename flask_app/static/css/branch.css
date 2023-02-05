@@ -9,11 +9,13 @@ div.item{
 
 }
 div.item-image{
+  display: inline-block;
   height: 5em;
   width: 5em;
 }
 
 div.item-name{
+  display: inline-block;
   width:100%;
   margin: 2em 0;
 }

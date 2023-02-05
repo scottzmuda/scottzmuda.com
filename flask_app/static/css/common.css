@@ -46,7 +46,7 @@ h1{
 }
 
 div.content-container{
-  display: inline-block;
+  display: block;
   width: 100%; /*default behavior is for element to take 100% of width*/
   max-width: 650px; /*if available space is >650px width no longer is 100%*/
   margin: 0 auto; /*auto margin for left and right allows element to be centered when width=650px*/
