@@ -15,10 +15,10 @@
   <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
   <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/images/icon.png') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/branch.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/branch.css') }}">
 
   <meta name="theme-color" content="#464646">
   <!--(for pwa true fullscreen effect)
@@ -26,55 +26,101 @@
   -->
 </head>
 <body>
-  <div class="content_container">
-  <a class="nav-back" href="/">‹</a>
-  <a class="nav-create" href="/w/create-writing">+</a>
-  <h1>writings</h1>
-    <div class="post">
-      <img src="/i/2023-01-14.png">
-      <a href='/w/2023-01-14'>2023-01-14</a>
-    </div>
-    <div class="post">
-      <img src="/i/2022-11-03.jpeg">
-      <a href='/w/2022-11-03'>2022-11-03</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/2022-08-20.jpeg">
-      <a href='/w/2022-08-20'>2022-08-20</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/2022-07-30.jpeg">
-      <a href='/w/2022-07-30'>2022-07-30</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/2022-07-28.jpeg">
-      <a href='/w/2022-07-28'>2022-07-28</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/2022-07-07.jpeg">
-      <a href='/w/2022-07-07'>2022-07-07</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/2022-06-08.jpeg">
-      <a href='/w/2022-06-08'>2022-06-08</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/2022-04-29.jpeg">
-      <a href='/w/2022-04-29'>2022-04-29</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/touch-icon-1024x1024.png">
-      <a href='/w/2022-03-30'>2022-03-30</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/touch-icon-1024x1024.png">
-      <a href='/w/2022-03-23'>2022-03-23</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="/i/touch-icon-1024x1024.png">
-      <a href='/w/2022-03-20'>2022-03-20</a>
-    </div>
-  </div>
-</body>
+  <div class="content-container">
 
-</html>
+    <a class="nav-back" href="/">‹</a>
+    <a class="nav-create" href="/w/create-writing">+</a>
+
+    <h1>writings</h1>
+    
+    <div class="item">
+      <div class="item-image">
+        <img src="/i/2023-01-14.png">
+      </div>
+      <div class="item-name">
+        <a href='/w/2023-01-14'>2023-01-14</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-image">
+        <img src="/i/2022-11-03.jpeg">
+      </div>
+      <div class="item-name">
+        <a href='/w/2022-11-03'>2022-11-03</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-image">
+        <img class="item-image" src="/i/2022-08-20.jpeg">
+      </div>
+      <div class="item-name">
+        <a href='/w/2022-08-20'>2022-08-20</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-image">
+        <img class="item-image" src="/i/2022-07-30.jpeg">
+      </div>
+      <div class="item-name">
+        <a href='/w/2022-07-30'>2022-07-30</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-image">
+        <img class="item-image" src="/i/2022-07-28.jpeg">
+      </div>
+      <div class="item-name">
+        <a href='/w/2022-07-28'>2022-07-28</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-image">
+        <img class="item-image" src="/i/2022-07-07.jpeg">
+      </div>
+      <div class="item-name">
+        <a href='/w/2022-07-07'>2022-07-07</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-image">
+        <img class="item-image" src="/i/2022-06-08.jpeg">
+      </div>
+      <div class="item-name">
+        <a href='/w/2022-06-08'>2022-06-08</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-image">
+        <img class="item-image" src="/i/2022-04-29.jpeg">
+      </div>
+      <div class="item-name">
+        <a href='/w/2022-04-29'>2022-04-29</a>
+      </div>
+      <div class="item">
+        <div class="item-image">
+          <img class="item-image" src="/i/touch-icon-1024x1024.png">
+        </div>
+        <div class="item-name">
+          <a href='/w/2022-03-30'>2022-03-30</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-image">
+          <img class="item-image" src="/i/touch-icon-1024x1024.png">
+        </div>
+        <div class="item-name">
+          <a href='/w/2022-03-23'>2022-03-23</a>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-image">
+          <img class="item-image" src="/i/touch-icon-1024x1024.png">
+        </div>
+        <div class="item-name">
+          <a href='/w/2022-03-20'>2022-03-20</a>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  </html>

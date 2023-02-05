@@ -26,15 +26,21 @@
   -->
 </head>
 <body>
-  <div class="content_container">
+  <div class="content-container">
+
     <a class="nav-back" href="/">‹</a>
     <a class="nav-create" href="/c/create-creature">+</a>
+    
     <h1>creatures</h1>
 
     {% for creature in creatures %}
-    <div class="post">
-      <img class="postImage" src="../i/2022-11-26-bay-scallop.jpeg">
+    <div class="item">
+        <div class="item-image">
+      <img class="item-image" src="../i/2022-11-26-bay-scallop.jpeg">
+        </div>
+        <div class="item-name">
       <a href='../c/{{creature.id}}'>{{creature.name}}</a>
+        </div>
     </div>
     {% endfor %}
 

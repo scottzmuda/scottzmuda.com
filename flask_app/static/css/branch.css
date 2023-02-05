@@ -19,7 +19,7 @@ div.item-name{
   display: inline;
   float: left;
   max-width: calc(100% - 5em);
-  margin: 0 2em;
+  margin: 1.8em 2em; /* 1.8em equals the item height minus the line-height (all divided by 2) */
 }
 
 img.item-image{
