@@ -11,20 +11,20 @@ html {
 }
 
 body{
-    margin: 1em;
+    margin: 1em; /*creates space between content container and edge of viewport when width=100%*/
 }
 h1{
-  line-height: 1.4em;
+  line-height: 1.4em; /*might be unnecessary*/
 }
 a:link, a:visited {
-  color: #75d5ff;
+  color: #75d5ff; /*global link color*/
 }
 
 div.content_container{
   display: block;
-  max-width: 650px;
-  width: 100%;
-  margin: 0 auto;
+  width: 100%; /*default behavior is for element to take 100% of width*/
+  max-width: 650px; /*if available space is >650px width no longer is 100%*/
+  margin: 0 auto; /*auto margin for left and right allows element to be centered when width=650px*/
 }
 
 div.banner{
@@ -40,18 +40,12 @@ div.banner{
   align-items: center;
 }
 
-a.nav-back{
-  padding-left: 0em;
+a.nav-back, a.nav-create{
   font-size: 2em;
   font-weight: 100;
-  text-align: left;
   text-decoration: none;
 }
 
 a.nav-create{
-    font-size: 2em;
-    font-weight: 100;
-    text-align: right;
-    text-decoration: none;
     float: right;
 }
