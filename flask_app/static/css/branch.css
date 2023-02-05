@@ -1,4 +1,15 @@
 
+div.dex-header{
+  width: 100%;
+}
+
+div.dex-header-name{
+  display: inline;
+  float: left;
+  max-width: 100%;
+}
+
+
 div.item{
   /*white-space: nowrap; 
   overflow: hidden;
