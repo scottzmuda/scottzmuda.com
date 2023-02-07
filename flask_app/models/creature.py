@@ -13,6 +13,25 @@ class Creature:
         self.createdon_utc = data['createdon_utc']
         self.modifiedon_utc = data['modifiedon_utc']
     
+    # in python OOP, there is something called a property, which defines
+    # an attribute of the class object based on other attributes
+    # the below property generates a correctly formatted url string for us
+    # which we will be able to reference in our Jinja2 template
+    @property
+    def url_string(self):
+        res_url_str = str(self.time_s)
+
+        # split the name string into individual words
+        # "john jacob jingle boy" -> ["john", "jacob", "jingle", "boy"]
+        creature_name_array = self.name.split()
+
+        # then we concatenate each item in the array onto the url_string
+        for word in creature_name_array:
+            res_url_str += "-"
+            res_url_str += word
+
+        return res_url_str
+
     @classmethod
     def get_all( cls ):
         query_string = "SELECT * FROM creatures ORDER BY creatures.time_s DESC;"
