@@ -43,7 +43,7 @@ class Creature:
         query_string = "SELECT * FROM creatures WHERE time_s=%(time_s)s;"
         results = connectToMySQL().query_db( query_string, data )
         if len(results) > 0:
-                creature = cls(results[0])
+            creature = cls(results[0])
         else:
             creature = None
         return creature
