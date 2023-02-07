@@ -27,4 +27,8 @@ def view_creature( creature_url ):
     creature_time_s = int(creature_time_s)
 
     one_creature = creature.Creature.get_creature_by_time( {"time_s": creature_time_s} )
+
+    if not one_creature:
+        return redirect('/c')
+
     return render_template("view-creature.html", creature=one_creature )
