@@ -37,3 +37,13 @@ class Creature:
         query_string = "INSERT INTO creatures ( name, image, description ) \
             VALUES (%(name)s, %(image)s, %(description)s);"
         return connectToMySQL().query_db(query_string, data)
+
+    @classmethod
+    def get_creature_by_time( cls, data ):
+        query_string = "SELECT * FROM creatures WHERE time_s=%(time_s)s;"
+        results = connectToMySQL().query_db( query_string, data )
+        if len(results) > 0:
+                creature = cls(results[0])
+        else:
+            creature = None
+        return creature

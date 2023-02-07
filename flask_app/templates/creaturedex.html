@@ -15,10 +15,10 @@
   <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
   <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/images/icon.png') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/branch.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/branch.css') }}">
 
   <meta name="theme-color" content="#464646">
   <!--(for pwa true fullscreen effect)
@@ -32,19 +32,19 @@
     <a class="nav-create" href="/c/create-creature">+</a>
     
     <div class="dex-header">
-    <div class="dex-header-name">
-    <h1>creatures</h1>
-  </div>
-</div>
+      <div class="dex-header-name">
+        <h1>creatures</h1>
+      </div>
+    </div>
 
     {% for creature in creatures %}
     <div class="item">
-        <div class="item-image">
-      <img class="item-image" src="../i/2022-11-26-bay-scallop.jpeg">
-        </div>
-        <div class="item-name">
-      <a href='../c/{{creature.id}}'>{{creature.name}}</a>
-        </div>
+      <div class="item-image">
+        <img class="item-image" src="../i/2022-11-26-bay-scallop.jpeg">
+      </div>
+      <div class="item-name">
+        <a href='../c/{{creature.time_s}}-{{creature.name}}'>{{creature.name}}</a>
+      </div>
     </div>
     {% endfor %}
 
