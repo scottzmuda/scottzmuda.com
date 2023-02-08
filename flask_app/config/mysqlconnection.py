@@ -5,8 +5,11 @@ DB_HOST = os.getenv("DB_HOST")
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_SCHEMA = os.getenv("DB_SCHEMA")
-DB_PORT = int(os.getenv("DB_PORT"))
-
+DB_PORT = os.getenv("DB_PORT")
+# "if DB_PORT" checks that DB_PORT is not none
+# and "if DB_PORT.isdecimal()" checks that it is a numeric character (0-9)
+if DB_PORT and DB_PORT.isdecimal():
+    DB_PORT = int(DB_PORT)
 
 class MySQLConnection:
     def __init__(self):
