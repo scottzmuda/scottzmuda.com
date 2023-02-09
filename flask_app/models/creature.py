@@ -40,6 +40,11 @@ class Creature:
     def time_string( self ):
         return utc_sec_to_date_time(self.time_s)
 
+    @property
+    def solar_elev_deg( self ):
+        return spacetime_to_solar_elev_deg(self.time_s, self.lat_deg, self.long_deg)
+    
+
     @classmethod
     def get_all( cls ):
         query_string = "SELECT * FROM creatures ORDER BY creatures.time_s DESC;"

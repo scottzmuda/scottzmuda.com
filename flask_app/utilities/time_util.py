@@ -1,4 +1,4 @@
-from time import gmtime, strftime
+from time import gmtime, strftime, ephem
 
 
 def utc_sec_to_date_time( utc_sec ):
@@ -53,4 +53,21 @@ def format_hours_remove_leading_zero( hours_str ):
     hours_int = int(hours_str)
 
     return f"{hours_int}"
+
+def spacetime_to_solar_elev_deg(time_s, lat_deg, long_deg):
+    # convert unix time to a datetime object
+    from datetime import datetime
+    dt = datetime.utcfromtimestamp(time_s)
+    
+    # create a `location` object with the given coordinates
+    location = ephem.Observer()
+    location.lat = str(lat_deg)
+    location.lon = str(long_deg)
+    location.date = dt
+    
+    # calculate the solar elevation angle
+    sun = ephem.Sun()
+    sun.compute(location)
+    elev_deg = float(sun.alt) * 180 / ephem.pi
+    return elev_deg
 
