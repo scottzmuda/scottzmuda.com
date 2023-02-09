@@ -5,7 +5,8 @@ from flask_app.models import writing
 @app.route('/w')
 @app.route('/w/')
 def writings():
-    return render_template("writingdex.html")
+    writings = writings.Writing.get_all()
+    return render_template("writingdex.html", writings=writings)
 
 @app.route('/w/create-writing')
 def create_writing():
