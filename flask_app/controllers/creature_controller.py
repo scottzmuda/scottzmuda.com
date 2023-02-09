@@ -7,8 +7,8 @@ def view_creature( creature_url ):
     
     creature_time_s = 0
 
-    # check character by character until we find a "_"
-    # then slice the part of the string before the "_"
+    # check character by character until we find a "-"
+    # then slice the part of the string before the "-"
     for i in range(len(creature_url)):
         next_char = creature_url[i]
         if next_char == "-":

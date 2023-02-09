@@ -40,14 +40,15 @@
     {% for creature in creatures %}
     <div class="item">
       <div class="item-image">
-        <img class="item-image" src="../i/2022-11-26-bay-scallop.jpeg">
+        <img class="item-image" src="{{ url_for('static', filename='assets/images/leaf.png') }}">
       </div>
       <div class="item-name">
         <a href='../c/{{creature.url_string}}'>{{creature.name}}</a>
       </div>
     </div>
     {% endfor %}
-
+  </body>
+</html>
     <!-- COMMENT OUT UNTIL WE DECIDE HOW TO STORE IMAGES -->
     <!-- <div class="post">
       <img class="postImage" src="../i/2022-11-26-bay-scallop.jpeg">
@@ -81,7 +82,4 @@
       <img class="postImage" src="../i/2022-09-04-partridge-pea.jpeg">
       <a href='../c/2022-09-04-partridge-pea'>partridge pea</a>
     </div> -->
-  </div>
-</body>
 
-</html>

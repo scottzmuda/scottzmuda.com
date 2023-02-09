@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>{{writings.name}}</title>
+    <meta name="description" content="{{writings.description}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content={{writings.name}}>
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="../w">
+    <meta property="og:image" content="{{ url_for('static', filename='assets/images/fire.png') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaf.css') }}">
+
+    <meta name="theme-color" content="#464646">
+
+</head>
+<body>
+    <div class="content-container">
+        <a class="nav-back" href="/w">‹</a>
+        <h1>{{writings.name}}</h1>
+        <h2>{{writings.time_s}}</h2>
+        <p>{{writings.writing}}</p>
+    </div>
+</body>
+</html>
