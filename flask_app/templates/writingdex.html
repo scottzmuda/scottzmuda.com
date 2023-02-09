@@ -40,13 +40,17 @@
     {% for writing in writings %}
     <div class="item">
       <div class="item-image">
-        <img class="item-image" src="{{ url_for('static', filename='assets/images/fire.png') }}">
+        <!--<img class="item-image" src="{{ url_for('static', filename='assets/images/fire.png') }}">-->
       </div>
       <div class="item-name">
         <a href='../w/{{writing.url_string}}'>{{writing.time_s}}</a>
       </div>
     </div>
     {% endfor %}
+      </div>
+</body>
+
+</html>
     <!--
   <div class="content-container">
 
@@ -144,7 +148,4 @@
       </div>
     </div>
     !-->
-  </div>
-</body>
 
-</html>

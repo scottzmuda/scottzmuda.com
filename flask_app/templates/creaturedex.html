@@ -40,7 +40,7 @@
     {% for creature in creatures %}
     <div class="item">
       <div class="item-image">
-        <img class="item-image" src="{{ url_for('static', filename='assets/images/leaf.png') }}">
+        <!--<img class="item-image" src="{{ url_for('static', filename='assets/images/leaf.png') }}">-->
       </div>
       <div class="item-name">
         <a href='../c/{{creature.url_string}}'>{{creature.name}}</a>
@@ -48,38 +48,3 @@
     </div>
     {% endfor %}
   </body>
-</html>
-    <!-- COMMENT OUT UNTIL WE DECIDE HOW TO STORE IMAGES -->
-    <!-- <div class="post">
-      <img class="postImage" src="../i/2022-11-26-bay-scallop.jpeg">
-      <a href='../c/2022-11-26-bay-scallop'>bay scallop</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="../i/2022-11-26-shark-eye.jpeg">
-      <a href='../c/2022-11-26-shark-eye'>shark eye</a>
-    </div>
-    <div class="post">
-      <img class="postImage" class="postImage" src="../i/2022-11-26-speckled-swimming-crab.jpeg">
-      <a href='../c/2022-11-26-speckled-swimming-crab'>speckled swimming crab</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="../i/2022-11-25-atlantic-ghost-crab.jpeg">
-      <a href='../c/2022-11-25-atlantic-ghost-crab'>atlantic ghost crab</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="../i/2022-11-25-coquina.jpeg">
-      <a href='../c/2022-11-25-coquina'>coquina</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="../i/2022-11-18-white-tailed-deer.jpeg">
-      <a href='../c/2022-11-18-white-tailed-deer'>white-tailed deer</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="../i/2022-11-11-great-mullein.jpeg">
-      <a href='../c/2022-11-11-great-mullein'>great mullein</a>
-    </div>
-    <div class="post">
-      <img class="postImage" src="../i/2022-09-04-partridge-pea.jpeg">
-      <a href='../c/2022-09-04-partridge-pea'>partridge pea</a>
-    </div> -->
-
