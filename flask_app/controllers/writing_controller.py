@@ -26,7 +26,7 @@ def view_writing( writing_url ):
     # else cast numeric string "12345" -> 12345
     writing_time_s = int(writing_time_s)
 
-    one_writing = writing.writing.get_writing_by_time( {"time_s": writing_time_s} )
+    one_writing = writing.Writing.get_writing_by_time( {"time_s": writing_time_s} )
 
     if not one_writing:
         return redirect('/w')
