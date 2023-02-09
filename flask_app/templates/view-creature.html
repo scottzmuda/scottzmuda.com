@@ -29,7 +29,7 @@
         <h1>{{creature.name}}</h1>
         <!--<img src="{{ url_for('static', filename='assets/images/leaf.png') }}" alt="a {{creature.name}}"><br>-->
         <em>{{creature.name_scientific}}</em><br>
-        <em>{{creature.time_s}} seconds since epoch</em><br>
+        <em>{{creature.time_string}}</em><br>
         <em>{{creature.lat_deg}}, {{creature.long_deg}}, {{creature.elev_m}}m [wgs84]</em><br><br>
         {{creature.description}}
     </div>
