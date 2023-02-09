@@ -40,7 +40,7 @@
     {% for creature in creatures %}
     <div class="item">
       <div class="item-image">
-        <!--<img class="item-image" src="{{ url_for('static', filename='assets/images/leaf.png') }}">-->
+        <img class="item-image" src="{{ url_for('static', filename='assets/images/leaf.png') }}">
       </div>
       <div class="item-name">
         <a href='../c/{{creature.url_string}}'>{{creature.name}}</a>
