@@ -1,4 +1,5 @@
-from time import gmtime, strftime, ephem
+from time import gmtime, strftime
+import ephem
 
 
 def utc_sec_to_date_time( utc_sec ):
