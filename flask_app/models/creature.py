@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.utilities.time_util import utc_sec_to_date_time
 
 class Creature:
     def __init__( self, data ):
@@ -34,6 +35,10 @@ class Creature:
             res_url_str += word
 
         return res_url_str
+
+    @property
+    def time_string( self ):
+        return utc_sec_to_date_time(self.time_s)
 
     @classmethod
     def get_all( cls ):
