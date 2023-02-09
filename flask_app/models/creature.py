@@ -1,15 +1,18 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 
 class Creature:
-    def __init__(self, data):
+    def __init__( self, data ):
         self.id = data['id']
         self.name = data['name']
+        self.image = data['image']
         self.description = data['description']
         self.time_s = data['time_s']
-        self.long_deg = data['long_deg']
+
         self.lat_deg = data['lat_deg']
+        self.long_deg = data['long_deg']
         self.elev_m = data['elev_m']
         self.name_scientific = data['name_scientific']
+        
         self.createdon_utc = data['createdon_utc']
         self.modifiedon_utc = data['modifiedon_utc']
     

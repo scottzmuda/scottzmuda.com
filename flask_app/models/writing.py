@@ -7,7 +7,12 @@ class Writing:
         self.image = data['image']
         self.description = data['description']
         self.time_s = data['time_s']
+
         self.writing = data['writing']
+
+
+
+        
         self.createdon_utc = data['createdon_utc']
         self.modifiedon_utc = data['modifiedon_utc']
 
@@ -36,7 +41,7 @@ class Writing:
         results = connectToMySQL().query_db(query_string)
         writings = []
         for row in results:
-            writingss.append( cls(row) )
+            writings.append( cls(row) )
         return writings
     
     @classmethod
