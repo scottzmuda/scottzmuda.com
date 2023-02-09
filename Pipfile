@@ -8,6 +8,7 @@ flask = "*"
 python-dotenv = "*"
 pymysql = "*"
 gunicorn = "*"
+ephem = "*"
 
 [dev-packages]
 
