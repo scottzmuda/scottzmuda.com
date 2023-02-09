@@ -26,7 +26,7 @@
   -->
 </head>
 <body>
-    <div class="content-container">
+  <div class="content-container">
 
     <a class="nav-back" href="/">‹</a>
     <a class="nav-create" href="/w/create-writing">+</a>
@@ -43,7 +43,7 @@
         <img class="item-image" src="{{ url_for('static', filename='assets/images/fire.png') }}">
       </div>
       <div class="item-name">
-        <a href='../c/{{writing.url_string}}'>{{writing.name}}</a>
+        <a href='../w/{{writing.url_string}}'>{{writing.name}}</a>
       </div>
     </div>
     {% endfor %}
