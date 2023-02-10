@@ -143,6 +143,13 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==2.2.2"
+        },
+        "ephem": {
+            "hashes": [
+                "sha256:adf3d7ad3e95bca6d0c3ac6431b1c48ecfb4e4fc15ab8e0a2414097c46f090d7",
+                "sha256:92879bf98b5dc1b5eb5c5b92bbccfc6cba76dbecf1c5b924f49c11a21f1d2af8"
+            ],
+            "version": "==3.7.7.0"
         }
     },
     "develop": {}
