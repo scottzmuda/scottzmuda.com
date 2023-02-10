@@ -4,10 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-python-dotenv = "*"
-pymysql = "*"
-gunicorn = "*"
+flask = "==2.2.2"
+python-dotenv = "==0.21.1"
+pymysql = "==1.0.2"
+gunicorn = "==20.1.0"
+click = "==8.1.3"
+itsdangerous = "==2.1.2"
+jinja2 = "==3.1.2"
+markupsafe = "==2.1.2"
+werkzeug = "==2.2.2"
 ephem = "*"
 
 [dev-packages]
