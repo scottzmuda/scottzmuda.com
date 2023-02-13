@@ -95,18 +95,31 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     altSolarMidnight = sun.alt
     hasNight = True if altSolarMidnight < altLightDarkTransition else False
 
+    # find distances to solar events
+    distanceMidnight = abs(altCurrent - altSolarMidnight)
+    distanceDarkLightTransition = abs(altCurrent - altLightDarkTransition)
+    distanceHorizonCrosss = abs(altCurrent - altHorizonCross)
+    distanceMidday = abs(altCurrent - altSolarMidday)
+
     # find nearest solar event
     if not hasDay and not hasNight:
         return "twilight"
 
-    elif hasDay and abs(altCurrent - altSolarMidday) < abs(altCurrent - altHorizonCross):
+    elif hasDay and  distanceMidday < distanceHorizonCrosss:
         return "midday"
 
-    elif hasNight and abs(altCurrent - altSolarMidnight) < abs (altCurrent - altLightDarkTransition):
+    elif hasNight and  distanceMidnight < distanceDarkLightTransition:
         return "midnight"
 
-    elif abs(altCurrent - altHorizonCross) < abs(altCurrent - altLightDarkTransition):
+    elif hasDay and not hasNight:
         return "sunrise or sunset"
+
+    elif hasNight and not hasDay:
+        return "dawn or dusk"
+
+    elif distanceHorizonCrosss < distanceDarkLightTransition:
+        return "sunrise or sunset"
+
     else:
         return "dawn or dusk"
 
