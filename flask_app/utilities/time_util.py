@@ -1,5 +1,7 @@
 from time import gmtime, strftime
+from datetime import datetime
 import ephem
+import math
 
 
 def utc_sec_to_date_time( utc_sec ):
@@ -55,20 +57,56 @@ def format_hours_remove_leading_zero( hours_str ):
 
     return f"{hours_int}"
 
-def spacetime_to_solar_elev_deg(time_s, lat_deg, long_deg):
-    # convert unix time to a datetime object
-    from datetime import datetime
-    dt = datetime.utcfromtimestamp(time_s)
+def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     
-    # create a `location` object with the given coordinates
-    location = ephem.Observer()
-    location.lat = str(lat_deg)
-    location.lon = str(long_deg)
-    location.date = dt
-    
-    # calculate the solar elevation angle
+    #initialize variables
+    gregorian_time = datetime.utcfromtimestamp(time_s)
+    gregorian_time_before = datetime.utcfromtimestamp(time_s - 43200)
+    altHorizonCross = math.radians(-5/6)
+    altLightDarkTransition = math.radians(-18)
     sun = ephem.Sun()
-    sun.compute(location)
-    elev_deg = float(sun.alt) * 180 / ephem.pi
-    return elev_deg
+
+
+    # create an observer at time of interest
+    observer = ephem.Observer()
+    observer.lat = str(lat_deg)
+    observer.lon = str(long_deg)
+    observer.elevation = elev_m
+    observer.date = ephem.Date(gregorian_time)
+    sun.compute(observer)
+    altCurrent = sun.alt
+
+    # change observer to half a day before
+    observer.date = ephem.Date(gregorian_time_before)
+    sun.compute(observer)
+
+    # find time and altitudes of solar midday and midnight.
+    # determine hasDay and hasNight
+    nearestSolarMidday = observer.next_transit(ephem.Sun())
+    nearestSolarMidnight = observer.next_antitransit(ephem.Sun())
+
+    observer.date = nearestSolarMidday
+    sun.compute(observer)
+    altSolarMidday = sun.alt
+    hasDay = True if altSolarMidday > altHorizonCross else False
+
+    observer.date = nearestSolarMidnight
+    sun.compute(observer)
+    altSolarMidnight = sun.alt
+    hasNight = True if altSolarMidnight < altLightDarkTransition else False
+
+    # find nearest solar event
+    if not hasDay and not hasNight:
+        return "twilight"
+
+    elif hasDay and abs(altCurrent - altSolarMidday) < abs(altCurrent - altHorizonCross):
+        return "midday"
+
+    elif hasNight and abs(altCurrent - altSolarMidnight) < abs (altCurrent - altLightDarkTransition):
+        return "midnight"
+
+    elif abs(altCurrent - altHorizonCross) < abs(altCurrent - altLightDarkTransition):
+        return "sunrise or sunset"
+    else:
+        return "dawn or dusk"
 
