@@ -59,67 +59,51 @@ def format_hours_remove_leading_zero( hours_str ):
 
 def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     
-    #initialize variables
-    gregorian_time = datetime.utcfromtimestamp(time_s)
-    gregorian_time_before = datetime.utcfromtimestamp(time_s - 43200)
-    altHorizonCross = math.radians(-5/6)
-    altLightDarkTransition = math.radians(-18)
-    sun = ephem.Sun()
-
-
-    # create an observer at time of interest
+    #initialize observer
     observer = ephem.Observer()
     observer.lat = str(lat_deg)
     observer.lon = str(long_deg)
     observer.elevation = elev_m
-    observer.date = ephem.Date(gregorian_time)
-    sun.compute(observer)
-    altCurrent = sun.alt
+    observer.date = ephem.Date(datetime.utcfromtimestamp(time_s))
 
-    # change observer to half a day before
-    observer.date = ephem.Date(gregorian_time_before)
+    #initialize sun
+    sun = ephem.Sun()
     sun.compute(observer)
 
-    # find time and altitudes of solar midday and midnight.
-    # determine hasDay and hasNight
-    nearestSolarMidday = observer.next_transit(ephem.Sun())
-    nearestSolarMidnight = observer.next_antitransit(ephem.Sun())
+    #get times of nearest solar events (still need to account for exceptions)
+    times_sun_events = []
+    times_sun_events.append(observer.date - observer.previous_transit(ephem.Sun()))
+    times_sun_events.append(observer.date - observer.previous_antitransit(ephem.Sun()))
+    times_sun_events.append(observer.date - observer.previous_setting(ephem.Sun()))
+    times_sun_events.append(observer.date - observer.previous_rising(ephem.Sun()))
+    times_sun_events.append(observer.date - observer.next_transit(ephem.Sun()))
+    times_sun_events.append(observer.date - observer.next_antitransit(ephem.Sun()))
+    times_sun_events.append(observer.date - observer.next_setting(ephem.Sun()))
+    times_sun_events.append(observer.date - observer.next_rising(ephem.Sun()))
 
-    observer.date = nearestSolarMidday
-    sun.compute(observer)
-    altSolarMidday = sun.alt
-    hasDay = True if altSolarMidday > altHorizonCross else False
+    #find nearest event
+    nearest_event_index = min(enumerate(times_sun_events), key=lambda x: abs(x[1]))[0]
 
-    observer.date = nearestSolarMidnight
-    sun.compute(observer)
-    altSolarMidnight = sun.alt
-    hasNight = True if altSolarMidnight < altLightDarkTransition else False
-
-    # find distances to solar events
-    distanceMidnight = abs(altCurrent - altSolarMidnight)
-    distanceDarkLightTransition = abs(altCurrent - altLightDarkTransition)
-    distanceHorizonCrosss = abs(altCurrent - altHorizonCross)
-    distanceMidday = abs(altCurrent - altSolarMidday)
-
-    # find nearest solar event
-    if not hasDay and not hasNight:
-        return "twilight"
-
-    elif hasDay and  distanceMidday < distanceHorizonCrosss:
-        return "midday"
-
-    elif hasNight and  distanceMidnight < distanceDarkLightTransition:
-        return "midnight"
-
-    elif hasDay and not hasNight:
-        return "sunrise or sunset"
-
-    elif hasNight and not hasDay:
-        return "dawn or dusk"
-
-    elif distanceHorizonCrosss < distanceDarkLightTransition:
-        return "sunrise or sunset"
-
+    #find magnitude of time delta
+    if abs(times_sun_events[nearest_event_index])*24 < 1:
+        magnitude_string = "a litte bit "
+    elif abs(times_sun_events[nearest_event_index])*24 < 3:
+        magnitude_string = "a good bit "
     else:
-        return "dawn or dusk"
+        magnitude_string = "a good while "     
 
+    #find sign of time delta
+    if times_sun_events[nearest_event_index] > 0:
+        relation_string = "after "
+    else:
+        relation_string = "before "
+
+    #determine identity of sun event
+    if nearest_event_index in [0, 4]:
+            return magnitude_string + relation_string + "midday"
+    if nearest_event_index in [1, 5]:
+            return magnitude_string + relation_string + "midnight"
+    if nearest_event_index in [2, 6]:
+            return magnitude_string + relation_string + "sunset"
+    if nearest_event_index in [3, 7]:
+            return magnitude_string + relation_string + "sunrise"
