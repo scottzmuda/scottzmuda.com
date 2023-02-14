@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.utilities.time_util import utc_sec_to_date_time, spacetime_to_sun_based_time
+from flask_app.utilities.time_util import utc_sec_to_date_time, spacetime_to_sun_based_time, spacetime_to_season
 
 class Creature:
     def __init__( self, data ):
@@ -43,6 +43,10 @@ class Creature:
     @property
     def sun_based_time( self ):
         return spacetime_to_sun_based_time(self.time_s, self.lat_deg, self.long_deg, self.elev_m)
+
+    @property 
+    def season( self ):
+        return spacetime_to_season(self.time_s, self.lat_deg, self.long_deg, self.elev_m)
     
 
     @classmethod

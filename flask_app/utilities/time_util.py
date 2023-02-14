@@ -85,12 +85,14 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     nearest_event_index = min(enumerate(times_sun_events), key=lambda x: abs(x[1]))[0]
 
     #find magnitude of time delta
-    if abs(times_sun_events[nearest_event_index])*24 < 1:
-        magnitude_string = "a litte bit "
+    if abs(times_sun_events[nearest_event_index])*24 < 0.1:
+        magnitude_string = "right " #less than 6 minutes
+    elif abs(times_sun_events[nearest_event_index])*24 < 1:
+        magnitude_string = "a litte bit " #less than 1 hour
     elif abs(times_sun_events[nearest_event_index])*24 < 3:
-        magnitude_string = "a good bit "
+        magnitude_string = "a good bit " #less than 3 hours
     else:
-        magnitude_string = "a good while "     
+        magnitude_string = "a good while " #more than 3 hours     
 
     #find sign of time delta
     if times_sun_events[nearest_event_index] > 0:
@@ -107,3 +109,28 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
             return magnitude_string + relation_string + "sunset"
     if nearest_event_index in [3, 7]:
             return magnitude_string + relation_string + "sunrise"
+
+def spacetime_to_season(time_s, lat_deg, long_deg, elev_m):
+
+    #initialize observer
+    observer = ephem.Observer()
+    observer.lat = str(lat_deg)
+    observer.lon = str(long_deg)
+    observer.elevation = elev_m
+    observer.date = ephem.Date(datetime.utcfromtimestamp(time_s - 1728000)) #20 days before current
+
+    #get times of previous solstice and equinox
+    times_sun_events = []
+    times_sun_events.append(observer.date - ephem.previous_solstice(observer.date))
+    times_sun_events.append(observer.date - ephem.previous_equinox(observer.date))
+
+    #find nearest
+    nearest_event_index = times_sun_events.index(min(times_sun_events))
+
+    if nearest_event_index == 0:
+        return "in either the summer or winter"
+    else:
+        return "in either the spring or fall"
+
+
+
