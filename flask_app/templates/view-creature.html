@@ -32,8 +32,8 @@
         <em>{{creature.sun_based_time}}, {{creature.season}}</em><br>
         <em>{{creature.natural_language_latitude}}</em><br><br>
         {{creature.description}}<br><br>
+        <div id="map"></div>
     </div>
-    <div id="map" class="content-container">test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br>test<br></div>
         <script>
             var map = L.map('map').setView([{{creature.lat_deg}}, {{creature.long_deg}}], 5);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
