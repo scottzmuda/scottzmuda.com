@@ -70,37 +70,37 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     sun = ephem.Sun()
     sun.compute(observer)
 
-    #get times of nearest solar events (still need to account for exceptions)
-    times_sun_events = []
-    times_sun_events.append(observer.date - observer.previous_transit(ephem.Sun()))
-    times_sun_events.append(observer.date - observer.previous_antitransit(ephem.Sun()))
-    times_sun_events.append(observer.date - observer.previous_setting(ephem.Sun()))
-    times_sun_events.append(observer.date - observer.previous_rising(ephem.Sun()))
-    times_sun_events.append(observer.date - observer.next_transit(ephem.Sun()))
-    times_sun_events.append(observer.date - observer.next_antitransit(ephem.Sun()))
-    times_sun_events.append(observer.date - observer.next_setting(ephem.Sun()))
-    times_sun_events.append(observer.date - observer.next_rising(ephem.Sun()))
+    #get times of previous and next day events (still need to account for exceptions)
+    times_day_events = []
+    times_day_events.append(observer.date - observer.previous_transit(sun))
+    times_day_events.append(observer.date - observer.previous_antitransit(sun))
+    times_day_events.append(observer.date - observer.previous_setting(sun))
+    times_day_events.append(observer.date - observer.previous_rising(sun))
+    times_day_events.append(observer.date - observer.next_transit(sun))
+    times_day_events.append(observer.date - observer.next_antitransit(sun))
+    times_day_events.append(observer.date - observer.next_setting(sun))
+    times_day_events.append(observer.date - observer.next_rising(sun))
 
-    #find nearest event
-    nearest_event_index = min(enumerate(times_sun_events), key=lambda x: abs(x[1]))[0]
+    #find nearest day event
+    nearest_event_index = min(enumerate(times_day_events), key=lambda x: abs(x[1]))[0]
 
     #find magnitude of time delta
-    if abs(times_sun_events[nearest_event_index])*24 < 0.1:
+    if abs(times_day_events[nearest_event_index])*24 < 0.1:
         magnitude_string = "right " #less than 6 minutes
-    elif abs(times_sun_events[nearest_event_index])*24 < 1:
+    elif abs(times_day_events[nearest_event_index])*24 < 1:
         magnitude_string = "a litte bit " #less than 1 hour
-    elif abs(times_sun_events[nearest_event_index])*24 < 3:
+    elif abs(times_day_events[nearest_event_index])*24 < 3:
         magnitude_string = "a good bit " #less than 3 hours
     else:
         magnitude_string = "a good while " #more than 3 hours     
 
     #find sign of time delta
-    if times_sun_events[nearest_event_index] > 0:
+    if times_day_events[nearest_event_index] > 0:
         relation_string = "after "
     else:
         relation_string = "before "
 
-    #determine identity of sun event
+    #determine identity of day event
     if nearest_event_index in [0, 4]:
             return magnitude_string + relation_string + "midday"
     if nearest_event_index in [1, 5]:
@@ -119,18 +119,35 @@ def spacetime_to_season(time_s, lat_deg, long_deg, elev_m):
     observer.elevation = elev_m
     observer.date = ephem.Date(datetime.utcfromtimestamp(time_s - 1728000)) #20 days before current
 
-    #get times of previous solstice and equinox
-    times_sun_events = []
-    times_sun_events.append(observer.date - ephem.previous_solstice(observer.date))
-    times_sun_events.append(observer.date - ephem.previous_equinox(observer.date))
+    #get times of previous solstices and equinoxes
+    times_season_events = []
+    times_season_events.append(observer.date - ephem.previous_vernal_equinox(observer.date))
+    times_season_events.append(observer.date - ephem.previous_summer_solstice(observer.date))
+    times_season_events.append(observer.date - ephem.previous_autumnal_equinox(observer.date))
+    times_season_events.append(observer.date - ephem.previous_winter_solstice(observer.date))
 
-    #find nearest
-    nearest_event_index = times_sun_events.index(min(times_sun_events))
+    #find nearest season event
+    nearest_event_index = times_season_events.index(min(times_season_events))
 
-    if nearest_event_index == 0:
-        return "in either the summer or winter"
+    #find magnitude of time delta
+    if abs(times_season_events[nearest_event_index]) < 365/12: 
+        magnitude_string = "early " #less than a third of a season
+    elif abs(times_season_events[nearest_event_index]) < 365/6: 
+        magnitude_string = "mid " #less than two thirds of a season
     else:
-        return "in either the spring or fall"
+        magnitude_string = "late " #more than two thirds of a season
+
+
+    #determine identity of season event
+    if nearest_event_index == 0:
+        return magnitude_string + "spring"
+    if nearest_event_index == 1:
+        return magnitude_string + "summer"
+    if nearest_event_index == 2:
+        return magnitude_string + "autumn"
+    if nearest_event_index == 3:
+        return magnitude_string + "winter"
+
 
 
 
