@@ -127,7 +127,7 @@ def spacetime_to_season(time_s, lat_deg, long_deg, elev_m):
     times_season_events.append(observer.date - ephem.previous_winter_solstice(observer.date))
 
     #find nearest season event
-    nearest_event_index = times_season_events.index(min(times_season_events))
+    nearest_event_index = min(enumerate(times_season_events), key=lambda x: x[1])[0]
 
     #find magnitude of time delta
     if abs(times_season_events[nearest_event_index]) < 365/12: 

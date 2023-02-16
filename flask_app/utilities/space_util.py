@@ -1,43 +1,45 @@
 import math
+from decimal import Decimal
 
 def lat_to_natural_language( lat_deg ):
 
 	deltas_latitude_locations = []
-	deltas_latitude_locations.append(lat_deg + 90)
-	deltas_latitude_locations.append(lat_deg + 66.5)
-	deltas_latitude_locations.append(lat_deg + 23.5)
+	deltas_latitude_locations.append(lat_deg + Decimal(90.0))
+	deltas_latitude_locations.append(lat_deg + Decimal(66.5))
+	deltas_latitude_locations.append(lat_deg + Decimal(23.5))
 	deltas_latitude_locations.append(lat_deg)
-	deltas_latitude_locations.append(lat_deg - 23.5)
-	deltas_latitude_locations.append(lat_deg - 66.5)
+	deltas_latitude_locations.append(lat_deg - Decimal(23.5))
+	deltas_latitude_locations.append(lat_deg - Decimal(66.5))
 
 
 	#find nearest
-	nearest_location_index = min((i for i, num in enumerate(deltas_latitude_locations) if num > 0))
-	
+	nearest_location_index = min(enumerate(deltas_latitude_locations), key=lambda x: x[1] if x[1] > 0 else float('inf'))[0]
+
 	if nearest_location_index in [1, 4]:
-		if deltas_latitude_locations[nearest_location_index] < 43/3:
-			magnitude_string = "low "
-		if deltas_latitude_locations[nearest_location_index] < 86/3:
+		if deltas_latitude_locations[nearest_location_index] < (43/3):
+			magnitude_string = "lower "
+		elif deltas_latitude_locations[nearest_location_index] < 86/3:
 			magnitude_string = "middle "
 		else:
-			magnitude_string = "high "
+			magnitude_string = "upper "
+
 	else:
 		if deltas_latitude_locations[nearest_location_index] < 23.5/3:
-			magnitude_string = "low "
-		if deltas_latitude_locations[nearest_location_index] < 47/3:
+			magnitude_string = "lower "
+		elif deltas_latitude_locations[nearest_location_index] < 47/3:
 			magnitude_string = "middle "
 		else:
-			magnitude_string = "high "
+			magnitude_string = "upper "
 
 	if lat_deg < 0:
-		relation_string = "southern "
+		relation_string = ", southern hemisphere "
 	else:
-		relation_string = "northern "
+		relation_string = ", northern hemisphere "
 
 	if nearest_location_index in [0, 5]:
-		return magnitude_string + relation_string + "polar region"
+		return magnitude_string + "polar region"+ relation_string
 	if nearest_location_index in [1, 4]:
-		return magnitude_string + relation_string + "temperate region"
+		return magnitude_string + "temperate region"+ relation_string
 	if nearest_location_index in [2, 3]:
-		return magnitude_string + relation_string + "tropical region"
+		return magnitude_string + "tropical region"+ relation_string
 	
