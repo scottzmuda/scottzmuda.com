@@ -16,10 +16,10 @@ def create_writing():
 def save_writing():
     data = {
         "name": request.form["name"],
-        "image": request.form["image"],
         "writing": request.form["writing"],
         "description": request.form["description"],
+        "time_s": request.form["time_s"],
     }
 
-    writing.writing.save( data )
+    writing.Writing.save( data )
     return redirect('/w/create-writing')

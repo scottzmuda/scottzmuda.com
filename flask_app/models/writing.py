@@ -5,15 +5,11 @@ class Writing:
     def __init__( self, data ):
         self.id = data['id']
         self.name = data['name']
-        self.image = data['image']
         self.description = data['description']
         self.time_s = data['time_s']
 
         self.writing = data['writing']
 
-
-
-        
         self.createdon_utc = data['createdon_utc']
         self.modifiedon_utc = data['modifiedon_utc']
 
@@ -61,8 +57,8 @@ class Writing:
 
     @classmethod
     def save( cls, data ):
-        query_string = "INSERT INTO writings ( name, image, writing, description ) \
-            VALUES (%(name)s, %(image)s, %(writing)s, %(description)s);"
+        query_string = "INSERT INTO writings ( name, writing, description, time_s ) \
+            VALUES (%(name)s, %(writing)s, %(description)s, %(time_s)s);"
         return connectToMySQL().query_db(query_string, data)
 
     @classmethod

@@ -37,6 +37,12 @@ class Creature:
 
         return res_url_str
 
+    @classmethod
+    def save( cls, data ):
+        query_string = "INSERT INTO creatures ( name, name_scientific, description, lat_deg, long_deg, elev_m, time_s ) \
+        VALUES (%(name)s, %(name_scientific)s, %(description)s, %(lat_deg)s, %(long_deg)s, %(elev_m)s, %(time_s)s);"
+        return connectToMySQL().query_db(query_string, data)
+
     @property
     def time_string( self ):
         return utc_sec_to_date_time(self.time_s)
@@ -73,11 +79,6 @@ class Creature:
             creature = None
         return creature
 
-    @classmethod
-    def save( cls, data ):
-        query_string = "INSERT INTO creatures ( name, image, description ) \
-            VALUES (%(name)s, %(image)s, %(description)s);"
-        return connectToMySQL().query_db(query_string, data)
 
     @classmethod
     def get_creature_by_time( cls, data ):

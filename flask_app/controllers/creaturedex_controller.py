@@ -16,9 +16,12 @@ def create_creature():
 def save_creature():
     data = {
         "name": request.form["name"],
-        "image": request.form["image"],
+        "name_scientific": request.form["name_scientific"],
         "description": request.form["description"],
+        "lat_deg": request.form["lat_deg"],
+        "long_deg": request.form["long_deg"],
+        "elev_m": request.form["elev_m"],
+        "time_s": request.form["time_s"]
     }
-
-    writing.writing.save( data )
+    creature.Creature.save( data )
     return redirect('/c/create-creature')
