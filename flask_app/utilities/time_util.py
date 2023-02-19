@@ -117,7 +117,7 @@ def spacetime_to_season(time_s, lat_deg, long_deg, elev_m):
     observer.lat = str(lat_deg)
     observer.lon = str(long_deg)
     observer.elevation = elev_m
-    observer.date = ephem.Date(datetime.utcfromtimestamp(time_s - 1728000)) #20 days before current
+    observer.date = ephem.Date(datetime.utcfromtimestamp(time_s - 1738800)) #+20 days - 1/2 season
 
     #get times of previous solstices and equinoxes
     times_season_events = []
