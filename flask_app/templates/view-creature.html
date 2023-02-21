@@ -29,9 +29,12 @@
         <h1>{{creature.name}}</h1>
         <!--<img src="{{ url_for('static', filename='assets/images/leaf.png') }}" alt="a {{creature.name}}"><br>-->
         <!--<em>{{creature.name_scientific}}</em><br>-->
-        <em>{{creature.sun_based_time}}, {{creature.season}}</em><br>
-        <em>{{creature.natural_language_latitude}}</em><br><br>
+        <em>
+        {{creature.sun_based_time}}<br>
+        {{creature.season}}<br>
+        {{creature.natural_language_latitude}}<br><br>
         {{creature.description}}<br><br>
+        </em>
         <div id="map"></div>
     </div>
         <script>
