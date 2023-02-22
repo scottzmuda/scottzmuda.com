@@ -2,14 +2,14 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
-    <title>{{creature.name}}</title>
-    <meta name="description" content="{{creature.description}}">
+    <title>{{living_thing.name}}</title>
+    <meta name="description" content="{{living_thing.description}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:title" content="{{creature.name}}">
+    <meta property="og:title" content="{{living_thing.name}}">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="../c">
-    <meta property="og:image" content="{{ url_for('static', filename='i/') }}{{creature.url_string}}.jpeg">
+    <meta property="og:url" content="../l/">
+    <meta property="og:image" content="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -25,24 +25,24 @@
 <body>
     <div class="content-container">
 
-        <a class="nav-back" href="/c">‹</a>
-        <h1>{{creature.name}}</h1>
-        <!--<img src="{{ url_for('static', filename='assets/images/leaf.png') }}" alt="a {{creature.name}}"><br>-->
-        <!--<em>{{creature.name_scientific}}</em><br>-->
+        <a class="nav-back" href="/l">‹</a>
+        <h1>{{living_thing.name}}</h1>
+        <!--<img src="{{ url_for('static', filename='assets/images/leaf.png') }}" alt="a {{living_thing.name}}"><br>-->
+        <!--<em>{{living_thing.name_scientific}}</em><br>-->
         <em>
-        {{creature.sun_based_time}}<br>
-        {{creature.season}}<br>
-        {{creature.natural_language_latitude}}<br><br>
-        {{creature.description}}<br><br>
+        {{living_thing.sun_based_time}}<br>
+        {{living_thing.season}}<br>
+        {{living_thing.natural_language_latitude}}<br><br>
+        {{living_thing.description}}<br><br>
         </em>
         <div id="map"></div>
     </div>
         <script>
-            var map = L.map('map').setView([{{creature.lat_deg}}, {{creature.long_deg}}], 5);
+            var map = L.map('map').setView([{{living_thing.lat_deg}}, {{living_thing.long_deg}}], 5);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
-            var marker = L.marker([{{creature.lat_deg}}, {{creature.long_deg}}]).addTo(map)
+            var marker = L.marker([{{living_thing.lat_deg}}, {{living_thing.long_deg}}]).addTo(map)
         </script>
     </article>
 </body>

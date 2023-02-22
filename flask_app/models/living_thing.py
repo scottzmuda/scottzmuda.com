@@ -2,7 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.utilities.time_util import utc_sec_to_date_time, spacetime_to_sun_based_time, spacetime_to_season
 from flask_app.utilities.space_util import lat_to_natural_language
 
-class Creature:
+class living_thing:
     def __init__( self, data ):
         self.id = data['id']
         self.name = data['name']
@@ -28,10 +28,10 @@ class Creature:
 
         # split the name string into individual words
         # "john jacob jingle boy" -> ["john", "jacob", "jingle", "boy"]
-        creature_name_array = self.name.split()
+        living_thing_name_array = self.name.split()
 
         # then we concatenate each item in the array onto the url_string
-        for word in creature_name_array:
+        for word in living_thing_name_array:
             res_url_str += "-"
             res_url_str += word
 
@@ -39,7 +39,7 @@ class Creature:
 
     @classmethod
     def save( cls, data ):
-        query_string = "INSERT INTO creatures ( name, name_scientific, description, lat_deg, long_deg, elev_m, time_s ) \
+        query_string = "INSERT INTO living_things ( name, name_scientific, description, lat_deg, long_deg, elev_m, time_s ) \
         VALUES (%(name)s, %(name_scientific)s, %(description)s, %(lat_deg)s, %(long_deg)s, %(elev_m)s, %(time_s)s);"
         return connectToMySQL().query_db(query_string, data)
 
@@ -62,30 +62,30 @@ class Creature:
 
     @classmethod
     def get_all( cls ):
-        query_string = "SELECT * FROM creatures ORDER BY creatures.time_s DESC;"
+        query_string = "SELECT * FROM living_things ORDER BY living_things.time_s DESC;"
         results = connectToMySQL().query_db(query_string)
-        creatures = []
+        living_things = []
         for row in results:
-            creatures.append( cls(row) )
-        return creatures
+            living_things.append( cls(row) )
+        return living_things
     
     @classmethod
-    def get_creature_by_id( cls, data ):
-        query_string = "SELECT * FROM creatures WHERE id=%(id)s;"
+    def get_living_thing_by_id( cls, data ):
+        query_string = "SELECT * FROM living_things WHERE id=%(id)s;"
         results = connectToMySQL().query_db( query_string, data )
         if len(results) > 0:
-            creature = cls(results[0])
+            living_thing = cls(results[0])
         else:
-            creature = None
-        return creature
+            living_thing = None
+        return living_thing
 
 
     @classmethod
-    def get_creature_by_time( cls, data ):
-        query_string = "SELECT * FROM creatures WHERE time_s=%(time_s)s;"
+    def get_living_thing_by_time( cls, data ):
+        query_string = "SELECT * FROM living_things WHERE time_s=%(time_s)s;"
         results = connectToMySQL().query_db( query_string, data )
         if len(results) > 0:
-            creature = cls(results[0])
+            living_thing = cls(results[0])
         else:
-            creature = None
-        return creature
+            living_thing = None
+        return living_thing

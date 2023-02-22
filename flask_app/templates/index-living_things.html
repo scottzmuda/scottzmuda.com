@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="utf-8">
-  <title>creatures</title>
-  <meta name="description" content="creatures">
+  <title>living_things</title>
+  <meta name="description" content="living_things">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="creatures">
+  <meta property="og:title" content="living_things">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scottzmuda.com/c">
+  <meta property="og:url" content="https://scottzmuda.com/l">
   <meta property="og:image" content="https://scottzmuda.com/i/twitter-default-summary-card-image-1024x1024.png">
 
   <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
@@ -29,21 +29,21 @@
   <div class="content-container">
 
     <a class="nav-back" href="/">‹</a>
-    <a class="nav-create" href="/c/create-creature">+</a>
+    <a class="nav-create" href="/l/create-living_thing">+</a>
     
     <div class="dex-header">
       <div class="dex-header-name">
-        <h1>creatures</h1>
+        <h1>living_things</h1>
       </div>
     </div>
 
-    {% for creature in creatures %}
+    {% for living_thing in living_things %}
     <div class="item">
       <div class="item-image">
-        <img class="item-image" src="{{ url_for('static', filename='i/') }}{{creature.url_string}}.jpeg">
+        <img class="item-image" src="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
       </div>
       <div class="item-name">
-        <a href='../c/{{creature.url_string}}'>{{creature.name}}</a>
+        <a href='../l/{{living_thing.url_string}}'>{{living_thing.name}}</a>
       </div>
     </div>
     {% endfor %}
