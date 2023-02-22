@@ -31,15 +31,10 @@ def lat_to_natural_language( lat_deg ):
 		else:
 			magnitude_string = "upper "
 
-	if lat_deg < 0:
-		relation_string = ", southern hemisphere "
-	else:
-		relation_string = ", northern hemisphere "
-
 	if nearest_location_index in [0, 5]:
-		return magnitude_string + "polar region"+ relation_string
+		return magnitude_string + "polar region"
 	if nearest_location_index in [1, 4]:
-		return magnitude_string + "temperate region"+ relation_string
+		return magnitude_string + "temperate region"
 	if nearest_location_index in [2, 3]:
-		return magnitude_string + "tropical region"+ relation_string
+		return magnitude_string + "tropical region"
 	
