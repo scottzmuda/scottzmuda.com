@@ -102,13 +102,13 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
 
     #determine identity of day event
     if nearest_event_index in [0, 4]:
-            return magnitude_string + relation_string + "midday"
+            return relation_string + "midday"
     if nearest_event_index in [1, 5]:
-            return magnitude_string + relation_string + "midnight"
+            return relation_string + "midnight"
     if nearest_event_index in [2, 6]:
-            return magnitude_string + relation_string + "sunset"
+            return relation_string + "sunset"
     if nearest_event_index in [3, 7]:
-            return magnitude_string + relation_string + "sunrise"
+            return relation_string + "sunrise"
 
 def spacetime_to_season(time_s, lat_deg, long_deg, elev_m):
 
