@@ -32,9 +32,9 @@ def lat_to_natural_language( lat_deg ):
 			magnitude_string = "upper "
 
 	if nearest_location_index in [0, 5]:
-		return magnitude_string + "polar region"
+		return "polar region"
 	if nearest_location_index in [1, 4]:
-		return magnitude_string + "temperate region"
+		return "temperate region"
 	if nearest_location_index in [2, 3]:
-		return magnitude_string + "tropical region"
+		return "tropical region"
 	
