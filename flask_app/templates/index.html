@@ -52,6 +52,11 @@
         </div>
       </div>
     </div>
+    {% if "creator_id" not in session %}
+    <a href="/c/login" role="button">login</a>
+    {% else %}
+    <a href="/c/log-creator-out" role="button">logout</a>
+    {% endif %}
   </body>
 
   </html>
