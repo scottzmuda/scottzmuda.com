@@ -28,7 +28,7 @@ a{
 }
 
 body{
-    margin: .5em; /*creates space between content container and edge of viewport when width=100%*/
+    margin: 1em; /*creates space between content container and edge of viewport when width=100%*/
 }
 
 div.banner{
