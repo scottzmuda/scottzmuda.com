@@ -12,6 +12,7 @@ html {
 
 a:link, a:visited {
   color: #75d5ff; /*global link color*/
+  text-decoration: none;
 }
 
 h1{
