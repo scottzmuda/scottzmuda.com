@@ -22,7 +22,9 @@
 <body>
     <div class="content-container">
         <a class="nav-back" href="/w">‹</a>
-        <a class="nav-create" href="../w/{{writing.url_string}}">&#x2699;&#xfe0e;</a>
+        {% if "creator_id" in session %}
+        <a class="nav-create" href="/w/create-writing">&#43;&#xfe0e;</a>
+        {% endif %}
         <h1>{{writing.name}}</h1>
         <h2>{{writing.time_string}}</h2>
         <p>{{writing.writing}}</p>

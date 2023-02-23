@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, request
+from flask import render_template, redirect, request, session
 from flask_app.models import writing
 
 @app.route('/w')
@@ -40,10 +40,14 @@ def view_writing( writing_url ):
 
 @app.route('/w/create-writing')
 def create_writing():
+    if 'creator_id' not in session:
+        return redirect('/w')
     return render_template("create-writing.html")
 
 @app.route('/w/save-writing', methods=["POST"])
 def save_writing():
+    if 'creator_id' not in session:
+        return redirect('/w')
     data = {
         "name": request.form["name"],
         "writing": request.form["writing"],

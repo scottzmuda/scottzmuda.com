@@ -14,6 +14,7 @@ jinja2 = "==3.1.2"
 markupsafe = "==2.1.2"
 werkzeug = "==2.2.2"
 ephem = "*"
+flask-bcrypt = "*"
 
 [dev-packages]
 

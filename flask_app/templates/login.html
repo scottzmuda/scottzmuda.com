@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>registration</title>
+    <meta name="description" content="login">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="login">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="../c">
+    <meta property="og:image" content="{{ url_for('static', filename='assets/images/fire.png') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaf.css') }}">
+
+    <meta name="theme-color" content="#464646">
+
+</head>
+<body>
+    <div>
+        <a class="nav-back" href="/">‹</a>
+        <h1>login </h1>
+        {% with messages = get_flashed_messages(category_filter=["login"]) %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endwith %}
+        <div>
+            <form action='/c/log-creator-in' method='post'>
+                <div>
+                    <label for='email'>email:</label>
+                    <div>
+                        <input type='text' name='email' value="{{session.email_login}}" required>
+                    </div>
+                </div>
+                <div>
+                    <label for='password'>password:</label>
+                    <div>
+                        <input type='password' name='password' required>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <button type="submit">login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <p>
+            new to scottzmuda.com? 
+            <a href="/c/registration">create an account</a>
+        </p>
+
+    </div>
+</body>
+</html>

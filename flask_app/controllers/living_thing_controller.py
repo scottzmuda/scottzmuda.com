@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, request
+from flask import render_template, redirect, request, session
 from flask_app.models import living_thing
 
 @app.route('/l')
@@ -41,10 +41,14 @@ def view_living_thing( living_thing_url ):
 
 @app.route('/l/create-living_thing')
 def create_living_thing():
+    if 'creator_id' not in session:
+        return redirect('/l')
     return render_template("create-living_thing.html")
 
 @app.route('/l/save-living_thing', methods=["POST"])
 def save_living_thing():
+    if 'creator_id' not in session:
+        return redirect('/l')
     data = {
         "name": request.form["name"],
         "name_scientific": request.form["name_scientific"],

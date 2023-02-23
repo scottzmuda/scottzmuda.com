@@ -29,7 +29,9 @@
   <div class="content-container">
 
     <a class="nav-back" href="/">‹</a>
+    {% if "creator_id" in session %}
     <a class="nav-create" href="/l/create-living_thing">&#43;&#xfe0e;</a>
+    {% endif %}
     
     <div class="dex-header">
       <div class="dex-header-name">
