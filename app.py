@@ -1,5 +1,6 @@
 from flask_app.controllers import (
     index_controller,
+    creator_controller,
     writing_controller, 
     living_thing_controller,
     error_controller,
