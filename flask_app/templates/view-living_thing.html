@@ -28,7 +28,9 @@
 
             <div class="top">
                 <a class="nav-back" href="/l">‹</a>
-                <a class="nav-create" href="../l/{{living_thing.url_string}}">&#x2699;&#xfe0e;</a>
+                {% if "creator_id" in session %}
+                <a class="nav-create" href="/l/create-living_thing">&#43;&#xfe0e;</a>
+                {% endif %}
                 <h1>{{living_thing.name}}</h1>
                 <em>{{living_thing.description}}</em>
             </div> 

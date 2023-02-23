@@ -29,8 +29,10 @@
   <div class="content-container">
 
     <a class="nav-back" href="/">‹</a>
+    {% if "creator_id" in session %}
     <a class="nav-create" href="/w/create-writing">&#43;&#xfe0e;</a>
-    
+    {% endif %}
+
     <div class="dex-header">
       <div class="dex-header-name">
         <h1>writings</h1>
