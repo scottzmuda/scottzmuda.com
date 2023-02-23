@@ -24,26 +24,39 @@
 </head>
 <body>
     <div class="content-container">
+        <div class="content-grid">
 
-        <a class="nav-back" href="/l">‹</a>
-        <h1>{{living_thing.name}}</h1>
-        <!--<img src="{{ url_for('static', filename='assets/images/leaf.png') }}" alt="a {{living_thing.name}}"><br>-->
-        <!--<em>{{living_thing.name_scientific}}</em><br>-->
-        <em>
-        {{living_thing.sun_based_time}}<br>
-        {{living_thing.season}}<br>
-        {{living_thing.natural_language_latitude}}<br><br>
-        {{living_thing.description}}<br><br>
-        </em>
-        <div id="map"></div>
+            <div class="top">
+                <a class="nav-back" href="/l">‹</a>
+                <h1>{{living_thing.name}}</h1>
+                <em>{{living_thing.description}}</em>
+            </div> 
+            
+            <div class="middle-left">
+                <img class="feature" src="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
+            </div>
+
+            <div class="middle-right">
+                <em>
+                    {{living_thing.sun_based_time}}<br>
+                    {{living_thing.season}}<br>
+                    {{living_thing.natural_language_latitude}}<br>
+                </em>
+                
+            </div>
+
+            <div class="bottom">
+                <div id="map"></div>
+            </div>
+
+        </div>
     </div>
-        <script>
-            var map = L.map('map').setView([{{living_thing.lat_deg}}, {{living_thing.long_deg}}], 5);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-            var marker = L.marker([{{living_thing.lat_deg}}, {{living_thing.long_deg}}]).addTo(map)
-        </script>
-    </article>
+    <script>
+        var map = L.map('map').setView([{{living_thing.lat_deg}}, {{living_thing.long_deg}}], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        var marker = L.marker([{{living_thing.lat_deg}}, {{living_thing.long_deg}}]).addTo(map)
+    </script>
 </body>
 </html>
