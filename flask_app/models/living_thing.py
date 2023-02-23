@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.utilities.time_util import utc_sec_to_date_time, spacetime_to_sun_based_time, spacetime_to_season
-from flask_app.utilities.space_util import lat_to_natural_language
+from flask_app.utilities.space_util import lat_to_natural_language, elev_m_to_elev_ft
 
 class living_thing:
     def __init__( self, data ):
@@ -58,6 +58,10 @@ class living_thing:
     @property
     def natural_language_latitude( self ):
         return lat_to_natural_language(self.lat_deg)
+
+    @property
+    def elev_ft( self ):
+        return elev_m_to_elev_ft(self.elev_m)
     
 
     @classmethod

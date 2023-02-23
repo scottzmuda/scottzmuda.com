@@ -37,4 +37,9 @@ def lat_to_natural_language( lat_deg ):
 		return "temperate region"
 	if nearest_location_index in [2, 3]:
 		return "tropical region"
+
+def elev_m_to_elev_ft( elev_m ):
+	return int(elev_m / Decimal(0.3048))
+
+
 	

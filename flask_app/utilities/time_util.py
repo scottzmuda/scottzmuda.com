@@ -76,10 +76,10 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     times_day_events.append(observer.date - observer.previous_antitransit(sun))
     times_day_events.append(observer.date - observer.previous_setting(sun))
     times_day_events.append(observer.date - observer.previous_rising(sun))
-    times_day_events.append(observer.date - observer.next_transit(sun))
-    times_day_events.append(observer.date - observer.next_antitransit(sun))
-    times_day_events.append(observer.date - observer.next_setting(sun))
-    times_day_events.append(observer.date - observer.next_rising(sun))
+    #times_day_events.append(observer.date - observer.next_transit(sun))
+    #times_day_events.append(observer.date - observer.next_antitransit(sun))
+    #times_day_events.append(observer.date - observer.next_setting(sun))
+    #times_day_events.append(observer.date - observer.next_rising(sun))
 
     #find nearest day event
     nearest_event_index = min(enumerate(times_day_events), key=lambda x: abs(x[1]))[0]
@@ -102,13 +102,13 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
 
     #determine identity of day event
     if nearest_event_index in [0, 4]:
-            return relation_string + "midday"
+            return "evening"
     if nearest_event_index in [1, 5]:
-            return relation_string + "midnight"
+            return "night"
     if nearest_event_index in [2, 6]:
-            return relation_string + "sunset"
+            return "night"
     if nearest_event_index in [3, 7]:
-            return relation_string + "sunrise"
+            return "morning"
 
 def spacetime_to_season(time_s, lat_deg, long_deg, elev_m):
 

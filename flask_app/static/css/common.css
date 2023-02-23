@@ -28,7 +28,7 @@ a{
 }
 
 body{
-    margin: 1em; /*creates space between content container and edge of viewport when width=100%*/
+    margin: .5em; /*creates space between content container and edge of viewport when width=100%*/
 }
 
 div.banner{
@@ -47,7 +47,6 @@ div.banner{
 a.nav-back, a.nav-create{
   font-size: 2em;
   font-weight: 100;
-  text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
 }
