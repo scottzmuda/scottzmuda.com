@@ -5,7 +5,7 @@ from flask_app.models import living_thing
 @app.route('/l')
 @app.route('/l/')
 def living_things():
-    living_things = living_thing.living_thing.get_all()
+    living_things = living_thing.Living_thing.get_all()
     return render_template("index-living_things.html", living_things=living_things)
 
 @app.route('/l/<living_thing_url>')
@@ -21,7 +21,6 @@ def view_living_thing( living_thing_url ):
             living_thing_time_s = living_thing_url[:i]
             break
     
-
     # safety checks for handling our url string
     # just in case someone manually types in a url
     # if living_thing_time_s is still 0 OR if we have a non decimal (0-9) expression
@@ -32,7 +31,7 @@ def view_living_thing( living_thing_url ):
     # else cast numeric string "12345" -> 12345
     living_thing_time_s = int(living_thing_time_s)
 
-    one_living_thing = living_thing.living_thing.get_living_thing_by_time( {"time_s": living_thing_time_s} )
+    one_living_thing = living_thing.Living_thing.get_living_thing_by_time( {"time_s": living_thing_time_s} )
 
     if not one_living_thing:
         return redirect('/l')
@@ -58,5 +57,5 @@ def save_living_thing():
         "elev_m": request.form["elev_m"],
         "time_s": request.form["time_s"]
     }
-    living_thing.living_thing.save( data )
+    living_thing.Living_thing.save( data )
     return redirect('/l/create-living_thing')

@@ -2,7 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.utilities.time_util import utc_sec_to_date_time, spacetime_to_sun_based_time, spacetime_to_season
 from flask_app.utilities.space_util import lat_to_natural_language, elev_m_to_elev_ft
 
-class living_thing:
+class Living_thing:
     def __init__( self, data ):
         self.id = data['id']
         self.name = data['name']
