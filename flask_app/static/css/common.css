@@ -16,7 +16,6 @@ a:link, a:visited {
 }
 
 h1{
-  display: inline;
   line-height: 1.4em; /*might be unnecessary*/
   margin: 0;
   user-select: contain;
