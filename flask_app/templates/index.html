@@ -30,11 +30,10 @@
     <div style="height: 3.375em;"></div>
   -->
     <div class="content-container">
-        <a class="nav-back" href="/">‹</a>
         {% if "creator_id" in session %}
-        <a class="nav-create" href="/c/login" role="button">&#x2295;</a>
+        <a class="nav-create" href="/c/log-creator-out" role="button">&#x2299;&#xFE00;</a>
         {% else %}
-        <a class="nav-create" href="/c/log-creator-out" role="button">&#x2299;</a>
+        <a class="nav-create" href="/c/login" role="button">&#x2295;&#xFE00;</a>
         {% endif %}
       <div class="dex-header">
       <div class="dex-header-name">
