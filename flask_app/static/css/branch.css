@@ -1,41 +1,35 @@
-
-div.dex-header{
-  width: 100%;
-  height: 2.8em;
-  margin-bottom: 1.34em;
+img.content-image{
+	height:5em; /*stops content image from loading too big */
 }
 
-div.dex-header-name{
-  display: inline;
-  float: left;
-  max-width: 100%;
+div.content-image-container{
+	display: inline; /* makes image container behave as inline */
+	float: left; /* not sure why this is needed but width doesn't work if this isn't set */
+	width: 5em; /*preset width of image so text doesn't move when loading */
+	margin: 0 1em 0 0; /* add margin betweeen image and text */
 }
 
-
-div.item{
-  /*white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;*/
-  width: 100%;
-  height: 5em;
-  margin: 1em 0;
-
-}
-div.item-image{
-  display: inline;
-  float: left;
-  height: 5em;
-  width: 5em;
+a.content-name{
+	display: inline;
+ 	float: left; /* not sure why this is needed but width doesn't work if this isn't set */
+	max-width: calc(100% - 5em); /*stop from overflowing content item */
+	margin: 1.8em 0; /* 1.8em equals the item height minus the line-height (all divided by 2) */
 }
 
-div.item-name{
-  display: inline;
-  float: left;
-  max-width: calc(100% - 5em);
-  margin: 1.8em 2em; /* 1.8em equals the item height minus the line-height (all divided by 2) */
+.content-grid{ 
+	display: grid;
+	grid-template-areas:
+		"a"
+		"b";
+	row-gap: 1em;
+}
+.content-grid div.top{
+	grid-area: a;
+}
+.content-grid div.content:first-of-type{
+	grid-area: b;
 }
 
-img.item-image{
-  height:  100%;
+h1{
+	padding: 0 0 0 .25em;
 }
-

@@ -16,6 +16,7 @@ a:link, a:visited {
 }
 
 h1{
+  display: inline;
   line-height: 1.4em; /*might be unnecessary*/
   margin: 0;
   user-select: contain;
@@ -28,7 +29,7 @@ a{
 }
 
 body{
-    margin: 1em; /*creates space between content container and edge of viewport when width=100%*/
+    margin: .5em 1em; /*creates space between content container and edge of viewport when width=100%*/
 }
 
 div.banner{

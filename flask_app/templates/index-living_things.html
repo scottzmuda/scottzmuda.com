@@ -26,27 +26,27 @@
   -->
 </head>
 <body>
-  <div class="content-container">
+ <div class="content-container">
+  <div class="content-grid">
 
-    <a class="nav-back" href="/">‹</a>
-    {% if "creator_id" in session %}
-    <a class="nav-create" href="/l/create-living_thing">&#43;&#xfe0e;</a>
-    {% endif %}
-    
-    <div class="dex-header">
-      <div class="dex-header-name">
-        <h1>living things</h1>
-      </div>
+    <div class="top">
+      <a class="nav-back" href="/">‹</a>
+      <h1>living things</h1>
+      {% if "creator_id" in session %}
+      <a class="nav-create" href="/l/create-living_thing">&#43;&#xfe0e;</a>
+      {% endif %}
     </div>
 
     {% for living_thing in living_things %}
-    <div class="item">
-      <div class="item-image">
-        <img class="item-image" src="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
+    <div class="content">
+      <div class="content-image-container">
+        <img class="content-image" src="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
       </div>
-      <div class="item-name">
-        <a href='../l/{{living_thing.url_string}}'>{{living_thing.name}}</a>
-      </div>
+      <a class="content-name" href='../l/{{living_thing.url_string}}'>{{living_thing.name}}</a>
     </div>
-    {% endfor %}
-  </body>
+    {% endfor %} 
+
+  </div>
+</div>   
+</body>
+</html>
