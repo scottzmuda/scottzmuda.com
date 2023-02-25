@@ -25,38 +25,33 @@
     -->
   </head>
   <body>
-    <!--
-    <div class="banner">feb-31: .html extensions gone 👻</div>
-    <div style="height: 3.375em;"></div>
-  -->
-    <div class="content-container">
-        {% if "creator_id" in session %}
-        <a class="nav-create" href="/c/log-creator-out" role="button">&#x2299;&#xFE00;</a>
-        {% else %}
-        <a class="nav-create" href="/c/login" role="button">&#x2295;&#xFE00;</a>
-        {% endif %}
-      <div class="dex-header">
-      <div class="dex-header-name">
-      <h1>home</h1>
-    </div>
-  </div>
-      <div class="item">
-        <div class="item-image">
-          <img class="item-image" src="{{ url_for('static', filename='assets/images/fire.png') }}">
-        </div>
-        <div class="item-name">
-          <a href='/w'>writings</a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-image">
-          <img class="item-image" src="{{ url_for('static', filename='assets/images/leaf.png') }}">
-        </div>
-        <div class="item-name">
-          <a href='/l'>living things</a>
-        </div>
-      </div>
-    </div>
-  </body>
+   <div class="content-container">
+     <div class="content-grid">
 
-  </html>
+       <div class="top">
+         <h1>home</h1>
+         {% if "creator_id" in session %}
+         <a class="nav-create" href="/c/log-creator-out" role="button">&#x2299;&#xFE00;</a>
+         {% else %}
+         <a class="nav-create" href="/c/login" role="button">&#x2295;&#xFE00;</a>
+         {% endif %}
+       </div>
+
+       <div class="content">
+         <div class="content-image-container">
+           <img class="content-image" src="{{ url_for('static', filename='assets/images/fire.png') }}">
+         </div>
+         <a class="content-name" href='/w'>writings</a>
+       </div>
+
+       <div class="content">
+         <div class="content-image-container">
+           <img class="content-image" src="{{ url_for('static', filename='assets/images/leaf.png') }}">
+         </div>
+         <a class="content-name" href='/l'>living things</a>
+       </div>
+
+     </div>
+   </div>
+ </body>
+ </html>
