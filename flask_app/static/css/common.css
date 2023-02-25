@@ -44,15 +44,22 @@ div.banner{
   align-items: center;
 }
 
-a.nav-back, a.nav-create{
+a.nav-back, a.nav-create, a.nav-login, a.nav-logout{
   font-size: 2em;
   font-weight: 100;
   user-select: none;
   -webkit-user-select: none;
 }
 
-a.nav-create{
+a.nav-create, a.nav-login, a.nav-logout{
     float: right;
+}
+
+a.nav-login{
+  color: rgb(48, 209, 88);
+}
+a.nav-logout{
+  color: rgb(255, 69, 58);
 }
 
 div.content-container{
