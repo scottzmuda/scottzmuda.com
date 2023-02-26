@@ -1,5 +1,6 @@
 from time import gmtime, strftime
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+from calendar import timegm
 import ephem
 import math
 
@@ -56,6 +57,44 @@ def format_hours_remove_leading_zero( hours_str ):
     hours_int = int(hours_str)
 
     return f"{hours_int}"
+
+def date_time_offset_to_utc_sec( datetime_str , offset_minutes ):
+    print(f'datetime_str {datetime_str}')
+    if offset_minutes.isdecimal():
+        # flip the sign since method for calculating offset minutes is opposite
+        # of the convention used for python datetime.timezone
+        offset_minutes = -int(offset_minutes)
+    else:
+        offset_minutes = 0
+
+    utc_offset = timezone(timedelta(minutes=offset_minutes))
+
+    # construct a datetime object that is unaware of its timezone
+    # this comes directly from the raw html form and is parsed
+    # according to the following datetime code
+    naive_datetime_object = datetime.strptime(datetime_str, '%Y-%m-%dT%H:%M')
+
+    # now construct a new datetime object, this time passing it tzinfo
+    aware_datetime_object = datetime(
+        year = naive_datetime_object.year,
+        month = naive_datetime_object.month,
+        day = naive_datetime_object.day,
+        hour = naive_datetime_object.hour,
+        minute = naive_datetime_object.minute,
+        second = naive_datetime_object.second,
+        tzinfo = utc_offset
+    )
+
+    # generate a tuple of data, now converted to utc
+    time_tuple = aware_datetime_object.utctimetuple()
+
+    # convert this to seconds using the timegm function
+    utc_seconds = timegm(time_tuple)
+
+    return utc_seconds
+
+
+
 
 def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     
