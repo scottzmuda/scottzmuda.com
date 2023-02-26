@@ -66,14 +66,14 @@ def save_living_thing():
     
     # loop for 100 tries, else flash message to user to choose new time
     count = 0
-    while count < 3:
+    while count < 100:
         # query to confirm we do not already have an entry for same utc time
         if not living_thing.Living_thing.get_living_thing_by_time({'time_s': check_date_time}):
             break
         check_date_time += 1
         count += 1
     
-    if count >= 3:
+    if count >= 100:
         flash('database is full for that timestamp, please select a different timestamp for your post', "create_living_thing")
         session['name'] = request.form['name']
         session['name_scientific'] = request.form['name_scientific']
