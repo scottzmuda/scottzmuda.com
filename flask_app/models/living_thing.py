@@ -1,8 +1,15 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import flash
 from flask_app.utilities.time_util import utc_sec_to_date_time, spacetime_to_sun_based_time, spacetime_to_season
 from flask_app.utilities.space_util import lat_to_natural_language, elev_m_to_elev_ft
+from flask_app.utilities.num_util import test_valid_floating_point
+import re
+from datetime import datetime
 
-class living_thing:
+name_regex = re.compile(r'^[a-zA-Z\-\s]+$')
+name_scientific_regex = re.compile(r'^[a-zA-Z\-\s]+$')
+description_regex = re.compile(r'^[a-zA-Z\-\.\?\"\'!,\s]+$')
+class Living_thing:
     def __init__( self, data ):
         self.id = data['id']
         self.name = data['name']
@@ -39,8 +46,8 @@ class living_thing:
 
     @classmethod
     def save( cls, data ):
-        query_string = "INSERT INTO living_things ( name, name_scientific, description, lat_deg, long_deg, elev_m, time_s ) \
-        VALUES (%(name)s, %(name_scientific)s, %(description)s, %(lat_deg)s, %(long_deg)s, %(elev_m)s, %(time_s)s);"
+        query_string = "INSERT INTO living_things ( creator_id, name, name_scientific, description, lat_deg, long_deg, elev_m, time_s ) \
+        VALUES (%(creator_id)s, %(name)s, %(name_scientific)s, %(description)s, %(lat_deg)s, %(long_deg)s, %(elev_m)s, %(time_s)s);"
         return connectToMySQL().query_db(query_string, data)
 
     @property
@@ -93,3 +100,99 @@ class living_thing:
         else:
             living_thing = None
         return living_thing
+    
+    @staticmethod
+    def validate_living_thing_form(data):
+        # this is slightly hacky
+        # most languages support a concept called 'pass by reference'
+        # which means that when a variable is passed to a function
+        # what is really happening is that a 'pointer' variable is being passed
+        # so if the value of that variable is modified by the function,
+        # then the original variable is also modified
+        # python language handles variables differently, so I'm using the following dictionary
+        # to 'hack' my way around this. Thus making the code simpler to follow.
+        is_valid = {'pass_by_reference': True}
+
+        Living_thing.validate_name(data['name'], is_valid)
+        Living_thing.validate_name_scientific(data['name_scientific'], is_valid)
+        Living_thing.validate_description(data['description'], is_valid)
+        Living_thing.validate_long_deg(data['long_deg'], is_valid)
+        Living_thing.validate_lat_deg(data['lat_deg'], is_valid)
+        Living_thing.validate_elev_m(data['elev_m'], is_valid)
+        Living_thing.validate_date_time(data['date_time'], is_valid)
+
+        return is_valid['pass_by_reference']
+    
+    @staticmethod
+    def validate_name(form_name, is_valid):
+        if not name_regex.match(form_name):
+            flash("name must contain only characters a-z, A-Z, -", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+
+    @staticmethod
+    def validate_name_scientific(form_name_scientific, is_valid):
+        if not name_scientific_regex.match(form_name_scientific):
+            flash("scientific name must contain only characters a-z, A-Z, -", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+
+    @staticmethod
+    def validate_description(form_description, is_valid):
+        if not description_regex.match(form_description):
+            flash("description must contain only characters a-z, A-Z, 0-9, - , \' \" . ? !", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+
+    @staticmethod
+    def validate_long_deg(form_long_deg, is_valid):
+        if not test_valid_floating_point(form_long_deg):
+            flash("longitude must be a number", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+            return
+        
+        long_deg_float = float(form_long_deg)
+
+        if long_deg_float > 180:
+            flash("longitude cannot be greater than 180 degrees", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+        elif long_deg_float < -180:
+            flash("longitude cannot be less than -180 degrees", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+
+    @staticmethod
+    def validate_lat_deg(form_lat_deg, is_valid):
+        if not test_valid_floating_point(form_lat_deg):
+            flash("latitude must be a number", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+            return
+        
+        lat_deg_float = float(form_lat_deg)
+
+        if lat_deg_float > 90:
+            flash("latitude cannot be greater than 90 degrees", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+        elif lat_deg_float < -90:
+            flash("latitude cannot be less than -90 degrees", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+
+    @staticmethod
+    def validate_elev_m(form_elev_m, is_valid):
+        if not test_valid_floating_point(form_elev_m):
+            flash("elevation must be a number", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+            return
+        
+        elev_m_float = float(form_elev_m)
+
+        if elev_m_float > 15000:
+            flash("elevation cannot be greater than 15,000 meters", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+        elif elev_m_float < -15000:
+            flash("elevation cannot be less than -15,000 meters", "create_living_thing")
+            is_valid['pass_by_reference'] = False
+
+    @staticmethod
+    def validate_date_time(form_date_time, is_valid):
+        try:
+            datetime.strptime(form_date_time, '%Y-%m-%dT%H:%M')
+        except:
+            flash("date must be a valid date-time format", "create_living_thing")
+            is_valid['pass_by_reference'] = False
