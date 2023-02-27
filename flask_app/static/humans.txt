@@ -1,15 +1,6 @@
 # humanstxt.org/
-# The humans responsible & technology colophon
 
-# TEAM
-
-    scott -- owner -- https://www.twitter.com/scottzmuda
-    Owen -- researcher -- https://www.twitter.com/oengstrom
-    cz -- dev -- 
-
-# THANKS
-
-# TECHNOLOGY COLOPHON
-
-    CSS3, HTML5
-    Apache Server Configs, jQuery, Modernizr, Normalize.css
+/* TEAM */
+    scott   twitter.com/scottzmuda  führer
+    Owen    twitter.com/oengstrom   resident hebrew language guy
+    Caleb   twitter.com/c_zmud      actually made the website
