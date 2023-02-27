@@ -4,10 +4,10 @@
 # TEAM
 
     scott -- owner -- https://www.twitter.com/scottzmuda
+    Owen -- researcher -- https://www.twitter.com/oengstrom
+    cz -- dev -- 
 
 # THANKS
-
-    cz -- developer
 
 # TECHNOLOGY COLOPHON
 
