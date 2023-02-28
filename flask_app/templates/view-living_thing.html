@@ -38,7 +38,7 @@
             <div class="middle-left">
                 <img class="feature" src="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
             </div>
-            
+
             <div class="bottom-left">
                 <em>
                     {{living_thing.season}}<br>
@@ -57,7 +57,7 @@
         </div>
     </div>
     <script>
-        var map = L.map('map').setView([{{living_thing.lat_deg}}, {{living_thing.long_deg}}], 5);
+        var map = L.map('map',{zoomControl: false, attributionControl: false}).setView([{{living_thing.lat_deg}}, {{living_thing.long_deg}}], 5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
