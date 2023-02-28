@@ -19,6 +19,9 @@ img.feature{
 .content-grid div.top{
 	padding: .5em;
 	grid-area: a;
+  border-image: linear-gradient(to right, #464646, #464646, #393939, #464646, #464646) 30;
+  border-width: 0 0 1px 0;
+  border-style: solid;
 }
 .content-grid div.middle-left{
 	padding: .5em;
@@ -27,10 +30,24 @@ img.feature{
 .content-grid div.middle-right{
 	padding: .5em;
 	grid-area: c;
+	border-image: linear-gradient(to top right, #393939, #464646, #464646) 30;
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
 }
 .content-grid div.bottom-left{
 	padding: .5em;
 	grid-area: d;
+	border-image: linear-gradient(to bottom left, #393939, #464646, #464646) 30;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
 	text-align: right;
 }
 .content-grid div.bottom-right{
