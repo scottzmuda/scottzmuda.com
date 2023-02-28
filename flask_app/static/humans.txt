@@ -2,5 +2,5 @@
 
 /* TEAM */
     scott   twitter.com/scottzmuda  führer
-    Owen    twitter.com/oengstrom   resident hebrew language guy
     Caleb   twitter.com/c_zmud      actually made the website
+    Owen    twitter.com/oengstrom   resident hebrew language guy
