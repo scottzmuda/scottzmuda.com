@@ -29,7 +29,7 @@ a.content-name{
 	grid-area: b;
 }
 div.content{
-	padding: .5em 0;
+	padding: .5em;
 	border-image: linear-gradient(to right, #464646, #393939, #464646) 30;
 	border-width: 1px 0 0 0;
 	border-style: solid;

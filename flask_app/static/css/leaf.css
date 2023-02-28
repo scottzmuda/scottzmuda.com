@@ -5,32 +5,35 @@ img.feature{
 }
 
 #map{
-	height: 12em;
-}
-
-div{
-	margin: 0 0 1em 0;
+	height: 20em;
 }
 
 .content-grid{ 
 	display: grid;
-	grid-template-columns: 21fr 13fr;
+	grid-template-columns: 13fr 8fr 13fr;
 	grid-template-areas:
-		"a a"
-		"b c"
-		"d d";
-	column-gap: 1em;
+		"a a a"
+		"b b c"
+		"d e e";
 }
-.content-grid div.top{ 
+.content-grid div.top{
+	padding: .5em;
 	grid-area: a;
 }
-.content-grid div.middle-left:first-of-type{
+.content-grid div.middle-left{
+	padding: .5em;
 	grid-area: b;
 }
-.content-grid div.middle-right:last-of-type{
+.content-grid div.middle-right{
+	padding: .5em;
 	grid-area: c;
-	padding: 1em;
 }
-.content-grid div.bottom{
+.content-grid div.bottom-left{
+	padding: .5em;
 	grid-area: d;
+	text-align: right;
+}
+.content-grid div.bottom-right{
+	padding: .5em;
+	grid-area: e;
 }
