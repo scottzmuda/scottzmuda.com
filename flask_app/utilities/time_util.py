@@ -134,11 +134,6 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     (times_day_events[index_now][0]-times_day_events[index_now-1][0]) / \
     (times_day_events[index_now+1][0]-times_day_events[index_now-1][0]) \
 
-    print(times_day_events[index_now-1][0])
-    print(times_day_events[index_now][0])
-    print(times_day_events[index_now+1][0])
-    print(event_progress)
-
     if event_progress < (1/3):
         return "early " + times_day_events[index_now-1][1]
     elif event_progress > (2/3):
