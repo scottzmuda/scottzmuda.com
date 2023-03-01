@@ -3,6 +3,7 @@ from datetime import datetime, timedelta, timezone
 from calendar import timegm
 import ephem
 import math
+import bisect
 
 
 def utc_sec_to_date_time( utc_sec ):
@@ -93,9 +94,6 @@ def date_time_offset_to_utc_sec( datetime_str , offset_minutes ):
 
     return utc_seconds
 
-
-
-
 def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     
     #initialize observer
@@ -109,45 +107,44 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     sun = ephem.Sun()
     sun.compute(observer)
 
-    #get times of previous and next day events (still need to account for exceptions)
+    #place times of previous and next day events in sorted array
+    sun_event_functions = [
+    (observer.previous_transit, "evening"),
+    (observer.previous_antitransit, "night"),
+    (observer.previous_setting, "night"),
+    (observer.previous_rising, "morning"),
+    (observer.next_transit, "evening"),
+    (observer.next_antitransit, "night"),
+    (observer.next_setting, "night"),
+    (observer.next_rising, "morning")]
+
     times_day_events = []
-    times_day_events.append(observer.date - observer.previous_transit(sun))
-    times_day_events.append(observer.date - observer.previous_antitransit(sun))
-    times_day_events.append(observer.date - observer.previous_setting(sun))
-    times_day_events.append(observer.date - observer.previous_rising(sun))
-    #times_day_events.append(observer.date - observer.next_transit(sun))
-    #times_day_events.append(observer.date - observer.next_antitransit(sun))
-    #times_day_events.append(observer.date - observer.next_setting(sun))
-    #times_day_events.append(observer.date - observer.next_rising(sun))
 
-    #find nearest day event
-    nearest_event_index = min(enumerate(times_day_events), key=lambda x: abs(x[1]))[0]
+    for sun_event_function, event_string in sun_event_functions:
+        event_time = sun_event_function(sun)
+        bisect.insort_left(times_day_events, [event_time, event_string])
 
-    #find magnitude of time delta
-    if abs(times_day_events[nearest_event_index])*24 < 0.1:
-        magnitude_string = "right " #less than 6 minutes
-    elif abs(times_day_events[nearest_event_index])*24 < 1:
-        magnitude_string = "a litte bit " #less than 1 hour
-    elif abs(times_day_events[nearest_event_index])*24 < 3:
-        magnitude_string = "a good bit " #less than 3 hours
+    time_now = [observer.date, "now"]
+    index_now = bisect.bisect_left(times_day_events, time_now)
+
+    times_day_events.insert(index_now, time_now)
+
+    #return progress + identity of event
+    event_progress = \
+    (times_day_events[index_now][0]-times_day_events[index_now-1][0]) / \
+    (times_day_events[index_now+1][0]-times_day_events[index_now-1][0]) \
+
+    print(times_day_events[index_now-1][0])
+    print(times_day_events[index_now][0])
+    print(times_day_events[index_now+1][0])
+    print(event_progress)
+
+    if event_progress < (1/3):
+        return "early " + times_day_events[index_now-1][1]
+    elif event_progress > (2/3):
+        return "late " + times_day_events[index_now-1][1]
     else:
-        magnitude_string = "a good while " #more than 3 hours     
-
-    #find sign of time delta
-    if times_day_events[nearest_event_index] > 0:
-        relation_string = "after "
-    else:
-        relation_string = "before "
-
-    #determine identity of day event
-    if nearest_event_index in [0, 4]:
-            return "evening"
-    if nearest_event_index in [1, 5]:
-            return "night"
-    if nearest_event_index in [2, 6]:
-            return "night"
-    if nearest_event_index in [3, 7]:
-            return "morning"
+        return "mid " + times_day_events[index_now-1][1]  
 
 def spacetime_to_season(time_s, lat_deg, long_deg, elev_m):
 
