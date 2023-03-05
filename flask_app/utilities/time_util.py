@@ -107,16 +107,47 @@ def spacetime_to_sun_based_time(time_s, lat_deg, long_deg, elev_m):
     sun = ephem.Sun()
     sun.compute(observer)
 
+    #define functions for previous and next dawn and dusk
+    def previous_astronomical_dawn(sun_object):
+        horizon_original = observer.horizon
+        observer.horizon = '-6' #-6=civil twilight, -12=nautical, -18=astronomical
+        time_event = observer.previous_rising(sun, use_center=True) #Begin civil twilight
+        observer.horizon = horizon_original
+        return time_event
+
+    def previous_astronomical_dusk(sun_object):
+        horizon_original = observer.horizon
+        observer.horizon = '-6' #-6=civil twilight, -12=nautical, -18=astronomical
+        time_event = observer.previous_setting(sun, use_center=True) #Begin civil twilight
+        observer.horizon = horizon_original
+        return time_event
+
+    def next_astronomical_dawn(sun_object):
+        horizon_original = observer.horizon
+        observer.horizon = '-6' #-6=civil twilight, -12=nautical, -18=astronomical
+        time_event = observer.next_rising(sun, use_center=True) #Begin civil twilight
+        observer.horizon = horizon_original
+        return time_event
+
+    def next_astronomical_dusk(sun_object):
+        horizon_original = observer.horizon
+        observer.horizon = '-6' #-6=civil twilight, -12=nautical, -18=astronomical
+        time_event = observer.next_setting(sun, use_center=True) #Begin civil twilight
+        observer.horizon = horizon_original
+        return time_event
+
     #place times of previous and next day events in sorted array
     sun_event_functions = [
-    (observer.previous_transit, "evening"),
-    (observer.previous_antitransit, "night"),
-    (observer.previous_setting, "night"),
+    (previous_astronomical_dawn, "dawn"),
     (observer.previous_rising, "morning"),
+    (observer.previous_transit, "evening"),
+    (observer.previous_setting, "dusk"),
+    (previous_astronomical_dusk, "night"),
+    (next_astronomical_dawn, "dawn"),
+    (observer.next_rising, "morning"),
     (observer.next_transit, "evening"),
-    (observer.next_antitransit, "night"),
-    (observer.next_setting, "night"),
-    (observer.next_rising, "morning")]
+    (observer.next_setting, "dusk"),
+    (next_astronomical_dusk, "night")]
 
     times_day_events = []
 
@@ -150,34 +181,49 @@ def spacetime_to_season(time_s, lat_deg, long_deg, elev_m):
     observer.elevation = elev_m
     observer.date = ephem.Date(datetime.utcfromtimestamp(time_s - 1738800)) #+20 days - 1/2 season
 
-    #get times of previous solstices and equinoxes
-    times_season_events = []
-    times_season_events.append(observer.date - ephem.previous_vernal_equinox(observer.date))
-    times_season_events.append(observer.date - ephem.previous_summer_solstice(observer.date))
-    times_season_events.append(observer.date - ephem.previous_autumnal_equinox(observer.date))
-    times_season_events.append(observer.date - ephem.previous_winter_solstice(observer.date))
-
-    #find nearest season event
-    nearest_event_index = min(enumerate(times_season_events), key=lambda x: x[1])[0]
-
-    #find magnitude of time delta
-    if abs(times_season_events[nearest_event_index]) < 365/12: 
-        magnitude_string = "early " #less than a third of a season
-    elif abs(times_season_events[nearest_event_index]) < 365/6: 
-        magnitude_string = "mid " #less than two thirds of a season
+    if observer.lat >=0:
+        season_event_functions = [
+        (ephem.previous_vernal_equinox, "spring"),
+        (ephem.previous_summer_solstice, "summer"),
+        (ephem.previous_autumnal_equinox, "autumn"),
+        (ephem.previous_winter_solstice, "winter"),
+        (ephem.next_vernal_equinox, "spring"),
+        (ephem.next_summer_solstice, "summer"),
+        (ephem.next_autumnal_equinox, "autumn"),
+        (ephem.next_winter_solstice, "winter")]
     else:
-        magnitude_string = "late " #more than two thirds of a season
+        season_event_functions = [
+        (ephem.previous_vernal_equinox, "autumn"),
+        (ephem.previous_summer_solstice, "winter"),
+        (ephem.previous_autumnal_equinox, "spring"),
+        (ephem.previous_winter_solstice, "summer"),
+        (ephem.next_vernal_equinox, "autumn"),
+        (ephem.next_summer_solstice, "winter"),
+        (ephem.next_autumnal_equinox, "spring"),
+        (ephem.next_winter_solstice, "summer")]
 
+    times_season_events = []
 
-    #determine identity of season event
-    if nearest_event_index == 0:
-        return magnitude_string + "spring"
-    if nearest_event_index == 1:
-        return magnitude_string + "summer"
-    if nearest_event_index == 2:
-        return magnitude_string + "autumn"
-    if nearest_event_index == 3:
-        return magnitude_string + "winter"
+    for season_event_function, event_string in season_event_functions:
+        event_time = season_event_function(observer.date)
+        bisect.insort_left(times_season_events, [event_time, event_string])
+
+    time_now = [observer.date, "now"]
+    index_now = bisect.bisect_left(times_season_events, time_now)
+
+    times_season_events.insert(index_now, time_now)
+
+    #return progress + identity of event
+    event_progress = \
+    (times_season_events[index_now][0]-times_season_events[index_now-1][0]) / \
+    (times_season_events[index_now+1][0]-times_season_events[index_now-1][0]) \
+
+    if event_progress < (1/3):
+        return "early " + times_season_events[index_now-1][1]
+    elif event_progress > (2/3):
+        return "late " + times_season_events[index_now-1][1]
+    else:
+        return "mid " + times_season_events[index_now-1][1]  
 
 
 
