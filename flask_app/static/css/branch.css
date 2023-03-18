@@ -25,6 +25,7 @@ a.content-name{
 .content-grid div.top{
 	grid-area: a;
 }
+
 .content-grid div.content:first-of-type{
 	grid-area: b;
 }

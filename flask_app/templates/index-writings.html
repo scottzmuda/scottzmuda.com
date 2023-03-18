@@ -40,7 +40,7 @@
     {% for writing in writings %}
     <div class="content">
       <div class="content-image-container">
-        <img class="content-image" src="{{ url_for('static', filename='assets/images/fire.png') }}">
+        <img class="content-image" src="{{ url_for('static', filename='i/') }}{{writing.url_string}}.jpeg">
       </div>
       <a class="content-name" href='../w/{{writing.url_string}}'>{{writing.time_s}}</a>
     </div>

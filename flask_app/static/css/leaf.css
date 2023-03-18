@@ -19,13 +19,14 @@ img.feature{
 .content-grid div.top{
 	padding: .5em;
 	grid-area: a;
-  border-image: linear-gradient(to right, #464646, #464646, #393939, #464646, #464646) 30;
-  border-width: 0 0 1px 0;
-  border-style: solid;
+ 	border-image: linear-gradient(to right, #464646, #464646, #393939, #464646, #464646) 30;
+ 	border-width: 0 0 1px 0;
+  	border-style: solid;
 }
 .content-grid div.middle-left{
 	padding: .5em;
 	grid-area: b;
+	aspect-ratio: 1/1;
 }
 .content-grid div.middle-right{
 	padding: .5em;

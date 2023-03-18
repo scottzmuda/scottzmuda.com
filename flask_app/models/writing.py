@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.utilities.time_util import utc_sec_to_date_time
+from flask import Markup
 
 class Writing:
     def __init__( self, data ):
@@ -8,7 +9,7 @@ class Writing:
         self.description = data['description']
         self.time_s = data['time_s']
 
-        self.writing = data['writing']
+        self.writing = Markup(data['writing'].replace('\n', '<br>'))
 
         self.createdon_utc = data['createdon_utc']
         self.modifiedon_utc = data['modifiedon_utc']

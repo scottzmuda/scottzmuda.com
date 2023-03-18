@@ -5,17 +5,16 @@ import bisect
 def lat_to_natural_language( lat_deg ):
 
 	latitude_regions = [
-	(Decimal(-90.0), "antarctic"),
-	(Decimal(-66.5), "subantarctic"),
-	(Decimal(-55.0), "temperate south"),
-	(Decimal(-35.0), "subtropical south"),
-	(Decimal(-23.5), "tropical south"),
-	(Decimal(00.0), "tropical north"),
-	(Decimal(23.5), "subtropical north"),
-	(Decimal(35.0), "temperate north"),
-	(Decimal(55.0), "subarctic"),
-	(Decimal(66.5), "arctic"),
-	(Decimal(90.0), "beyond the arctic")]
+	(Decimal(-90.0), "polar"),
+	(Decimal(-66.5), "subpolar"),
+	(Decimal(-55.0), "temperate"),
+	(Decimal(-35.0), "subtropical"),
+	(Decimal(-23.5), "tropical"),
+	(Decimal(23.5), "subtropical"),
+	(Decimal(35.0), "temperate"),
+	(Decimal(55.0), "subpolar"),
+	(Decimal(66.5), "polar"),
+	(Decimal(90.0), "beyond polar")]
 
 	latitude_regions_ordered = []
 
