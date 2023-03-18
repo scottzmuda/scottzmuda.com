@@ -9,7 +9,7 @@
     <meta property="og:title" content="{{living_thing.name}}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="../l/">
-    <meta property="og:image" content="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
+    <meta property="og:image" content="{{ url_for('static', filename='i/' ~ living_thing.url_string ~ '.jpeg', _external=True) }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
