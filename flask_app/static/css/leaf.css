@@ -5,7 +5,7 @@ img.feature{
 }
 
 #map{
-	height: 20em;
+	height: calc(100% - 1.4em);
 }
 
 .content-grid{ 
@@ -54,4 +54,5 @@ img.feature{
 .content-grid div.bottom-right{
 	padding: .5em;
 	grid-area: e;
+	aspect-ratio: 1/1;
 }

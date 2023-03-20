@@ -12,19 +12,24 @@ description_regex = re.compile(r'^[a-zA-Z\-\.\?\"\'!,\s]+$')
 class Living_thing:
     def __init__( self, data ):
         self.id = data['id']
-        self.name = data['name']
+        self.species_id = data['species_id']
+        self.taxon_id = data['taxon_id']        
         self.image = data['image']
         self.description = data['description']
+        
         self.time_s = data['time_s']
-
         self.lat_deg = data['lat_deg']
         self.long_deg = data['long_deg']
         self.elev_m = data['elev_m']
-        self.name_scientific = data['name_scientific']
+
         
         self.createdon_utc = data['createdon_utc']
         self.modifiedon_utc = data['modifiedon_utc']
-    
+
+        self.name = data['name']    
+        self.name_scientific = data['name_scientific']
+
+
     # in python OOP, there is something called a property, which defines
     # an attribute of the class object based on other attributes
     # the below property generates a correctly formatted url string for us

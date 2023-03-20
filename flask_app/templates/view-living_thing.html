@@ -2,11 +2,11 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
-    <title>{{living_thing.name}}</title>
-    <meta name="description" content="{{living_thing.description}}">
+    <title>{{species.name}}</title>
+    <meta name="description" content="{{species.description}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:title" content="{{living_thing.name}}">
+    <meta property="og:title" content="{{species.name}}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="../l/">
     <meta property="og:image" content="{{ url_for('static', filename='i/' ~ living_thing.url_string ~ '.jpeg', _external=True) }}">
@@ -31,15 +31,23 @@
                 {% if "creator_id" in session %}
                 <a class="nav-create" href="/l/create-living_thing">&#43;&#xfe0e;</a>
                 {% endif %}
-                <h1>{{living_thing.name}}</h1>
-                <em>{{living_thing.description}}</em>
+                <h1>{{species.name}}</h1>
+                <em>{{species.description}}</em>
             </div> 
 
             <div class="middle-left">
                 <img class="feature" src="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
             </div>
             <div class="middle-right">
-                <em></em>
+
+                <em>
+                    {{taxon.name}}
+                    <!--
+                    {% for taxon in taxonomy %}
+                     {{ taxon.name }}<br>
+                    {% endfor %}
+                    -->
+                </em>
             </div>
 
             <div class="bottom-left">
