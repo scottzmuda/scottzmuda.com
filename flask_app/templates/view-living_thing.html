@@ -19,8 +19,8 @@
     <meta name="theme-color" content="#464646">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="">
-    </script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="{{ url_for('static', filename='js/leaflet-providers.js') }}"></script>
 </head>
 <body>
     <div class="content-container">
@@ -68,11 +68,27 @@
         </div>
     </div>
     <script>
-        var map = L.map('map',{zoomControl: false, attributionControl: false}).setView([{{living_thing.lat_deg}}, {{living_thing.long_deg}}], 5);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        var marker = L.marker([{{living_thing.lat_deg}}, {{living_thing.long_deg}}]).addTo(map)
+        var map = L.map('map',{
+                zoomControl: false,
+                attributionControl: false, 
+                dragging: true,
+                scrollWheelZoom: true, 
+                center: [{{living_thing.lat_deg}}, {{living_thing.long_deg}}],
+                zoom: 15
+            });
+
+        L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+
+        var mapMarker = L.icon({
+            iconUrl: '{{ url_for('static', filename='assets/images/map-marker.png') }}',
+            iconSize: [50, 50],
+            iconAnchor: [25, 25],
+            popupAnchor: [-3, -76]
+});
+
+
+        var marker = L.marker([{{living_thing.lat_deg}}, {{living_thing.long_deg}}], {icon: mapMarker}).addTo(map)
+
     </script>
 </body>
 </html>
