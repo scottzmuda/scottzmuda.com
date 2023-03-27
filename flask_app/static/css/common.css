@@ -22,6 +22,10 @@ h1{
   -webkit-user-select: text;
 }
 
+a > h1 {
+  color: white; /* trying out using the page header as the back navigation link... sacrifices intuitiveness for simplicity */
+}
+
 a{
   user-select: contain;
   -webkit-user-select: text;
