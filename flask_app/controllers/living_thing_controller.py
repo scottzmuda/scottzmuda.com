@@ -53,9 +53,9 @@ def save_living_thing():
     print(request.form)
 
     if not living_thing.Living_thing.validate_living_thing_form(request.form):
-        session['name'] = request.form['name']
-        session['name_scientific'] = request.form['name_scientific']
-        session['description'] = request.form['description']
+        #session['name'] = request.form['name']
+        #session['name_scientific'] = request.form['name_scientific']
+        #session['description'] = request.form['description']
         session['lat_deg'] = request.form['lat_deg']
         session['long_deg'] = request.form['long_deg']
         session['elev_m'] = request.form['elev_m']
@@ -75,9 +75,9 @@ def save_living_thing():
     
     if count >= 100:
         flash('database is full for that timestamp, please select a different timestamp for your post', "create_living_thing")
-        session['name'] = request.form['name']
-        session['name_scientific'] = request.form['name_scientific']
-        session['description'] = request.form['description']
+        #session['name'] = request.form['name']
+        #session['name_scientific'] = request.form['name_scientific']
+        #session['description'] = request.form['description']
         session['lat_deg'] = request.form['lat_deg']
         session['long_deg'] = request.form['long_deg']
         session['elev_m'] = request.form['elev_m']
@@ -86,9 +86,9 @@ def save_living_thing():
 
     data = {
         "creator_id": session['creator_id'],
-        "name": request.form['name'],
-        "name_scientific": request.form['name_scientific'],
-        "description": request.form['description'],
+        #"name": request.form['name'],
+        #"name_scientific": request.form['name_scientific'],
+        #"description": request.form['description'],
         "lat_deg": request.form['lat_deg'],
         "long_deg": request.form['long_deg'],
         "elev_m": request.form['elev_m'],

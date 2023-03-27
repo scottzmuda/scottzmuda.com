@@ -15,7 +15,6 @@ class Living_thing:
         self.id = data['id']
         self.taxon_id = data['taxon_id']        
         self.image = data['image']
-        self.description = data['description']
         
         self.time_s = data['time_s']
         self.lat_deg = data['lat_deg']
@@ -29,7 +28,7 @@ class Living_thing:
             'id': data['s.id'],
             'name': data['name'],
             'name_definite': data['name_definite'],
-            'description': data['s.description']
+            'description': data['description']
             })
 
 
@@ -54,8 +53,8 @@ class Living_thing:
 
     @classmethod
     def save( cls, data ):
-        query_string = "INSERT INTO living_things ( creator_id, description, lat_deg, long_deg, elev_m, time_s ) \
-        VALUES (%(creator_id)s, %(description)s, %(lat_deg)s, %(long_deg)s, %(elev_m)s, %(time_s)s);"
+        query_string = "INSERT INTO living_things ( creator_id, lat_deg, long_deg, elev_m, time_s ) \
+        VALUES (%(creator_id)s, %(lat_deg)s, %(long_deg)s, %(elev_m)s, %(time_s)s);"
         return connectToMySQL().query_db(query_string, data)
     
 
@@ -148,11 +147,11 @@ class Living_thing:
     #        flash("scientific name must contain only characters a-z, A-Z, -", "create_living_thing")
     #        is_valid['pass_by_reference'] = False
 
-    @staticmethod
-    def validate_description(form_description, is_valid):
-        if not description_regex.match(form_description):
-            flash("description must contain only characters a-z, A-Z, 0-9, - , \' \" . ? !", "create_living_thing")
-            is_valid['pass_by_reference'] = False
+    #@staticmethod
+    #def validate_description(form_description, is_valid):
+    #    if not description_regex.match(form_description):
+    #        flash("description must contain only characters a-z, A-Z, 0-9, - , \' \" . ? !", "create_living_thing")
+    #        is_valid['pass_by_reference'] = False
 
     @staticmethod
     def validate_long_deg(form_long_deg, is_valid):
