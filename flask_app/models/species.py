@@ -8,7 +8,7 @@ class Species:
         self.name = data['name']
         self.name_definite = data['name_definite']
         self.description = data['description']
-        self.biblical_taxon_id = data['biblical_taxon_id']
+
 
     # in python OOP, there is something called a property, which defines
     # an attribute of the class object based on other attributes

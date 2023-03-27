@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_app.models import species
 from flask_app.utilities.time_util import utc_sec_to_date_time, spacetime_to_sun_based_time, spacetime_to_season
 from flask_app.utilities.space_util import lat_to_natural_language, elev_m_to_elev_ft
 from flask_app.utilities.num_util import test_valid_floating_point
@@ -12,7 +13,6 @@ description_regex = re.compile(r'^[a-zA-Z\-\.\?\"\'!,\s]+$')
 class Living_thing:
     def __init__( self, data ):
         self.id = data['id']
-        self.species_id = data['species_id']
         self.taxon_id = data['taxon_id']        
         self.image = data['image']
         self.description = data['description']
@@ -21,13 +21,16 @@ class Living_thing:
         self.lat_deg = data['lat_deg']
         self.long_deg = data['long_deg']
         self.elev_m = data['elev_m']
-
         
         self.createdon_utc = data['createdon_utc']
         self.modifiedon_utc = data['modifiedon_utc']
 
-        self.name = data['name']    
-        self.name_scientific = data['name_scientific']
+        self.species = species.Species({
+            'id': data['s.id'],
+            'name': data['name'],
+            'name_definite': data['name_definite'],
+            'description': data['s.description']
+            })
 
 
     # in python OOP, there is something called a property, which defines
@@ -40,7 +43,7 @@ class Living_thing:
 
         # split the name string into individual words
         # "john jacob jingle boy" -> ["john", "jacob", "jingle", "boy"]
-        living_thing_name_array = self.name.split()
+        living_thing_name_array = self.species.name.split()
 
         # then we concatenate each item in the array onto the url_string
         for word in living_thing_name_array:
@@ -51,9 +54,44 @@ class Living_thing:
 
     @classmethod
     def save( cls, data ):
-        query_string = "INSERT INTO living_things ( creator_id, name, name_scientific, description, lat_deg, long_deg, elev_m, time_s ) \
-        VALUES (%(creator_id)s, %(name)s, %(name_scientific)s, %(description)s, %(lat_deg)s, %(long_deg)s, %(elev_m)s, %(time_s)s);"
+        query_string = "INSERT INTO living_things ( creator_id, description, lat_deg, long_deg, elev_m, time_s ) \
+        VALUES (%(creator_id)s, %(description)s, %(lat_deg)s, %(long_deg)s, %(elev_m)s, %(time_s)s);"
         return connectToMySQL().query_db(query_string, data)
+    
+
+    @classmethod
+    def get_all( cls ):
+        query_string = "SELECT * FROM living_things l JOIN species s ON \
+        l.species_id = s.id ORDER BY l.time_s DESC;"
+        results = connectToMySQL().query_db(query_string)
+        print(results)
+        living_things = []
+        for row in results:
+            living_things.append( cls(row) )
+        return living_things
+    
+    @classmethod
+    def get_living_thing_by_id( cls, data ):
+        query_string = "SELECT * FROM living_things l JOIN species s ON \
+        l.species_id = s.id WHERE l.id=%(id)s;"
+        results = connectToMySQL().query_db( query_string, data )
+        if len(results) > 0:
+            living_thing = cls(results[0])
+        else:
+            living_thing = None
+        return living_thing
+
+    @classmethod
+    def get_living_thing_by_time( cls, data ):
+        query_string = "SELECT * FROM living_things l JOIN species s ON \
+        l.species_id = s.id WHERE l.time_s=%(time_s)s;"
+        results = connectToMySQL().query_db( query_string, data )
+        if len(results) > 0:
+            living_thing = cls(results[0])
+        else:
+            living_thing = None
+        return living_thing
+
 
     @property
     def time_string( self ):
@@ -74,37 +112,7 @@ class Living_thing:
     @property
     def elev_ft( self ):
         return elev_m_to_elev_ft(self.elev_m)
-    
 
-    @classmethod
-    def get_all( cls ):
-        query_string = "SELECT * FROM living_things ORDER BY living_things.time_s DESC;"
-        results = connectToMySQL().query_db(query_string)
-        living_things = []
-        for row in results:
-            living_things.append( cls(row) )
-        return living_things
-    
-    @classmethod
-    def get_living_thing_by_id( cls, data ):
-        query_string = "SELECT * FROM living_things WHERE id=%(id)s;"
-        results = connectToMySQL().query_db( query_string, data )
-        if len(results) > 0:
-            living_thing = cls(results[0])
-        else:
-            living_thing = None
-        return living_thing
-
-
-    @classmethod
-    def get_living_thing_by_time( cls, data ):
-        query_string = "SELECT * FROM living_things WHERE time_s=%(time_s)s;"
-        results = connectToMySQL().query_db( query_string, data )
-        if len(results) > 0:
-            living_thing = cls(results[0])
-        else:
-            living_thing = None
-        return living_thing
     
     @staticmethod
     def validate_living_thing_form(data):
@@ -118,8 +126,8 @@ class Living_thing:
         # to 'hack' my way around this. Thus making the code simpler to follow.
         is_valid = {'pass_by_reference': True}
 
-        Living_thing.validate_name(data['name'], is_valid)
-        Living_thing.validate_name_scientific(data['name_scientific'], is_valid)
+        #Living_thing.validate_name(data['name'], is_valid)
+        #Living_thing.validate_name_scientific(data['name_scientific'], is_valid)
         Living_thing.validate_description(data['description'], is_valid)
         Living_thing.validate_long_deg(data['long_deg'], is_valid)
         Living_thing.validate_lat_deg(data['lat_deg'], is_valid)
@@ -128,17 +136,17 @@ class Living_thing:
 
         return is_valid['pass_by_reference']
     
-    @staticmethod
-    def validate_name(form_name, is_valid):
-        if not name_regex.match(form_name):
-            flash("name must contain only characters a-z, A-Z, -", "create_living_thing")
-            is_valid['pass_by_reference'] = False
-
-    @staticmethod
-    def validate_name_scientific(form_name_scientific, is_valid):
-        if not name_scientific_regex.match(form_name_scientific):
-            flash("scientific name must contain only characters a-z, A-Z, -", "create_living_thing")
-            is_valid['pass_by_reference'] = False
+    #@staticmethod
+    #def validate_name(form_name, is_valid):
+    #    if not name_regex.match(form_name):
+    #        flash("name must contain only characters a-z, A-Z, -", "create_living_thing")
+    #        is_valid['pass_by_reference'] = False
+    
+    #@staticmethod
+    #def validate_name_scientific(form_name_scientific, is_valid):
+    #    if not name_scientific_regex.match(form_name_scientific):
+    #        flash("scientific name must contain only characters a-z, A-Z, -", "create_living_thing")
+    #        is_valid['pass_by_reference'] = False
 
     @staticmethod
     def validate_description(form_description, is_valid):

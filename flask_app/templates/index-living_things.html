@@ -42,7 +42,7 @@
       <div class="content-image-container">
         <img class="content-image" src="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
       </div>
-      <a class="content-name" href='../l/{{living_thing.url_string}}'>{{living_thing.name}}</a>
+      <a class="content-name" href='../l/{{living_thing.url_string}}'>{{living_thing.species.name}}</a>
     </div>
     {% endfor %} 
 
