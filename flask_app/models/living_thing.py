@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_app.models import species
+from flask_app.models import species, taxon
 from flask_app.utilities.time_util import utc_sec_to_date_time, spacetime_to_sun_based_time, spacetime_to_season
 from flask_app.utilities.space_util import lat_to_natural_language, elev_m_to_elev_ft
 from flask_app.utilities.num_util import test_valid_floating_point
@@ -25,12 +25,20 @@ class Living_thing:
         self.modifiedon_utc = data['modifiedon_utc']
 
         self.species = species.Species({
-            'id': data['s.id'],
+            'id': data['id'],
             'name': data['name'],
             'name_definite': data['name_definite'],
             'description': data['description']
             })
 
+        self.taxon = taxon.Taxon({
+            'id': data['t.id'],
+            'name': data['t.name'],
+            'name_definite': data['t.name_definite'],
+            'description': data['t.description'],
+            'taxon_id': data['taxon_id'],
+            'taxon_plan_id': data['taxon_plan_id']
+            })
 
     # in python OOP, there is something called a property, which defines
     # an attribute of the class object based on other attributes
@@ -60,10 +68,14 @@ class Living_thing:
 
     @classmethod
     def get_all( cls ):
-        query_string = "SELECT * FROM living_things l JOIN species s ON \
-        l.species_id = s.id ORDER BY l.time_s DESC;"
+        query_string = "SELECT * \
+        FROM living_things l \
+        JOIN species s ON l.species_id = s.id \
+        JOIN species_taxa st ON s.id = st.species_id \
+        JOIN taxa t ON t.id = st.taxon_id \
+        WHERE t.taxon_plan_id = 1 \
+        ORDER BY l.time_s DESC;"
         results = connectToMySQL().query_db(query_string)
-        print(results)
         living_things = []
         for row in results:
             living_things.append( cls(row) )
@@ -71,8 +83,13 @@ class Living_thing:
     
     @classmethod
     def get_living_thing_by_id( cls, data ):
-        query_string = "SELECT * FROM living_things l JOIN species s ON \
-        l.species_id = s.id WHERE l.id=%(id)s;"
+        query_string = "SELECT * \
+        FROM living_things l \
+        JOIN species s ON l.species_id = s.id \
+        JOIN species_taxa st ON s.id = st.species_id \
+        JOIN taxa t ON t.id = st.taxon_id \
+        WHERE l.id=%(id)s \
+        AND t.taxon_plan_id = 1;"
         results = connectToMySQL().query_db( query_string, data )
         if len(results) > 0:
             living_thing = cls(results[0])
@@ -82,8 +99,13 @@ class Living_thing:
 
     @classmethod
     def get_living_thing_by_time( cls, data ):
-        query_string = "SELECT * FROM living_things l JOIN species s ON \
-        l.species_id = s.id WHERE l.time_s=%(time_s)s;"
+        query_string = "SELECT * \
+        FROM living_things l \
+        JOIN species s ON l.species_id = s.id \
+        JOIN species_taxa st ON s.id = st.species_id \
+        JOIN taxa t ON t.id = st.taxon_id \
+        WHERE l.time_s=%(time_s)s \
+        AND t.taxon_plan_id = 1;"
         results = connectToMySQL().query_db( query_string, data )
         if len(results) > 0:
             living_thing = cls(results[0])

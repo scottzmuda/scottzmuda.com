@@ -27,20 +27,19 @@
         <div class="content-grid">
 
             <div class="top">
-                <!--<a class="nav-back" href="/l">‹</a>-->
-                {% if "creator_id" in session %}
-                <a class="nav-create" href="/l/create-living_thing">&#43;&#xfe0e;</a>
-                {% endif %}
-
-                <a href="/l"><h1>{{living_thing.species.name}}</h1></a>
+                <a class="nav-create" href="/l">&#x2297;&#xFE00;</a>
+                <h1>{{living_thing.species.name}}</h1>
                 <em>{{living_thing.species.description}}</em>
             </div> 
 
             <div class="middle-left">
                 <img class="feature" src="{{ url_for('static', filename='i/') }}{{living_thing.url_string}}.jpeg">
             </div>
-            <div class="middle-right">
 
+            <div class="middle-right">
+                <em>
+                    {{taxon.name}}
+                </em>
             </div>
 
             <div class="bottom-left">
@@ -50,13 +49,11 @@
                     {{living_thing.natural_language_latitude}}<br>
                     {{living_thing.elev_ft}} feet<br>
                 </em>
-                
             </div>
 
             <div class="bottom-right">
                 <div id="map"></div>
             </div>
-
 
         </div>
     </div>
@@ -77,11 +74,9 @@
             iconSize: [50, 50],
             iconAnchor: [25, 25],
             popupAnchor: [-3, -76]
-});
-
+        });
 
         var marker = L.marker([{{living_thing.lat_deg}}, {{living_thing.long_deg}}], {icon: mapMarker}).addTo(map)
-
     </script>
 </body>
 </html>

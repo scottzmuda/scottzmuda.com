@@ -33,11 +33,12 @@ def view_living_thing( living_thing_url ):
     living_thing_time_s = int(living_thing_time_s)
 
     one_living_thing = living_thing.Living_thing.get_living_thing_by_time( {"time_s": living_thing_time_s} )
+    one_taxon = taxon.Taxon.get_taxon_by_id( {"id": one_living_thing.taxon.id} )
 
     if not one_living_thing:
         return redirect('/l')
 
-    return render_template("view-living_thing.html", living_thing=one_living_thing)
+    return render_template("view-living_thing.html", living_thing=one_living_thing, taxon=one_taxon)
 
 @app.route('/l/create-living_thing')
 def create_living_thing():
