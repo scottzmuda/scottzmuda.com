@@ -3,6 +3,7 @@ from flask_app.controllers import (
     creator_controller,
     writing_controller, 
     living_thing_controller,
+    conversation_controller,
     error_controller,
 )
 from flask_app import app
