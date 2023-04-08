@@ -44,5 +44,23 @@ def lat_to_natural_language( lat_deg ):
 def elev_m_to_elev_ft( elev_m ):
 	return int(elev_m / Decimal(0.3048))
 
+def natural_elevation( elev_m):
+	elevation_regions = [
+	(-10911, "lowlands"),
+	(300, "midlands"),
+	(750, "highlands")]
+
+	elevation_regions_ordered = []
+
+	for elevation, name in elevation_regions:
+		bisect.insort_left(elevation_regions_ordered, [elevation, name])
+
+	elevation_here = [elev_m, "here"]
+	index_here = bisect.bisect_left(elevation_regions_ordered, elevation_here)
+
+	elevation_regions_ordered.insert(index_here, elevation_here)
+
+	return elevation_regions_ordered[index_here-1][1]
+
 
 	
