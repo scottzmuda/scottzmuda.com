@@ -39,7 +39,9 @@ class Writing:
 
     @classmethod
     def get_all( cls ):
-        query_string = "SELECT * FROM writings ORDER BY writings.time_s DESC;"
+        query_string = "SELECT * FROM writings \
+        ORDER BY writings.time_s DESC \
+        LIMIT 7;"
         results = connectToMySQL().query_db(query_string)
         writings = []
         for row in results:

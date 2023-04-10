@@ -74,7 +74,8 @@ class Living_thing:
         JOIN species_taxa st ON s.id = st.species_id \
         JOIN taxa t ON t.id = st.taxon_id \
         WHERE t.taxon_plan_id = 1 \
-        ORDER BY l.time_s DESC;"
+        ORDER BY l.time_s DESC \
+        LIMIT 7;"
         results = connectToMySQL().query_db(query_string)
         living_things = []
         for row in results:
