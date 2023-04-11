@@ -22,13 +22,21 @@
 </head>
 <body>
     <div class="content-container">
-        <a class="nav-back" href="/w">‹</a>
-        {% if "creator_id" in session %}
-        <a class="nav-create" href="/w/create-writing">&#43;&#xfe0e;</a>
-        {% endif %}
-        <h1>{{writing.name}}</h1>
-        <h2>{{writing.time_string}}</h2>
-        <p>{{writing.writing}}</p>
+        <div class="content-grid" id="writings">
+            <div class="top">
+                <a class="close-page" href="/w">&#x2297;&#xFE00;</a>
+                <h1>{{writing.name}}</h1>
+                <em>{{writing.time_string}}</em>
+            </div> 
+
+            <div class="middle-left">
+                <img class="feature" src="{{ url_for('static', filename='i/') }}{{writing.url_string}}.jpeg">
+            </div>
+
+            <div class="footer">
+                {{writing.writing}}
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -8,7 +8,7 @@ img.feature{
 	height: calc(100% - 1.4em);
 }
 
-.content-grid{ 
+.content-grid#living_things{ 
 	display: grid;
 	grid-template-columns: 13fr 8fr 13fr;
 	grid-template-areas:
@@ -16,38 +16,45 @@ img.feature{
 		"b b c"
 		"d e e";
 }
-.content-grid div.top{
+
+.content-grid#writings{ 
+	display: grid;
+	grid-template-columns: 13fr 8fr 13fr;
+	grid-template-areas:
+		"a a a"
+		"b b c"
+		"f f f";
+}
+
+.content-grid > div{
 	padding: .5em;
+}
+
+.content-grid div.top{
 	grid-area: a;
- 	border-image: linear-gradient(to right, #464646, #464646, #393939, #464646, #464646) 30;
+ 	border-image: linear-gradient(to right, #555555, #555555, #484848, #555555, #555555) 30;
  	border-width: 0 0 1px 0;
   	border-style: solid;
-  	border-radius: 38px 38px 0 0;
-    background-color: #555555;
- 	background-clip: padding-box;
+
 }
 .content-grid div.middle-left{
-	padding: .5em;
 	grid-area: b;
 	aspect-ratio: 1/1;
 	background-color: #555555;
 }
 .content-grid div.middle-right{
-	padding: .5em;
 	grid-area: c;
-	border-image: linear-gradient(to top right, #393939, #464646, #464646) 30;
+	border-image: linear-gradient(to top right, #484848, #555555, #555555) 30;
 	border-width: 0 0 1px 1px;
 	border-style: solid;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: flex-start;
-	background-color: #555555;
 }
 .content-grid div.bottom-left{
-	padding: .5em;
 	grid-area: d;
-	border-image: linear-gradient(to bottom left, #393939, #464646, #464646) 30;
+	border-image: linear-gradient(to bottom left, #484848, #555555, #555555) 30;
 	border-width: 1px 1px 0 0;
 	border-style: solid;
 	display: flex;
@@ -55,11 +62,12 @@ img.feature{
 	justify-content: flex-start;
 	align-items: flex-end;
 	text-align: right;
-	background-color: #555555;
 }
 .content-grid div.bottom-right{
-	padding: .5em;
 	grid-area: e;
 	aspect-ratio: 1/1;
-	background-color: #555555;
+}
+
+.content-grid div.footer{
+	grid-area: f;
 }

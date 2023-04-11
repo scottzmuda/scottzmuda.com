@@ -3,27 +3,33 @@ html {
   color: #ffffff; /*-global font color */
   font-size: 1em; /*-global font size, good practice to use 'em units' */
   line-height: 1.4em; /*-global line height, (not sure reason for 1.4) */
-
   user-select: none; /*-as default make nothing selectable */
   -webkit-user-select: none; /*-as default make nothing selectable (apple specific attribute) */
-
   background-color: #464646; /*global background color*/
 }
 
-a:link, a:visited {
-  color: #75d5ff; /*global link color*/
-  text-decoration: none;
+body{
+    margin: 0 .5em; /*creates space between content container and edge of viewport when width=100%*/
+}
+
+div.content-container{
+  width: 100%; /*default behavior is for element to take 100% of width*/
+  max-width: 650px; /*if available space is >650px width, no longer is 100%*/
+  margin: 0 auto; /*auto margin for left and right allows element to be centered when width=650px*/
+  border-radius: 12px; /* content window corners */
+  background-color: #555555; /* content background color */
 }
 
 h1{
-  line-height: 1.4em; /*might be unnecessary*/
-  margin: 0;
+  line-height: 1.4em; /*does not inherit from <html> for some reason*/
+  margin: 0; /*default margin is massive*/
   user-select: contain;
   -webkit-user-select: text;
 }
 
-a > h1 {
-  color: white; /* trying out using the page header as the back navigation link... sacrifices intuitiveness for simplicity */
+a:link, a:visited {
+  color: white; /*#75d5ff; /*global link color*/
+  text-decoration: none;
 }
 
 a{
@@ -31,38 +37,12 @@ a{
   -webkit-user-select: text;
 }
 
-body{
-    margin: 0 0em; /*creates space between content container and edge of viewport when width=100%*/
-}
-
-div.banner{
-  color: #000000;
-  background-color: #45895f;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 1em 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-a.nav-back, a.nav-create, a.nav-login, a.nav-logout{
+a.nav-create, a.nav-login, a.nav-logout, a.close-page{
   font-size: 2em;
   font-weight: 100;
   user-select: none;
   -webkit-user-select: none;
-}
-
-a.close-page{
   float: right;
-  font-size: 2em;
-  font-weight: 100;
-}
-
-a.nav-create, a.nav-login, a.nav-logout{
-    float: right;
 }
 
 a.nav-login{
@@ -72,15 +52,6 @@ a.nav-logout{
   color: rgb(255, 69, 58);
 }
 
-a.nav-back{
-  padding: 0 .25em 0 0;
-}
 
-div.content-container{
-  display: block;
-  width: 100%; /*default behavior is for element to take 100% of width*/
-  max-width: 650px; /*if available space is >650px width no longer is 100%*/
-  margin: 0 auto; /*auto margin for left and right allows element to be centered when width=650px*/
-}
 
 
