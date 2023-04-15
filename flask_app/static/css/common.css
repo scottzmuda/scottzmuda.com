@@ -9,7 +9,7 @@ html {
 }
 
 body{
-    margin: 0 .5em; /*creates space between content container and edge of viewport when width=100%*/
+    margin: .5em; /*creates space between content container and edge of viewport when width=100%*/
 }
 
 div.content-container{
