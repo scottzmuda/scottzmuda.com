@@ -36,7 +36,7 @@ a.content-name{
 }
 div.content{
 	padding: .5em;
-	border-image: linear-gradient(to right, #555555, #555555, #484848, #555555, #555555) 30;
+	border-image: linear-gradient(to right, var(--fg-color), var(--fg-color), var(--bg-color), var(--fg-color), var(--fg-color)) 30;
 	border-width: 1px 0 0 0;
 	border-style: solid;
 }

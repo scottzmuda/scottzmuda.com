@@ -1,23 +1,39 @@
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #e8e2d5;
+    --fg-color: #f8f1e4;
+    --font-color: #745b59;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #464646;
+    --fg-color: #555555;
+    --font-color: #f1e5c7;
+  }
+}
+
 html {
+  color: var(--font-color); /*-global font color */
+  background-color: var(--bg-color); /*global background color*/
   font-family: -apple-system-ui-serif, ui-serif, 'Georgia', serif; /*global font*/
-  color: #ffffff; /*-global font color */
   font-size: 1em; /*-global font size, good practice to use 'em units' */
   line-height: 1.4em; /*-global line height, (not sure reason for 1.4) */
   user-select: none; /*-as default make nothing selectable */
   -webkit-user-select: none; /*-as default make nothing selectable (apple specific attribute) */
-  background-color: #464646; /*global background color*/
 }
 
 body{
-    margin: .5em; /*creates space between content container and edge of viewport when width=100%*/
+  margin: .5em; /*creates space between content container and edge of viewport when width=100%*/
 }
 
 div.content-container{
+  background-color: var(--fg-color); /* content background color */
   width: 100%; /*default behavior is for element to take 100% of width*/
   max-width: 650px; /*if available space is >650px width, no longer is 100%*/
   margin: 0 auto; /*auto margin for left and right allows element to be centered when width=650px*/
   border-radius: 12px; /* content window corners */
-  background-color: #555555; /* content background color */
 }
 
 h1{
@@ -28,8 +44,8 @@ h1{
 }
 
 a:link, a:visited {
-  color: white; /*#75d5ff; /*global link color*/
   text-decoration: none;
+  color: var(--font-color); /*global link color*/
 }
 
 a{

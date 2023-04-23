@@ -32,7 +32,7 @@ img.feature{
 
 .content-grid div.top{
 	grid-area: a;
- 	border-image: linear-gradient(to right, #555555, #555555, #484848, #555555, #555555) 30;
+ 	border-image: linear-gradient(to right, var(--fg-color), var(--fg-color), var(--bg-color), var(--fg-color), var(--fg-color)) 30;
  	border-width: 0 0 1px 0;
   	border-style: solid;
 
@@ -40,11 +40,10 @@ img.feature{
 .content-grid div.middle-left{
 	grid-area: b;
 	aspect-ratio: 1/1;
-	background-color: #555555;
 }
 .content-grid div.middle-right{
 	grid-area: c;
-	border-image: linear-gradient(to top right, #484848, #555555, #555555) 30;
+	border-image: linear-gradient(to top right, var(--bg-color), var(--fg-color), var(--bg-color)) 30;
 	border-width: 0 0 1px 1px;
 	border-style: solid;
 	display: flex;
@@ -54,7 +53,7 @@ img.feature{
 }
 .content-grid div.bottom-left{
 	grid-area: d;
-	border-image: linear-gradient(to bottom left, #484848, #555555, #555555) 30;
+	border-image: linear-gradient(to bottom left, var(--bg-color), var(--fg-color), var(--bg-color)) 30;
 	border-width: 1px 1px 0 0;
 	border-style: solid;
 	display: flex;
