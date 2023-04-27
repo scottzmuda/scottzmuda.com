@@ -14,3 +14,7 @@ def index():
 @app.route('/site.webmanifest')
 def static_from_root():
     return app.send_static_file(request.path[1:])
+
+@app.route('/.well-known/nostr.json')
+def nostr_static_from_root():
+    return app.send_static_file('nostr.json')
