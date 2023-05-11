@@ -13,32 +13,42 @@ description_regex = re.compile(r'^[a-zA-Z\-\.\?\"\'!,\s]+$')
 class Living_thing:
     def __init__( self, data ):
         self.id = data['id']
-        self.taxon_id = data['taxon_id']        
         self.image = data['image']
-        
+
         self.time_s = data['time_s']
         self.lat_deg = data['lat_deg']
         self.long_deg = data['long_deg']
         self.elev_m = data['elev_m']
+
+        self.taxon_formal_id = data['taxon_formal_id']
+        self.taxon_material_id = data['taxon_material_id']
         
         self.createdon_utc = data['createdon_utc']
         self.modifiedon_utc = data['modifiedon_utc']
 
-        self.species = species.Species({
-            'id': data['id'],
-            'name': data['name'],
-            'name_definite': data['name_definite'],
-            'description': data['description']
-            })
-
-        self.taxon = taxon.Taxon({
+        self.taxon_formal = taxon.Taxon({
             'id': data['t.id'],
             'name': data['t.name'],
-            'name_definite': data['t.name_definite'],
-            'description': data['t.description'],
-            'taxon_id': data['taxon_id'],
-            'taxon_plan_id': data['taxon_plan_id']
             })
+
+        self.taxon_material = name.Name({
+            'id': data['n.id'],
+            'name': data[n.name],
+            'taxon_formal_id': data['n.taxon_formal_id']
+            })
+
+        self.taxonomy = taxonomy.Taxonomy({
+            'id' data['tt.id']
+            'taxonomy_plan_id': data['taxonomy_plan_id']
+            })
+
+        self.en_taxon_description = en_taxon_description.Description({
+            'id' data['d.id']
+            'description': data['d.description']
+            'taxon_formal_id': data['n.taxon_formal_id']
+            })
+
+
 
     # in python OOP, there is something called a property, which defines
     # an attribute of the class object based on other attributes
