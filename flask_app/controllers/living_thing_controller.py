@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, redirect, flash,request, session
-from flask_app.models import living_thing, species, taxon
+from flask_app.models import living_thing
 from flask_app.utilities import time_util
 
 @app.route('/l')
@@ -33,12 +33,14 @@ def view_living_thing( living_thing_url ):
     living_thing_time_s = int(living_thing_time_s)
 
     one_living_thing = living_thing.Living_thing.get_living_thing_by_time( {"time_s": living_thing_time_s} )
-    one_taxon = taxon.Taxon.get_taxon_by_id( {"id": one_living_thing.taxon.id} )
+    one_living_thing.generate_taxonomy()
+    print("TEST")
+    #one_taxon = taxon.Taxon.get_taxon_by_id( {"id": one_living_thing.taxon.id} )
 
     if not one_living_thing:
         return redirect('/l')
 
-    return render_template("view-living_thing.html", living_thing=one_living_thing, taxon=one_taxon)
+    return render_template("view-living_thing.html", living_thing=one_living_thing)#, taxon=one_taxon)
 
 @app.route('/l/create-living_thing')
 def create_living_thing():
