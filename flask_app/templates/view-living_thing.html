@@ -9,7 +9,7 @@
     <meta property="og:title" content="{{living_thing.common_name}}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="../l/">
-    <meta property="og:image" content="{{ url_for('static', filename='i/' ~ living_thing.url_string ~ '.jpeg', _external=True) }}">
+    <meta property="og:image" content="{{ url_for('static', filename='i/') }}{{living_thing.image}}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -53,7 +53,6 @@
                     {{living_thing.season}}<br>
                     {{living_thing.sun_based_time}}<br>
                     {{living_thing.natural_language_latitude}}<br>
-                    {{living_thing.natural_elevation}}<br>
                 </em>
             </div>
 
