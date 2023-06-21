@@ -8,8 +8,8 @@
 
     <meta property="og:title" content="{{living_thing.common_name}}">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="../l/">
-    <meta property="og:image" content="{{ url_for('static', filename='i/') }}{{living_thing.image}}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:image" content="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -33,7 +33,7 @@
             <em>{{living_thing.en_description}}</em>
         </div> 
         <div class="article-image">
-            <img class="feature" src="{{ url_for('static', filename='i/') }}{{living_thing.image}}">
+            <img class="feature" src="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
         </div>
         <div class="top-right">
             <em>
