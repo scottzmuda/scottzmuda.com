@@ -30,7 +30,7 @@
             <em>{{writing.time_string}}</em>
         </div> 
         <div class="article-image">
-            <img class="feature" src="{{ url_for('static', filename='i/') }}{{writing.url_string}}.jpeg">
+            <img class="feature" src="{{ url_for('static', filename='i/' ~ writing.url_string ~ '.jpeg', _external=True) }}">
         </div>
         <div class="article-body">
             {{writing.writing}}
