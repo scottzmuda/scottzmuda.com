@@ -26,9 +26,7 @@
   <meta name="theme-color" content="#464646" media="(prefers-color-scheme: dark)">
 </head>
 <body>
- <div class="content-container">
-  <div class="content-grid">
-
+  <article class="article-grid">
     <div class="top">
       <a class="close-page" href="/">&#x2297;&#xFE00;</a>
       <h1>living things</h1>
@@ -36,7 +34,6 @@
       <a class="nav-create" href="/l/create-living_thing">&#x2295;&#xFE00;</a>
       {% endif %}
     </div>
-
     {% for living_thing in living_things %}
     <div class="content">
       <div class="content-image-container">
@@ -45,8 +42,6 @@
       <a class="content-name" href='../l/{{living_thing.url_string}}'>{{living_thing.common_name}}</a>
     </div>
     {% endfor %} 
-
   </div>
-</div>   
 </body>
 </html>

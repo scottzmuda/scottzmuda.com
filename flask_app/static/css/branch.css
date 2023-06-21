@@ -16,22 +16,22 @@ a.content-name{
 	margin: 1.8em 0; /* 1.8em equals the item height minus the line-height (all divided by 2) */
 }
 
-.content-grid{ 
+.article-grid{ 
 	display: grid;
 	grid-template-areas:
 		"a"
 		"b";
 }
 
-.content-grid > div{
+.article-grid > div{
 	padding: .5em;
 }
 
-.content-grid div.top{
+.article-grid div.top{
 	grid-area: a;
 }
 
-.content-grid div.content:first-of-type{
+.article-grid div.content:first-of-type{
 	grid-area: b;
 }
 div.content{

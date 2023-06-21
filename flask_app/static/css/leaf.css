@@ -8,7 +8,7 @@ img.feature{
 	height: calc(100% - 1.4em);
 }
 
-.content-grid#living_things{ 
+.article-grid#living_things{ 
 	display: grid;
 	grid-template-columns: 13fr 8fr 13fr;
 	grid-template-areas:
@@ -17,7 +17,7 @@ img.feature{
 		"d e e";
 }
 
-.content-grid#writings{ 
+.article-grid#writings{ 
 	display: grid;
 	grid-template-columns: 13fr 8fr 13fr;
 	grid-template-areas:
@@ -26,22 +26,22 @@ img.feature{
 		"f f f";
 }
 
-.content-grid > div{
+.article-grid > div{
 	padding: .5em;
 }
 
-.content-grid div.top{
+.article-grid div.article-header{
 	grid-area: a;
  	border-image: linear-gradient(to right, var(--fg-color), var(--fg-color), var(--bg-color), var(--fg-color), var(--fg-color)) 30;
  	border-width: 0 0 1px 0;
   	border-style: solid;
 
 }
-.content-grid div.middle-left{
+.article-grid div.article-image{
 	grid-area: b;
 	aspect-ratio: 1/1;
 }
-.content-grid div.middle-right{
+.article-grid div.top-right{
 	grid-area: c;
 	border-image: linear-gradient(to top right, var(--bg-color), var(--fg-color), var(--bg-color)) 30;
 	border-width: 0 0 1px 1px;
@@ -51,7 +51,7 @@ img.feature{
 	justify-content: flex-end;
 	align-items: flex-start;
 }
-.content-grid div.bottom-left{
+.article-grid div.bottom-left{
 	grid-area: d;
 	border-image: linear-gradient(to bottom left, var(--bg-color), var(--fg-color), var(--bg-color)) 30;
 	border-width: 1px 1px 0 0;
@@ -62,11 +62,11 @@ img.feature{
 	align-items: flex-end;
 	text-align: right;
 }
-.content-grid div.bottom-right{
+.article-grid div.bottom-right{
 	grid-area: e;
 	aspect-ratio: 1/1;
 }
 
-.content-grid div.footer{
+.article-grid div.article-body{
 	grid-area: f;
 }

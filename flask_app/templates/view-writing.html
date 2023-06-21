@@ -23,21 +23,17 @@
     <meta name="theme-color" content="#464646" media="(prefers-color-scheme: dark)">
 </head>
 <body>
-    <div class="content-container">
-        <div class="content-grid" id="writings">
-            <div class="top">
-                <a class="close-page" href="/w">&#x2297;&#xFE00;</a>
-                <h1>{{writing.name}}</h1>
-                <em>{{writing.time_string}}</em>
-            </div> 
-
-            <div class="middle-left">
-                <img class="feature" src="{{ url_for('static', filename='i/') }}{{writing.url_string}}.jpeg">
-            </div>
-
-            <div class="footer">
-                {{writing.writing}}
-            </div>
+    <article class="article-grid" id="writings">
+        <div class="article-header">
+            <a class="close-page" href="/w">&#x2297;&#xFE00;</a>
+            <h1>{{writing.name}}</h1>
+            <em>{{writing.time_string}}</em>
+        </div> 
+        <div class="article-image">
+            <img class="feature" src="{{ url_for('static', filename='i/') }}{{writing.url_string}}.jpeg">
+        </div>
+        <div class="article-body">
+            {{writing.writing}}
         </div>
     </div>
 </body>

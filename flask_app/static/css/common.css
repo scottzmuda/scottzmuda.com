@@ -28,7 +28,7 @@ body{
   margin: .5em; /*creates space between content container and edge of viewport when width=100%*/
 }
 
-div.content-container{
+article.article-grid{
   background-color: var(--fg-color); /* content background color */
   width: 100%; /*default behavior is for element to take 100% of width*/
   max-width: 650px; /*if available space is >650px width, no longer is 100%*/
