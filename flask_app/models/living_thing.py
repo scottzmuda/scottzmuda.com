@@ -53,14 +53,14 @@ class Living_thing:
     @classmethod
     def get_living_thing_by_time( cls, data ):
         query_string = """
-        SELECT l.id, l.image, l.time_s, l.lat_deg, l.long_deg, l.elev_m, ft.name AS formal_name, ct.name AS common_name, en_des.description AS en_description
+        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, ft.name AS formal_name, ct.name AS common_name, en_des.description AS en_description
         
-        FROM living_things l
-        JOIN common_kinds ct ON l.common_kind_id = ct.id
-        JOIN formal_kinds ft ON l.formal_kind_id = ft.id
+        FROM observations o
+        JOIN common_kinds ct ON o.common_kind_id = ct.id
+        JOIN formal_kinds ft ON o.formal_kind_id = ft.id
         JOIN en_descriptions en_des ON en_des.formal_kind_id = ft.id
         
-        WHERE l.time_s=%(time_s)s
+        WHERE o.time_s=%(time_s)s
         """
         results = connectToMySQL().query_db( query_string, data )
         if len(results) > 0:
@@ -73,13 +73,13 @@ class Living_thing:
     @classmethod
     def get_all( cls ):
         query_string = """
-        SELECT l.id, l.image, l.time_s, l.lat_deg, l.long_deg, l.elev_m, ft.name AS formal_name, ct.name AS common_name, en_des.description AS en_description
+        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, ft.name AS formal_name, ct.name AS common_name, en_des.description AS en_description
         
-        FROM living_things l
-        JOIN common_kinds ct ON l.common_kind_id = ct.id
-        JOIN formal_kinds ft ON l.formal_kind_id = ft.id
+        FROM observations o
+        JOIN common_kinds ct ON o.common_kind_id = ct.id
+        JOIN formal_kinds ft ON o.formal_kind_id = ft.id
         JOIN en_descriptions en_des ON en_des.formal_kind_id = ft.id
-        ORDER BY l.time_s DESC;
+        ORDER BY o.time_s DESC;
         """
         results = connectToMySQL().query_db(query_string)
         print(type(results))
@@ -96,8 +96,8 @@ class Living_thing:
                 FROM taxonomy t
                 JOIN formal_kinds ft ON t.child_id = ft.id
                 JOIN common_kinds ct ON ct.formal_kind_id = ft.id
-                JOIN living_things lt on lt.formal_kind_id = ft.id
-                WHERE lt.id = %(living_thing_id)s
+                JOIN observations o on o.formal_kind_id = ft.id
+                WHERE o.id = %(observation_id)s
                 
                 UNION ALL
                 
@@ -112,7 +112,7 @@ class Living_thing:
         """
 
         data = {
-            "living_thing_id": self.id
+            "observation_id": self.id
         }
 
         # Assuming connectToMySQL() is a function that connects to the database
