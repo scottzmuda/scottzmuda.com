@@ -27,8 +27,8 @@ class Living_thing:
         self.common_name = data['common_name']
         self.taxonomy = None
 
-        #description
-        self.en_description = data['en_description']
+        #note
+        self.note = data['note']
 
     # in python OOP, there is something called a property, which defines
     # an attribute of the class object based on other attributes
@@ -53,12 +53,13 @@ class Living_thing:
     @classmethod
     def get_living_thing_by_time( cls, data ):
         query_string = """
-        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, ft.name AS formal_name, ct.name AS common_name, en_des.description AS en_description
+        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, fk.name AS formal_name, ck.name AS common_name, o.note
         
         FROM observations o
-        JOIN common_kinds ct ON o.common_kind_id = ct.id
-        JOIN formal_kinds ft ON o.formal_kind_id = ft.id
-        JOIN en_descriptions en_des ON en_des.formal_kind_id = ft.id
+        JOIN observation_common_kinds ock ON ock.observation_id = o.id
+        JOIN common_kinds ck ON ock.common_kind_id = ck.id
+        JOIN observation_formal_kinds ofk ON ofk.observation_id = o.id
+        JOIN formal_kinds fk ON ofk.formal_kind_id = fk.id
         
         WHERE o.time_s=%(time_s)s
         """
@@ -73,12 +74,13 @@ class Living_thing:
     @classmethod
     def get_all( cls ):
         query_string = """
-        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, ft.name AS formal_name, ct.name AS common_name, en_des.description AS en_description
+        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, fk.name AS formal_name, ck.name AS common_name, o.note
         
         FROM observations o
-        JOIN common_kinds ct ON o.common_kind_id = ct.id
-        JOIN formal_kinds ft ON o.formal_kind_id = ft.id
-        JOIN en_descriptions en_des ON en_des.formal_kind_id = ft.id
+        JOIN observation_common_kinds ock ON ock.observation_id = o.id
+        JOIN common_kinds ck ON ock.common_kind_id = ck.id
+        JOIN observation_formal_kinds ofk ON ofk.observation_id = o.id
+        JOIN formal_kinds fk ON ofk.formal_kind_id = fk.id
         ORDER BY o.time_s DESC;
         """
         results = connectToMySQL().query_db(query_string)
@@ -92,20 +94,21 @@ class Living_thing:
     def generate_taxonomy(self):
         query_string = """
             WITH RECURSIVE TaxaHierarchy AS (
-                SELECT t.parent_id, ct.name AS 'child'
+                SELECT t.parent_id, ck.name AS 'child'
                 FROM taxonomy t
-                JOIN formal_kinds ft ON t.child_id = ft.id
-                JOIN common_kinds ct ON ct.formal_kind_id = ft.id
-                JOIN observations o on o.formal_kind_id = ft.id
+                JOIN formal_kinds fk ON t.child_id = fk.id
+                JOIN common_kinds ck ON ck.formal_kind_id = fk.id
+                JOIN observation_formal_kinds ofk ON ofk.formal_kind_id = fk.id
+                JOIN observations o ON ofk.observation_id = o.id
                 WHERE o.id = %(observation_id)s
                 
                 UNION ALL
                 
-                SELECT t.parent_id, ct.name AS 'child'
+                SELECT t.parent_id, ck.name AS 'child'
                 FROM taxonomy t
                 JOIN TaxaHierarchy th ON th.parent_id = t.child_id
-                JOIN formal_kinds ft ON t.child_id = ft.id
-                JOIN common_kinds ct ON ct.formal_kind_id = ft.id
+                JOIN formal_kinds fk ON t.child_id = fk.id
+                JOIN common_kinds ck ON ck.formal_kind_id = fk.id
             )
             SELECT child
             FROM TaxaHierarchy;

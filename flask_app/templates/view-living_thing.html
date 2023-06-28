@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>{{living_thing.common_name}}</title>
-    <meta name="description" content="{{living_thing.en_description}}">
+    <meta name="description" content="{{living_thing.note}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta property="og:title" content="{{living_thing.common_name}}">
@@ -30,7 +30,7 @@
         <div class="article-header">
             <a class="close-page" href="/l">&#x2297;&#xFE00;</a>
             <h1>{{living_thing.common_name}}</h1>
-            <em>{{living_thing.en_description}}</em>
+            <em>{{living_thing.note}}</em>
         </div> 
         <div class="article-image">
             <img class="feature" src="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
