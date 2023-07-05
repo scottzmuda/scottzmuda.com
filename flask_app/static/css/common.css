@@ -1,6 +1,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --bg-color: #e8e2d5;
+    --mg-color: #f0eadd;
     --fg-color: #f8f1e4;
     --font-color: #745b59;
   }
@@ -9,6 +10,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #464646;
+    --mg-color: #4e4e4e;
     --fg-color: #555555;
     --font-color: #f1e5c7;
   }

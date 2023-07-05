@@ -9,7 +9,7 @@ div.content-image-container{
 	margin: 0 1em 0 0; /* add margin betweeen image and text */
 }
 
-a.content-name{
+div.content-name{
 	display: inline;
  	float: left; /* not sure why this is needed but width doesn't work if this isn't set */
 	max-width: calc(100% - 5em); /*stop from overflowing content item */
@@ -34,11 +34,15 @@ a.content-name{
 .article-grid div.content:first-of-type{
 	grid-area: b;
 }
-div.content{
+a.content{
 	padding: .5em;
 	border-image: linear-gradient(to right, var(--fg-color), var(--fg-color), var(--bg-color), var(--fg-color), var(--fg-color)) 30;
 	border-width: 1px 0 0 0;
 	border-style: solid;
+}
+
+a.content:hover {
+  background-color: var(--mg-color);
 }
 
 h1{

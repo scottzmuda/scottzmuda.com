@@ -35,12 +35,13 @@
       {% endif %}
     </div>
     {% for living_thing in living_things %}
-    <div class="content">
+    <a class="content" href='../l/{{living_thing.url_string}}'>
       <div class="content-image-container">
         <img class="content-image" src="{{ url_for('static', filename='i/') }}{{living_thing.image}}">
       </div>
-      <a class="content-name" href='../l/{{living_thing.url_string}}'>{{living_thing.common_name}}</a>
-    </div>
+      <div class="content-name">{{living_thing.common_name}}
+      </div>
+    </a>
     {% endfor %} 
   </article>
 </body>
