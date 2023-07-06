@@ -28,11 +28,13 @@
 <body>
   <article class="article-grid">
     <div class="top">
-      <a class="close-page" href="/">&#x2297;&#xFE00;</a>
       <h1>living things</h1>
-      {% if "creator_id" in session %}
-      <a class="nav-create" href="/l/create-living_thing">&#x2295;&#xFE00;</a>
-      {% endif %}
+            <nav>
+                {% if "creator_id" in session %}
+                <a class="nav-create" href="/w/create-living_thing">&#x2295;&#xFE00;</a>
+                {% endif %}
+                <a class="close-page" href="/">&#x2297;&#xFE00;</a>
+            </nav>
     </div>
     {% for living_thing in living_things %}
     <a class="content" href='../l/{{living_thing.url_string}}'>

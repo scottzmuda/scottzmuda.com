@@ -28,11 +28,13 @@
      <article class="article-grid">
        <div class="top">
          <h1>home</h1>
-         {% if "creator_id" in session %}
-         <a class="nav-logout" href="/c/log-creator-out" role="button">&#x2296;&#xFE00;</a>
-         {% else %}
-         <a class="nav-login" href="/c/login" role="button">&#x2295;&#xFE00;</a>
-         {% endif %}
+            <nav>
+                {% if "creator_id" in session %}
+                <a class="nav-logout" href="/c/log-creator-out" role="button">&#x2296;&#xFE00;</a>
+                {% else %}
+                <a class="nav-login" href="/c/login" role="button">&#x2295;&#xFE00;</a>
+                {% endif %}
+            </nav>
        </div>
        <!--
        <a class="content" href='/c/'>

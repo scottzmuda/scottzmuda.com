@@ -60,6 +60,9 @@ a.nav-create, a.nav-login, a.nav-logout, a.close-page{
   font-weight: 100;
   user-select: none;
   -webkit-user-select: none;
+}
+
+nav{
   float: right;
 }
 

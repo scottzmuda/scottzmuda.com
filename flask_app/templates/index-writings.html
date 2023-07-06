@@ -28,11 +28,14 @@
 <body>
   <article class="article-grid">
     <div class="top">
-      <a class="close-page" href="/">&#x2297;&#xFE00;</a>
       <h1>writings</h1>
-      {% if "creator_id" in session %}
-      <a class="nav-create" href="/w/create-writing">&#x2295;&#xFE00;</a>
-      {% endif %}
+            <nav>
+                {% if "creator_id" in session %}
+                <a class="nav-create" href="/w/create-writing">&#x2295;&#xFE00;</a>
+                {% endif %}
+                <a class="close-page" href="/">&#x2297;&#xFE00;
+                </a>
+            </nav>
     </div>
     {% for writing in writings %}
     <a class="content" href='../w/{{writing.url_string}}'>
