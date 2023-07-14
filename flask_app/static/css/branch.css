@@ -12,7 +12,7 @@ div.content-image-container{
 div.content-name{
 	display: inline;
  	float: left; /* not sure why this is needed but width doesn't work if this isn't set */
-	max-width: calc(100% - 5em); /*stop from overflowing content item */
+	width: calc(100% - 6em); /*stop from overflowing content item */
 	margin: 1.8em 0; /* 1.8em equals the item height minus the line-height (all divided by 2) */
 }
 
