@@ -34,7 +34,6 @@
                 </a>
             </nav>
             <h1>{{living_thing.common_name}}</h1>
-            <em>{{living_thing.note}}</em>
         </div> 
         <div class="article-image">
             <img class="feature" src="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
@@ -57,6 +56,9 @@
         </div>
         <div class="bottom-right">
             <div id="map"></div>
+        </div>
+        <div class="bottom">
+            <em>{{living_thing.note}}</em>
         </div>
     </article>
     <script>

@@ -14,7 +14,8 @@ img.feature{
 	grid-template-areas:
 		"a a a"
 		"b b c"
-		"d e e";
+		"d e e"
+		"g g g";
 }
 
 .article-grid#writings{ 
@@ -65,6 +66,14 @@ img.feature{
 .article-grid div.bottom-right{
 	grid-area: e;
 	aspect-ratio: 1/1;
+}
+
+.article-grid div.bottom{
+	grid-area: g;
+ 	border-image: linear-gradient(to right, var(--fg-color), var(--fg-color), var(--bg-color), var(--fg-color), var(--fg-color)) 30;
+ 	border-width: 1px 0 0 0;
+  	border-style: solid;
+
 }
 
 .article-grid div.article-body{
