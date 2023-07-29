@@ -30,6 +30,9 @@ class Living_thing:
         #note
         self.note = data['note']
 
+        #admin
+        self.status = data['status']
+
     # in python OOP, there is something called a property, which defines
     # an attribute of the class object based on other attributes
     # the below property generates a correctly formatted url string for us
@@ -53,7 +56,7 @@ class Living_thing:
     @classmethod
     def get_living_thing_by_time( cls, data ):
         query_string = """
-        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, fk.name AS formal_name, ck.name AS common_name, o.note
+        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, o.status, fk.name AS formal_name, ck.name AS common_name, o.note
         
         FROM observations o
         JOIN observation_common_kinds ock ON ock.observation_id = o.id
@@ -74,13 +77,14 @@ class Living_thing:
     @classmethod
     def get_all( cls ):
         query_string = """
-        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, fk.name AS formal_name, ck.name AS common_name, o.note
+        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, o.status, fk.name AS formal_name, ck.name AS common_name, o.note
         
         FROM observations o
         JOIN observation_common_kinds ock ON ock.observation_id = o.id
         JOIN common_kinds ck ON ock.common_kind_id = ck.id
         JOIN observation_formal_kinds ofk ON ofk.observation_id = o.id
         JOIN formal_kinds fk ON ofk.formal_kind_id = fk.id
+        WHERE o.status != 1 OR o.status IS NULL
         ORDER BY o.time_s DESC;
         """
         results = connectToMySQL().query_db(query_string)
