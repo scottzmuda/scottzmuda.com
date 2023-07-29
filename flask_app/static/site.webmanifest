@@ -1,11 +1,11 @@
 { 
-    "short_name": "scott's website",
-  	"name": "scott's website",
+    "short_name": "multiplicitous",
+  	"name": "multiplicitous",
     "background_color":  "#f8f1e4",
 	"theme_color": "#f8f1e4",
     "display": "standalone",
 	"orientation": "portrait", 
-	"start_url": "/",
+	"start_url": "/l/",
 	"icons": [
 	{ 
 		"src": "/i/touch-icon-1024x1024.png", 
