@@ -32,6 +32,7 @@ class Living_thing:
 
         #admin
         self.status = data['status']
+        self.creator = data['creator']
 
     # in python OOP, there is something called a property, which defines
     # an attribute of the class object based on other attributes
@@ -56,9 +57,10 @@ class Living_thing:
     @classmethod
     def get_living_thing_by_time( cls, data ):
         query_string = """
-        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, o.status, fk.name AS formal_name, ck.name AS common_name, o.note
+        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, o.status, c.name_id AS creator, fk.name AS formal_name, ck.name AS common_name, o.note
         
         FROM observations o
+        JOIN creators c ON o.creator_id = c.id
         JOIN observation_common_kinds ock ON ock.observation_id = o.id
         JOIN common_kinds ck ON ock.common_kind_id = ck.id
         JOIN observation_formal_kinds ofk ON ofk.observation_id = o.id
@@ -77,9 +79,10 @@ class Living_thing:
     @classmethod
     def get_all( cls ):
         query_string = """
-        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, o.status, fk.name AS formal_name, ck.name AS common_name, o.note
+        SELECT o.id, o.image, o.time_s, o.lat_deg, o.long_deg, o.elev_m, o.status, c.name_id AS creator, fk.name AS formal_name, ck.name AS common_name, o.note
         
         FROM observations o
+        JOIN creators c ON o.creator_id = c.id
         JOIN observation_common_kinds ock ON ock.observation_id = o.id
         JOIN common_kinds ck ON ock.common_kind_id = ck.id
         JOIN observation_formal_kinds ofk ON ofk.observation_id = o.id

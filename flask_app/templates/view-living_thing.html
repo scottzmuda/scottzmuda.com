@@ -34,6 +34,7 @@
                 </a>
             </nav>
             <h1>{{living_thing.common_name}}</h1>
+            <em>@{{living_thing.creator}}</em>
         </div> 
         <div class="article-image">
             <img class="feature" src="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
