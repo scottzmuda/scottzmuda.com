@@ -5,7 +5,7 @@
 	"theme_color": "#f8f1e4",
     "display": "standalone",
 	"orientation": "portrait", 
-	"start_url": "/l/",
+	"start_url": "/",
 	"icons": [
 	{ 
 		"src": "/i/touch-icon-1024x1024.png", 

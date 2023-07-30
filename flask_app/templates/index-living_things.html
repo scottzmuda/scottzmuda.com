@@ -9,8 +9,8 @@
 
   <meta property="og:title" content="living things">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scottzmuda.com/l">
-  <meta property="og:image" content="https://scottzmuda.com/i/twitter-default-summary-card-image-1024x1024.png">
+  <meta property="og:url" content="https://multiplicitous.com/">
+  <meta property="og:image" content="https://multiplicitous.com/i/twitter-default-summary-card-image-1024x1024.png">
 
   <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
   <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/images/icon.png') }}">
@@ -27,13 +27,12 @@
 </head>
 <body>
   <article class="article-grid">
-    <div class="top">
-      <h1>living things</h1>
+    <div class="top" style="text-align: center;">
+      <h1>Multiplicitous</h1>
             <nav>
                 {% if "creator_id" in session %}
-                <a class="nav-create" href="/w/create-living_thing">&#x2295;&#xFE00;</a>
+                <a class="nav-create" href="/l/create-living_thing">&#x2295;&#xFE00;</a>
                 {% endif %}
-                <a class="close-page" href="/">&#x2297;&#xFE00;</a>
             </nav>
     </div>
     {% for living_thing in living_things %}

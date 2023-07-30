@@ -3,8 +3,7 @@ from flask import render_template, redirect, flash,request, session
 from flask_app.models import living_thing
 from flask_app.utilities import time_util
 
-@app.route('/l')
-@app.route('/l/')
+@app.route('/')
 def living_things():
     living_things = living_thing.Living_thing.get_all()
     return render_template("index-living_things.html", living_things=living_things)
@@ -27,7 +26,7 @@ def view_living_thing( living_thing_url ):
     # if living_thing_time_s is still 0 OR if we have a non decimal (0-9) expression
     # then we safely redirect to the living_thingdex page
     if not living_thing_time_s or not living_thing_time_s.isdecimal():
-        return redirect('/l')
+        return redirect('/')
     
     # else cast numeric string "12345" -> 12345
     living_thing_time_s = int(living_thing_time_s)
@@ -38,20 +37,20 @@ def view_living_thing( living_thing_url ):
     #one_taxon = taxon.Taxon.get_taxon_by_id( {"id": one_living_thing.taxon.id} )
 
     if not one_living_thing:
-        return redirect('/l')
+        return redirect('/')
 
     return render_template("view-living_thing.html", living_thing=one_living_thing)#, taxon=one_taxon)
 
 @app.route('/l/create-living_thing')
 def create_living_thing():
     if 'creator_id' not in session:
-        return redirect('/l')
+        return redirect('/')
     return render_template("create-living_thing.html")
 
 @app.route('/l/save-living_thing', methods=["POST"])
 def save_living_thing():
     if 'creator_id' not in session:
-        return redirect('/l')
+        return redirect('/')
     
     print(request.form)
 
