@@ -28,7 +28,7 @@ class Living_thing:
         self.taxonomy = None
 
         #note
-        self.note = data['note']
+        self.note = Markup(data['note'].replace('\n', '<br>'))
 
         #admin
         self.status = data['status']
