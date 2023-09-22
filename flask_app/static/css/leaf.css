@@ -10,7 +10,7 @@ img.feature{
 
 .article-grid#living_things{ 
 	display: grid;
-	grid-template-columns: 13fr 5fr 13fr;
+	grid-template-columns: 13fr 8fr 5fr;
 	grid-template-areas:
 		"a a a"
 		"b b c"
@@ -20,7 +20,7 @@ img.feature{
 
 .article-grid#writings{ 
 	display: grid;
-	grid-template-columns: 13fr 5fr 13fr;
+	grid-template-columns: 13fr 8fr 5fr;
 	grid-template-areas:
 		"a a a"
 		"b b c"
