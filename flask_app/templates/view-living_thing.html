@@ -34,31 +34,31 @@
                 </a>
             </nav>
             <h1>{{living_thing.common_name}}</h1>
-            <em>@{{living_thing.creator}}</em>
         </div> 
         <div class="article-image">
             <img class="feature" src="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
         </div>
         <div class="top-right">
-            <em>
+            <!--<em>
                 {% for taxon in living_thing.taxonomy|reverse %}
                     {% if not loop.last %}
                         {{taxon}}<br>
                     {% endif %}
                 {% endfor %}
-            </em>
+            </em>-->
         </div>
         <div class="bottom-left">
-            <em>
+            <!--<em>
                 {{living_thing.season}}<br>
                 {{living_thing.sun_based_time}}<br>
                 {{living_thing.natural_language_latitude}}<br>
-            </em>
+            </em>-->
         </div>
         <div class="bottom-right">
             <div id="map"></div>
         </div>
         <div class="bottom">
+            <em>@{{living_thing.creator}}</em><br>
             <em>{{living_thing.note}}</em>
         </div>
     </article>
