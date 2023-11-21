@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
-    <title>{{living_thing.common_name}}</title>
+    <title>{{ living_thing.common_name|title }}</title>
     <meta name="description" content="{{living_thing.note}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,7 +33,7 @@
                     &#x2297;&#xFE00;
                 </a>
             </nav>
-            <h1>{{living_thing.common_name}}</h1>
+            <h1>{{ living_thing.common_name|title }}</h1>
         </div> 
         <div class="article-image">
             <img class="feature" src="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
