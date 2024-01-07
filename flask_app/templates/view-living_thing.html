@@ -6,7 +6,7 @@
     <meta name="description" content="{{living_thing.note}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:title" content="{{living_thing.common_name}}">
+    <meta property="og:title" content="{{ living_thing.common_name|title }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ request.url }}">
     <meta property="og:image" content="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
