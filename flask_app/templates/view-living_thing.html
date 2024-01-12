@@ -48,17 +48,19 @@
             </em>-->
         </div>
         <div class="bottom-left">
-            <!--<em>
-                {{living_thing.season}}<br>
-                {{living_thing.sun_based_time}}<br>
-                {{living_thing.natural_language_latitude}}<br>
-            </em>-->
+            <em>
+                {% for taxon in living_thing.taxonomy|reverse %}
+                    {% if not loop.last %}
+                        {{taxon}}<br>
+                    {% endif %}
+                {% endfor %}
+            </em>
         </div>
         <div class="bottom-right">
             <div id="map"></div>
         </div>
         <div class="bottom">
-            <em>@{{living_thing.creator}}</em><br>
+            <em>@{{living_thing.creator}} </em>|<em> {{living_thing.season}} • {{living_thing.sun_based_time}}</em><br>
             <em>{{living_thing.note}}</em>
         </div>
     </article>
