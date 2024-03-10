@@ -28,12 +28,14 @@
 <body>
     <article class="article-grid" id="living_things">
         <div class="article-header">
+        <!--
             <nav>
                 <a class="close-page" href="/">
                     &#x2297;&#xFE00;
                 </a>
             </nav>
-            <h1>{{ living_thing.common_name|title }}</h1>
+        -->
+            <h1 style="text-align: center;">{{ living_thing.common_name|title }}</h1>
         </div> 
         <div class="article-image">
             <img class="feature" src="{{ url_for('static', filename='i/' ~ living_thing.image, _external=True) }}">
