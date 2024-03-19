@@ -10,12 +10,12 @@ img.feature{
 
 .article-grid#living_things{ 
 	display: grid;
-	grid-template-columns: 5fr 4fr 12fr 5fr;
+	grid-template-columns: 3fr 2fr 4fr 12fr 2fr 3fr;
 	grid-template-areas:
-		"a a a a"
-		"b b b c"
-		"d d e e"
-		"g g g g";
+		"a a a a a a"
+		"h b b b b c"
+		"d d d e e e"
+		"g g g g g g";
 }
 
 .article-grid#writings{ 
